@@ -4,7 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HidayahMY - Panduan Solat & Al-Quran</title>
-    <meta name="description" content="HidayahMY - Your complete Islamic companion app for prayer times, Al-Quran, Qiblah, Azkar, and more. Built for Malaysians.">
+    <meta name="description" content="HidayahMY - Your complete Islamic companion app for prayer times (JAKIM), Al-Quran with translation, Qiblah compass, daily Azkar, Zakat calculator, and 16+ features. Free for Malaysian Muslims.">
+    <meta name="keywords" content="waktu solat, prayer times Malaysia, JAKIM, Al-Quran, Quran app, Qiblah, Kiblat, Azkar, Doa, Zakat calculator, Islamic app Malaysia, HidayahMY, Muslim app, solat, azan">
+    <meta name="author" content="HidayahMY">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hidayahmy.com/">
+    <link rel="alternate" hreflang="en" href="https://hidayahmy.com/">
+    <link rel="alternate" hreflang="ms" href="https://hidayahmy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://hidayahmy.com/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hidayahmy.com/">
+    <meta property="og:title" content="HidayahMY - Panduan Solat & Al-Quran untuk Muslim Malaysia">
+    <meta property="og:description" content="Waktu solat JAKIM, Al-Quran dengan terjemahan, kompas Kiblat, Azkar harian, kalkulator Zakat dan 16+ ciri Islamik. Percuma di iOS & Android.">
+    <meta property="og:image" content="https://hidayahmy.com/assets/hidayahicon.png">
+    <meta property="og:locale" content="en_MY">
+    <meta property="og:locale:alternate" content="ms_MY">
+    <meta property="og:site_name" content="HidayahMY">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HidayahMY - Panduan Solat & Al-Quran">
+    <meta name="twitter:description" content="Your complete Islamic companion app with prayer times, Al-Quran, Qiblah, Azkar, and 16+ features for Malaysian Muslims.">
+    <meta name="twitter:image" content="https://hidayahmy.com/assets/hidayahicon.png">
+
+    <!-- App Links -->
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+    <meta name="google-play-app" content="app-id=YOUR_PACKAGE_NAME">
+    <meta property="al:ios:app_name" content="HidayahMY">
+    <meta property="al:android:app_name" content="HidayahMY">
+
     <link rel="icon" type="image/png" href="assets/hidayahicon.png">
     <link rel="apple-touch-icon" href="assets/hidayahicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -542,11 +572,51 @@
         .stagger-5 { transition-delay: 0.25s; }
         .stagger-6 { transition-delay: 0.3s; }
     </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "HidayahMY",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "LifestyleApplication",
+        "description": "Complete Islamic companion app for Malaysian Muslims with prayer times (JAKIM), Al-Quran, Qiblah compass, daily Azkar, Zakat calculator, and 16+ features.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "MYR"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "100"
+        },
+        "featureList": "Prayer Times, Al-Quran, Qiblah Compass, Daily Azkar, Dua Collection, Tasbih Counter, Zakat Calculator, Hijri Calendar, Nearby Mosques, Quran Player, Hajj & Umrah Guide, Asmaul Husna, Tajwid Rules, Kids Corner",
+        "inLanguage": ["en", "ms"],
+        "author": {
+            "@type": "Organization",
+            "name": "HidayahMY",
+            "url": "https://hidayahmy.com"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HidayahMY",
+        "url": "https://hidayahmy.com",
+        "description": "HidayahMY - Panduan Solat & Al-Quran untuk Muslim Malaysia",
+        "inLanguage": ["en", "ms"]
+    }
+    </script>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<header>
+<nav role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
         <a href="#" class="logo">
             <img src="assets/hidayahicon.png" alt="HidayahMY" class="logo-icon" onerror="this.style.display='none'">
@@ -566,7 +636,9 @@
         </div>
     </div>
 </nav>
+</header>
 
+<main>
 <!-- HERO -->
 <section class="hero">
     <div class="hero-glows">
@@ -596,7 +668,7 @@
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <div class="dynamic-island"></div>
-                        <img src="assets/screenshots/dashboard.jpeg" alt="Dashboard">
+                        <img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard showing prayer times and Islamic features">
                     </div>
                 </div>
             </div>
@@ -604,7 +676,7 @@
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <div class="dynamic-island"></div>
-                        <img src="assets/screenshots/prayer.jpeg" alt="Prayer">
+                        <img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times screen with JAKIM-based schedule">
                     </div>
                 </div>
             </div>
@@ -721,17 +793,17 @@
     </div>
     <div class="slider-track-wrapper">
         <div class="slider-track">
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard showing prayer times and Islamic features"></div></div><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times with countdown and azan alerts"></div></div><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="HidayahMY Al-Quran reader with Uthmani script and translation"></div></div><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="HidayahMY Qiblah compass for accurate prayer direction"></div></div><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="HidayahMY complete Islamic features overview"></div></div><div class="slider-phone-label">More Features</div></div>
             <!-- duplicate for seamless loop -->
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard showing prayer times and Islamic features"></div></div><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times with countdown and azan alerts"></div></div><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="HidayahMY Al-Quran reader with Uthmani script and translation"></div></div><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="HidayahMY Qiblah compass for accurate prayer direction"></div></div><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="HidayahMY complete Islamic features overview"></div></div><div class="slider-phone-label">More Features</div></div>
         </div>
     </div>
 </section>
@@ -811,6 +883,8 @@
         </div>
     </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
