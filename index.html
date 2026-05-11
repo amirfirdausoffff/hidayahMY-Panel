@@ -10,19 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --bg-elevated: #0c0c0c;
-            --surface: #141414;
-            --surface-2: #1a1a1a;
-            --border: rgba(255,255,255,0.06);
-            --border-hover: rgba(255,255,255,0.12);
-            --text: #f5f5f5;
-            --text-muted: #888;
-            --text-dim: #555;
-            --accent: #c9a44e;
-            --accent-glow: rgba(201,164,78,0.15);
-            --accent-soft: rgba(201,164,78,0.08);
-            --gradient-gold: linear-gradient(135deg, #c9a44e 0%, #e8d5a3 50%, #c9a44e 100%);
+            --bg: #fafafa;
+            --bg-elevated: #ffffff;
+            --surface: #ffffff;
+            --surface-2: #f5f5f5;
+            --border: rgba(0,0,0,0.06);
+            --border-hover: rgba(0,0,0,0.12);
+            --text: #111111;
+            --text-muted: #666;
+            --text-dim: #999;
+            --accent: #b8922e;
+            --accent-glow: rgba(184,146,46,0.15);
+            --accent-soft: rgba(184,146,46,0.07);
+            --gradient-gold: linear-gradient(135deg, #b8922e 0%, #d4b85a 50%, #b8922e 100%);
             --radius: 20px;
             --radius-sm: 12px;
         }
@@ -47,7 +47,7 @@
             z-index: 100;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            background: rgba(5,5,5,0.75);
+            background: rgba(255,255,255,0.8);
             border-bottom: 1px solid var(--border);
             transition: background 0.3s;
         }
@@ -94,7 +94,7 @@
         .nav-cta {
             padding: 10px 24px;
             background: var(--accent);
-            color: #000;
+            color: #fff;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.85rem;
@@ -103,7 +103,7 @@
             letter-spacing: 0.3px;
         }
         .nav-cta:hover {
-            box-shadow: 0 0 30px rgba(201,164,78,0.35);
+            box-shadow: 0 0 30px rgba(184,146,46,0.3);
             transform: translateY(-1px);
         }
 
@@ -126,7 +126,7 @@
             transform: translateX(-50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(201,164,78,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(184,146,46,0.06) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero::after {
@@ -137,6 +137,7 @@
             right: 0;
             height: 200px;
             background: linear-gradient(to top, var(--bg), transparent);
+            opacity: 0.6;
             pointer-events: none;
         }
         .hero-content {
@@ -205,7 +206,7 @@
             gap: 10px;
             padding: 16px 32px;
             background: var(--accent);
-            color: #000;
+            color: #fff;
             font-size: 0.95rem;
             font-weight: 700;
             border-radius: 50px;
@@ -215,7 +216,7 @@
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(201,164,78,0.3);
+            box-shadow: 0 8px 40px rgba(184,146,46,0.25);
         }
         .btn-secondary {
             display: inline-flex;
@@ -232,7 +233,7 @@
             transition: all 0.3s;
         }
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.04);
+            background: rgba(0,0,0,0.03);
             border-color: rgba(255,255,255,0.2);
         }
 
@@ -340,8 +341,9 @@
             width: 240px;
             border-radius: 32px;
             padding: 10px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(145deg, rgba(0,0,0,0.02), rgba(0,0,0,0.005));
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
         }
@@ -351,7 +353,7 @@
             inset: -1px;
             border-radius: 33px;
             padding: 1px;
-            background: linear-gradient(145deg, rgba(201,164,78,0.3), transparent 50%);
+            background: linear-gradient(145deg, rgba(184,146,46,0.4), transparent 50%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -362,7 +364,7 @@
         .phone-frame:hover::before { opacity: 1; }
         .phone-frame:hover {
             transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
         }
         .phone-frame.center {
             width: 260px;
@@ -434,7 +436,7 @@
             transition: all 0.3s;
         }
         .mini-card:hover {
-            border-color: rgba(201,164,78,0.2);
+            border-color: rgba(184,146,46,0.25);
             background: var(--surface-2);
         }
         .mini-icon {
@@ -446,7 +448,7 @@
             justify-content: center;
             font-size: 1.15rem;
             flex-shrink: 0;
-            background: rgba(255,255,255,0.04);
+            background: rgba(0,0,0,0.03);
         }
         .mini-card h4 {
             font-size: 0.88rem;
@@ -474,7 +476,7 @@
             transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(201,164,78,0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(184,146,46,0.05) 0%, transparent 70%);
             pointer-events: none;
         }
         .cta-content {
@@ -522,11 +524,12 @@
             transition: all 0.3s;
         }
         .store-btn:hover {
-            border-color: rgba(201,164,78,0.3);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            border-color: rgba(184,146,46,0.3);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
             transform: translateY(-2px);
         }
         .store-btn svg { width: 24px; height: 24px; fill: var(--text); }
+        .store-btn:hover svg { fill: var(--accent); }
         .store-btn small {
             font-size: 0.68rem;
             font-weight: 400;
@@ -620,7 +623,7 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.2;
+            opacity: 0.3;
         }
     </style>
 </head>
