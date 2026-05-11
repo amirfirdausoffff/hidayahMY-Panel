@@ -145,50 +145,35 @@
             flex-shrink: 0; position: relative;
             width: 360px; height: 540px;
         }
+        /* Clean iPhone frame — thin bezel, no buttons */
         .iphone {
-            position: relative; background: #1a1a1a;
-            border-radius: 44px; padding: 12px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.3), inset 0 0 0 2px rgba(255,255,255,0.1);
-            border: 3px solid #2a2a2a;
-        }
-        .iphone::before {
-            content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-            width: 100px; height: 28px; background: #1a1a1a; border-radius: 20px; z-index: 10;
-        }
-        .iphone-side-right {
-            position: absolute; right: -3px; top: 140px;
-            width: 3px; height: 55px; background: #2a2a2a; border-radius: 0 2px 2px 0;
-        }
-        .iphone-side-left-1 {
-            position: absolute; left: -3px; top: 100px;
-            width: 3px; height: 28px; background: #2a2a2a; border-radius: 2px 0 0 2px;
-        }
-        .iphone-side-left-2 {
-            position: absolute; left: -3px; top: 145px;
-            width: 3px; height: 50px; background: #2a2a2a; border-radius: 2px 0 0 2px;
-        }
-        .iphone-side-left-3 {
-            position: absolute; left: -3px; top: 205px;
-            width: 3px; height: 50px; background: #2a2a2a; border-radius: 2px 0 0 2px;
+            position: relative; background: #111;
+            border-radius: 48px; padding: 8px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.08);
         }
         .iphone-screen {
-            border-radius: 34px; overflow: hidden; position: relative;
-            background: #000;
+            border-radius: 42px; overflow: hidden; position: relative;
+            background: #000; aspect-ratio: 9/19.5;
         }
         .iphone-screen img {
-            width: 100%; display: block;
-            margin-top: -44px; /* crop status bar */
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            object-position: center 30px; /* shift down to crop status bar */
+        }
+        /* Dynamic Island */
+        .iphone-notch {
+            position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+            width: 90px; height: 24px; background: #111; border-radius: 20px; z-index: 10;
         }
         .hero-phone {
             position: absolute;
             transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
         }
         .hero-phone-1 { top: 30px; left: 0; z-index: 3; transform: rotate(-3deg); }
-        .hero-phone-1 .iphone { width: 220px; }
-        .hero-phone-2 { top: 10px; left: 155px; z-index: 2; transform: rotate(5deg); opacity: 0.85; }
-        .hero-phone-2 .iphone { width: 200px; }
-        .hero-phone-1:hover { transform: rotate(0deg) scale(1.03); z-index: 5; }
-        .hero-phone-2:hover { transform: rotate(0deg) scale(1.03); z-index: 5; opacity: 1; }
+        .hero-phone-1 .iphone { width: 230px; }
+        .hero-phone-2 { top: 10px; left: 155px; z-index: 2; transform: rotate(5deg); opacity: 0.9; }
+        .hero-phone-2 .iphone { width: 210px; }
+        .hero-phone-1:hover { transform: rotate(0deg) scale(1.04); z-index: 5; }
+        .hero-phone-2:hover { transform: rotate(0deg) scale(1.04); z-index: 5; opacity: 1; }
 
         /* ── SCROLLING MARQUEE ────────────── */
         .marquee-section {
@@ -311,20 +296,22 @@
             transition: transform 0.4s;
         }
         .slider-phone:hover { transform: scale(1.05); }
-        .slider-phone .iphone-mini {
-            background: #1a1a1a; border-radius: 36px; padding: 10px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-            border: 2.5px solid #2a2a2a; position: relative;
+        .slider-phone .iphone-sm {
+            background: #111; border-radius: 40px; padding: 7px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
+            position: relative;
         }
-        .slider-phone .iphone-mini::before {
-            content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 22px; background: #1a1a1a; border-radius: 16px; z-index: 10;
+        .slider-phone .iphone-sm-screen {
+            border-radius: 35px; overflow: hidden; background: #000;
+            aspect-ratio: 9/19.5;
         }
-        .slider-phone .iphone-mini-screen {
-            border-radius: 28px; overflow: hidden; background: #000;
+        .slider-phone .iphone-sm-screen img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            object-position: center 26px;
         }
-        .slider-phone .iphone-mini-screen img {
-            width: 100%; display: block; margin-top: -38px;
+        .slider-phone .iphone-sm-notch {
+            position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+            width: 72px; height: 20px; background: #111; border-radius: 14px; z-index: 10;
         }
         .slider-phone-label {
             text-align: center; padding: 0.75rem 0 0.3rem;
@@ -424,11 +411,11 @@
             .hero h1 { font-size: 2.6rem; }
             .hero p { font-size: 1rem; margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
-            .hero-phones { width: 280px; height: 420px; }
-            .hero-phone-1 .iphone { width: 180px; }
-            .hero-phone-1 { left: 10px; }
-            .hero-phone-2 .iphone { width: 160px; }
-            .hero-phone-2 { left: 110px; }
+            .hero-phones { width: 280px; height: 440px; }
+            .hero-phone-1 .iphone { width: 190px; }
+            .hero-phone-1 { left: 5px; }
+            .hero-phone-2 .iphone { width: 170px; }
+            .hero-phone-2 { left: 100px; }
             section { padding: 4rem 1.5rem; }
             .section-title { font-size: 2rem; }
             .bento-grid { grid-template-columns: 1fr; }
@@ -445,9 +432,10 @@
             .hero h1 { font-size: 2rem; }
             .all-features-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-phones { width: 240px; height: 380px; }
+            .hero-phones { width: 220px; height: 360px; }
             .hero-phone-1 .iphone { width: 160px; }
-            .hero-phone-2 .iphone { width: 140px; }
+            .hero-phone-2 .iphone { width: 145px; }
+            .hero-phone-2 { left: 80px; }
         }
 
         /* ── ANIMATIONS ───────────────────── */
@@ -527,22 +515,16 @@
         <div class="hero-phones fade-right stagger-2">
             <div class="hero-phone hero-phone-1">
                 <div class="iphone">
-                    <div class="iphone-side-right"></div>
-                    <div class="iphone-side-left-1"></div>
-                    <div class="iphone-side-left-2"></div>
-                    <div class="iphone-side-left-3"></div>
                     <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
                         <img src="assets/screenshots/dashboard.jpeg" alt="Dashboard">
                     </div>
                 </div>
             </div>
             <div class="hero-phone hero-phone-2">
                 <div class="iphone">
-                    <div class="iphone-side-right"></div>
-                    <div class="iphone-side-left-1"></div>
-                    <div class="iphone-side-left-2"></div>
-                    <div class="iphone-side-left-3"></div>
                     <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
                         <img src="assets/screenshots/prayer.jpeg" alt="Prayer">
                     </div>
                 </div>
@@ -656,17 +638,17 @@
     </div>
     <div class="slider-track-wrapper">
         <div class="slider-track">
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
             <!-- duplicate for seamless loop -->
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-mini"><div class="iphone-mini-screen"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><div class="iphone-sm"><div class="iphone-sm-notch"></div><div class="iphone-sm-screen"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div><div class="slider-phone-label">More Features</div></div>
         </div>
     </div>
 </section>
