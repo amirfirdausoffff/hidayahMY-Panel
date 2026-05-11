@@ -10,25 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fafafa;
-            --bg-elevated: #ffffff;
+            --primary: #0D7377;
+            --primary-light: #14919B;
+            --primary-dark: #095456;
+            --primary-soft: rgba(13,115,119,0.08);
+            --primary-glow: rgba(13,115,119,0.15);
+            --gradient: linear-gradient(135deg, #0D7377 0%, #14919B 50%, #0D7377 100%);
+            --gradient-hero: linear-gradient(160deg, #0D7377 0%, #14919B 40%, #17a5b0 70%, #0D7377 100%);
+            --bg: #fafbfc;
             --surface: #ffffff;
-            --surface-2: #f5f5f5;
+            --surface-2: #f4f6f8;
             --border: rgba(0,0,0,0.06);
-            --border-hover: rgba(0,0,0,0.12);
-            --text: #111111;
-            --text-muted: #666;
-            --text-dim: #999;
-            --accent: #b8922e;
-            --accent-glow: rgba(184,146,46,0.15);
-            --accent-soft: rgba(184,146,46,0.07);
-            --gradient-gold: linear-gradient(135deg, #b8922e 0%, #d4b85a 50%, #b8922e 100%);
+            --text: #0f1419;
+            --text-muted: #536471;
+            --text-dim: #8899a6;
             --radius: 20px;
-            --radius-sm: 12px;
+            --radius-sm: 14px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -41,590 +41,398 @@
 
         /* ── NAV ──────────────────────────── */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
+            position: fixed; top: 0; width: 100%; z-index: 100;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.85);
             border-bottom: 1px solid var(--border);
-            transition: background 0.3s;
         }
         .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between; height: 68px;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text);
-        }
-        .logo-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-        }
-        .logo-text {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: color 0.2s;
-            letter-spacing: 0.2px;
-        }
-        .nav-links a:hover { color: var(--text); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+        .logo-icon { width: 36px; height: 36px; border-radius: 10px; }
+        .logo-text { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
         .nav-cta {
-            padding: 10px 24px;
-            background: var(--accent);
-            color: #fff;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            letter-spacing: 0.3px;
+            padding: 10px 24px; background: var(--primary); color: #fff;
+            border-radius: 50px; font-weight: 600; font-size: 0.85rem;
+            text-decoration: none; transition: all 0.3s;
         }
-        .nav-cta:hover {
-            box-shadow: 0 0 30px rgba(184,146,46,0.3);
-            transform: translateY(-1px);
-        }
+        .nav-cta:hover { box-shadow: 0 4px 20px rgba(13,115,119,0.35); transform: translateY(-1px); }
 
         /* ── HERO ─────────────────────────── */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 6rem;
-            text-align: center;
-            overflow: hidden;
+            position: relative; min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex; align-items: center; justify-content: center;
+            padding: 7rem 2rem 4rem; overflow: hidden;
         }
+        /* Animated floating circles */
+        .hero-bg-circles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .circle {
+            position: absolute; border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            animation: float-circle linear infinite;
+        }
+        .circle:nth-child(1) { width: 300px; height: 300px; top: -50px; left: -100px; animation-duration: 20s; }
+        .circle:nth-child(2) { width: 200px; height: 200px; top: 60%; right: -60px; animation-duration: 25s; animation-delay: -5s; }
+        .circle:nth-child(3) { width: 150px; height: 150px; top: 20%; right: 20%; animation-duration: 18s; animation-delay: -8s; }
+        .circle:nth-child(4) { width: 400px; height: 400px; bottom: -150px; left: 30%; animation-duration: 30s; animation-delay: -12s; }
+        .circle:nth-child(5) { width: 100px; height: 100px; top: 40%; left: 10%; animation-duration: 15s; animation-delay: -3s; }
+        @keyframes float-circle {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.5; }
+            25% { transform: translateY(-30px) rotate(90deg) scale(1.05); opacity: 0.7; }
+            50% { transform: translateY(-15px) rotate(180deg) scale(1); opacity: 0.5; }
+            75% { transform: translateY(-40px) rotate(270deg) scale(1.08); opacity: 0.6; }
+            100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 0.5; }
+        }
+        /* Islamic geometric pattern overlay */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(184,146,46,0.06) 0%, transparent 70%);
-            pointer-events: none;
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.07'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3Cpath d='M40 20L60 40L40 60L20 40Z'/%3E%3C/g%3E%3C/svg%3E") repeat;
         }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(to top, var(--bg), transparent);
-            opacity: 0.6;
-            pointer-events: none;
+        .hero-layout {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; gap: 4rem;
+            max-width: 1200px; width: 100%;
         }
-        .hero-content {
-            position: relative;
-            max-width: 900px;
-            z-index: 2;
-        }
+        .hero-text { flex: 1; }
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: var(--accent-soft);
-            border: 1px solid rgba(201,164,78,0.15);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 18px; background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+            color: #fff; font-size: 0.78rem; font-weight: 600;
+            margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase;
+            backdrop-filter: blur(10px);
         }
-        .hero-badge .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+        .hero-badge .dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            font-weight: 800;
-            color: var(--text);
-            line-height: 1.08;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
+            font-size: 4.2rem; font-weight: 800; color: #fff;
+            line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -1.5px;
         }
-        .hero h1 .gold {
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 em {
+            font-style: normal; position: relative;
+            background: linear-gradient(90deg, #fff, rgba(255,255,255,0.7));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 520px;
-            margin: 0 auto 3rem;
-            line-height: 1.75;
-            font-weight: 300;
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 480px; line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-hero-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px; background: #fff; color: var(--primary);
+            font-size: 0.95rem; font-weight: 700; border-radius: 50px;
+            text-decoration: none; transition: all 0.3s;
         }
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+        .btn-hero-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px; background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25); color: #fff;
+            font-size: 0.95rem; font-weight: 600; border-radius: 50px;
+            text-decoration: none; transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 700;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            letter-spacing: 0.3px;
+        .btn-hero-secondary:hover { background: rgba(255,255,255,0.2); }
+
+        /* Hero phone showcase */
+        .hero-phones {
+            flex-shrink: 0; position: relative;
+            width: 340px; height: 520px;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(184,146,46,0.25);
+        .hero-phone {
+            position: absolute; border-radius: 28px; overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            border: 3px solid rgba(255,255,255,0.2);
+            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
         }
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: transparent;
-            border: 1px solid var(--border-hover);
-            color: var(--text);
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
+        .hero-phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-phone-1 { width: 220px; height: 440px; top: 40px; left: 0; z-index: 3; transform: rotate(-3deg); }
+        .hero-phone-2 { width: 200px; height: 400px; top: 20px; left: 140px; z-index: 2; transform: rotate(5deg); opacity: 0.85; }
+        .hero-phone-1:hover { transform: rotate(0deg) scale(1.03); z-index: 5; }
+        .hero-phone-2:hover { transform: rotate(0deg) scale(1.03); z-index: 5; opacity: 1; }
+
+        /* ── SCROLLING MARQUEE ────────────── */
+        .marquee-section {
+            padding: 1.5rem 0; background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
         }
-        .btn-secondary:hover {
-            background: rgba(0,0,0,0.03);
-            border-color: rgba(255,255,255,0.2);
+        .marquee-track {
+            display: flex; gap: 3rem; animation: marquee 30s linear infinite;
+            width: max-content;
         }
+        .marquee-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.88rem; font-weight: 600; color: var(--text-muted);
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .marquee-item .m-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--primary); opacity: 0.4;
+        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* ── SECTION COMMON ──────────────── */
-        section { padding: 7rem 2rem; }
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-center { text-align: center; }
+        .section-center .section-desc { margin-left: auto; margin-right: auto; }
         .section-label {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
+            display: inline-block; padding: 6px 16px;
+            background: var(--primary-soft); color: var(--primary);
+            font-size: 0.7rem; font-weight: 700; border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;
         }
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 0.75rem;
-            line-height: 1.15;
+            font-size: 2.8rem; font-weight: 700; letter-spacing: -1px;
+            margin-bottom: 0.75rem; line-height: 1.15;
+        }
+        .section-title .green {
+            color: var(--primary);
         }
         .section-desc {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            max-width: 480px;
-            line-height: 1.7;
-            margin-bottom: 3.5rem;
-            font-weight: 300;
+            font-size: 1.05rem; color: var(--text-muted); max-width: 480px;
+            line-height: 1.7; margin-bottom: 3rem; font-weight: 400;
         }
 
-        /* ── FEATURES SECTION ─────────────── */
-        .features-grid {
+        /* ── FEATURES BENTO GRID ──────────── */
+        .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid var(--border);
+            grid-template-rows: auto auto;
+            gap: 1rem;
         }
-        .feature-card {
-            background: var(--surface);
-            padding: 2.5rem 2rem;
-            transition: background 0.3s;
-            position: relative;
+        .bento-card {
+            background: var(--surface); border-radius: var(--radius);
+            padding: 2rem 1.75rem; border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+            position: relative; overflow: hidden;
         }
-        .feature-card:hover {
-            background: var(--surface-2);
+        .bento-card::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--gradient); transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
         }
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1.25rem;
-            background: var(--accent-soft);
+        .bento-card:hover::after { transform: scaleX(1); }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(13,115,119,0.1);
+            border-color: rgba(13,115,119,0.15);
         }
-        .feature-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.2px;
+        .bento-big { grid-column: span 2; display: flex; gap: 2rem; align-items: center; }
+        .bento-big .bento-visual {
+            flex-shrink: 0; width: 180px; height: 180px; border-radius: 16px;
+            background: linear-gradient(135deg, rgba(13,115,119,0.06), rgba(20,145,155,0.1));
+            display: flex; align-items: center; justify-content: center; font-size: 4rem;
         }
-        .feature-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-weight: 300;
+        .bento-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1.25rem;
+            background: var(--primary-soft);
         }
+        .bento-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .bento-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* ── APP PREVIEW SECTION ──────────── */
-        .preview-section {
-            position: relative;
-            overflow: hidden;
-        }
-        .preview-section .section-inner {
-            text-align: center;
-        }
-        .preview-section .section-desc {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .phone-carousel {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            perspective: 1000px;
-        }
-        .phone-frame {
-            width: 240px;
-            border-radius: 32px;
-            padding: 10px;
-            background: linear-gradient(145deg, rgba(0,0,0,0.02), rgba(0,0,0,0.005));
-            border: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-        }
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 33px;
-            padding: 1px;
-            background: linear-gradient(145deg, rgba(184,146,46,0.4), transparent 50%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .phone-frame:hover::before { opacity: 1; }
-        .phone-frame:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
-        }
-        .phone-frame.center {
-            width: 260px;
-            transform: translateY(-10px);
-        }
-        .phone-frame.center:hover {
-            transform: translateY(-22px);
-        }
-        .phone-frame img {
-            width: 100%;
-            border-radius: 24px;
-            display: block;
-        }
-        .phone-label {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-
-        /* ── STATS ────────────────────────── */
+        /* ── STATS WITH COUNTER ──────────── */
         .stats-section {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            background: var(--gradient-hero); position: relative; overflow: hidden;
+        }
+        .stats-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.06'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3C/g%3E%3C/svg%3E") repeat;
         }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 2rem; text-align: center;
         }
-        .stat-item {
-            padding: 2rem 0;
-        }
+        .stat-item { padding: 2rem 0; }
         .stat-number {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
+            font-size: 3.5rem; font-weight: 700; color: #fff; letter-spacing: -1px;
         }
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-top: 6px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 6px; font-weight: 400; }
+
+        /* ── SCREENSHOT SLIDER ────────────── */
+        .slider-section { background: var(--surface-2); overflow: hidden; }
+        .slider-track-wrapper {
+            position: relative; margin-top: 3rem;
+            mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+        }
+        .slider-track {
+            display: flex; gap: 1.5rem;
+            animation: slide-phones 25s linear infinite;
+            width: max-content;
+        }
+        .slider-phone {
+            flex-shrink: 0; width: 220px;
+            border-radius: 24px; overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: transform 0.4s;
+            background: var(--surface);
+            padding: 8px;
+        }
+        .slider-phone:hover { transform: scale(1.05); }
+        .slider-phone img { width: 100%; border-radius: 18px; display: block; }
+        .slider-phone-label {
+            text-align: center; padding: 0.6rem 0 0.3rem;
+            font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+        }
+        @keyframes slide-phones {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* ── ALL FEATURES GRID ────────────── */
         .all-features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.75rem;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
         }
         .mini-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 1.15rem 1.25rem;
-            background: var(--surface);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
+            display: flex; align-items: center; gap: 14px;
+            padding: 1.15rem 1.25rem; background: var(--surface);
+            border-radius: var(--radius-sm); border: 1px solid var(--border);
+            transition: all 0.3s; cursor: default;
         }
         .mini-card:hover {
-            border-color: rgba(184,146,46,0.25);
-            background: var(--surface-2);
+            border-color: rgba(13,115,119,0.2);
+            box-shadow: 0 4px 20px rgba(13,115,119,0.06);
+            transform: translateY(-2px);
         }
         .mini-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.15rem;
-            flex-shrink: 0;
-            background: rgba(0,0,0,0.03);
+            width: 42px; height: 42px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem; flex-shrink: 0;
+            background: var(--primary-soft);
         }
-        .mini-card h4 {
-            font-size: 0.88rem;
-            font-weight: 600;
-            letter-spacing: -0.2px;
+        .mini-card h4 { font-size: 0.88rem; font-weight: 600; }
+        .mini-card span { font-size: 0.75rem; color: var(--text-dim); }
+
+        /* ── TESTIMONIAL / INFO BANNER ──── */
+        .info-banner {
+            background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
         }
-        .mini-card span {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            font-weight: 300;
+        .info-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
         }
+        .info-item { text-align: center; padding: 1rem; }
+        .info-item .info-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .info-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .info-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
         /* ── CTA ──────────────────────────── */
         .cta-section {
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding: 8rem 2rem;
+            background: var(--gradient-hero); text-align: center;
+            position: relative; overflow: hidden; padding: 7rem 2rem;
         }
         .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(184,146,46,0.05) 0%, transparent 70%);
-            pointer-events: none;
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.06'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3C/g%3E%3C/svg%3E") repeat;
         }
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
+        .cta-content { position: relative; z-index: 2; }
         .cta-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
+            font-size: 3.2rem; font-weight: 700; color: #fff;
+            margin-bottom: 1rem; letter-spacing: -1px;
         }
-        .cta-section h2 .gold {
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .cta-section p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 450px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-        .store-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 450px; margin: 0 auto 2.5rem; line-height: 1.7; }
+        .store-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .store-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 28px;
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 16px 28px; background: #fff; color: var(--text);
+            border-radius: 16px; text-decoration: none; font-weight: 600;
+            transition: all 0.3s; border: none;
         }
-        .store-btn:hover {
-            border-color: rgba(184,146,46,0.3);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
+        .store-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
         .store-btn svg { width: 24px; height: 24px; fill: var(--text); }
-        .store-btn:hover svg { fill: var(--accent); }
-        .store-btn small {
-            font-size: 0.68rem;
-            font-weight: 400;
-            color: var(--text-dim);
-            display: block;
-            text-align: left;
-        }
-        .store-btn .store-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
+        .store-btn small { font-size: 0.68rem; font-weight: 400; color: var(--text-muted); display: block; text-align: left; }
+        .store-btn .store-name { font-size: 0.95rem; font-weight: 600; }
 
         /* ── FOOTER ───────────────────────── */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-        }
+        footer { background: var(--primary-dark); padding: 3rem 2rem; }
         .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
         }
-        .footer-inner span {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-        }
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-        .footer-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-        .footer-links a:hover { color: var(--text-muted); }
+        .footer-inner span { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: rgba(255,255,255,0.8); }
 
         /* ── RESPONSIVE ───────────────────── */
         @media (max-width: 1024px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-big { grid-column: span 2; }
             .all-features-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 8rem 1.5rem 4rem; min-height: auto; }
-            .hero h1 { font-size: 2.8rem; letter-spacing: -1px; }
-            .hero p { font-size: 1rem; }
-            section { padding: 5rem 1.5rem; }
-            .section-title { font-size: 2.2rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .hero { padding: 7rem 1.5rem 3rem; min-height: auto; }
+            .hero-layout { flex-direction: column; text-align: center; gap: 3rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero p { font-size: 1rem; margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-phones { width: 280px; height: 400px; }
+            .hero-phone-1 { width: 180px; height: 360px; left: 10px; }
+            .hero-phone-2 { width: 160px; height: 320px; left: 110px; }
+            section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 2rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-big { grid-column: span 1; flex-direction: column; }
+            .bento-big .bento-visual { width: 100%; height: 120px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .stat-number { font-size: 2.5rem; }
             .all-features-grid { grid-template-columns: repeat(2, 1fr); }
-            .phone-frame { width: 180px; }
-            .phone-frame.center { width: 200px; }
+            .info-grid { grid-template-columns: 1fr; }
             .cta-section h2 { font-size: 2.2rem; }
-            .cta-section { padding: 5rem 1.5rem; }
+            .slider-phone { width: 180px; }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2rem; }
             .all-features-grid { grid-template-columns: 1fr; }
-            .phone-carousel { gap: 1rem; }
-            .phone-frame { width: 150px; }
-            .phone-frame.center { width: 170px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-phones { width: 240px; height: 360px; }
+            .hero-phone-1 { width: 160px; height: 320px; }
+            .hero-phone-2 { width: 140px; height: 280px; }
         }
 
         /* ── ANIMATIONS ───────────────────── */
         .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
         }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-left {
+            opacity: 0; transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
         }
+        .fade-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-right {
+            opacity: 0; transform: translateX(40px);
+            transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+        }
+        .fade-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in {
+            opacity: 0; transform: scale(0.9);
+            transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
         .stagger-1 { transition-delay: 0.05s; }
         .stagger-2 { transition-delay: 0.1s; }
         .stagger-3 { transition-delay: 0.15s; }
         .stagger-4 { transition-delay: 0.2s; }
         .stagger-5 { transition-delay: 0.25s; }
-
-        /* ── GLOW LINE ────────────────────── */
-        .glow-line {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.3;
-        }
+        .stagger-6 { transition-delay: 0.3s; }
     </style>
 </head>
 <body>
@@ -641,70 +449,115 @@
             <li><a href="#preview">Preview</a></li>
             <li><a href="#all-features">Explore</a></li>
         </ul>
-        <a href="#download" class="nav-cta">Download</a>
+        <a href="#download" class="nav-cta">Download App</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-content">
-        <div class="hero-badge fade-up">
-            <span class="dot"></span>
-            Panduan Solat & Al-Quran
+    <div class="hero-bg-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class="hero-layout">
+        <div class="hero-text">
+            <div class="hero-badge fade-left">
+                <span class="dot"></span>
+                Panduan Solat & Al-Quran
+            </div>
+            <h1 class="fade-left stagger-1">Your Complete<br><em>Islamic Companion</em></h1>
+            <p class="fade-left stagger-2">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
+            <div class="hero-buttons fade-left stagger-3">
+                <a href="#download" class="btn-hero-primary">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                    Download Free
+                </a>
+                <a href="#features" class="btn-hero-secondary">
+                    Learn More
+                </a>
+            </div>
         </div>
-        <h1 class="fade-up stagger-1">Your Complete<br><span class="gold">Islamic Companion</span></h1>
-        <p class="fade-up stagger-2">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
-        <div class="hero-buttons fade-up stagger-3">
-            <a href="#download" class="btn-primary">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                Download Now
-            </a>
-            <a href="#features" class="btn-secondary">
-                Explore Features
-            </a>
+        <div class="hero-phones fade-right stagger-2">
+            <div class="hero-phone hero-phone-1">
+                <img src="assets/screenshots/dashboard.jpeg" alt="Dashboard">
+            </div>
+            <div class="hero-phone hero-phone-2">
+                <img src="assets/screenshots/prayer.jpeg" alt="Prayer">
+            </div>
         </div>
     </div>
 </section>
 
-<div class="glow-line"></div>
+<!-- MARQUEE -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="m-dot"></span>Prayer Times (JAKIM)</div>
+        <div class="marquee-item"><span class="m-dot"></span>Al-Quran & Translation</div>
+        <div class="marquee-item"><span class="m-dot"></span>Qiblah Compass</div>
+        <div class="marquee-item"><span class="m-dot"></span>Daily Azkar</div>
+        <div class="marquee-item"><span class="m-dot"></span>Tasbih Counter</div>
+        <div class="marquee-item"><span class="m-dot"></span>Zakat Calculator</div>
+        <div class="marquee-item"><span class="m-dot"></span>Hijri Calendar</div>
+        <div class="marquee-item"><span class="m-dot"></span>Nearby Mosques</div>
+        <div class="marquee-item"><span class="m-dot"></span>Quran Player</div>
+        <div class="marquee-item"><span class="m-dot"></span>Hajj & Umrah</div>
+        <div class="marquee-item"><span class="m-dot"></span>Asmaul Husna</div>
+        <div class="marquee-item"><span class="m-dot"></span>Kids Corner</div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-item"><span class="m-dot"></span>Prayer Times (JAKIM)</div>
+        <div class="marquee-item"><span class="m-dot"></span>Al-Quran & Translation</div>
+        <div class="marquee-item"><span class="m-dot"></span>Qiblah Compass</div>
+        <div class="marquee-item"><span class="m-dot"></span>Daily Azkar</div>
+        <div class="marquee-item"><span class="m-dot"></span>Tasbih Counter</div>
+        <div class="marquee-item"><span class="m-dot"></span>Zakat Calculator</div>
+        <div class="marquee-item"><span class="m-dot"></span>Hijri Calendar</div>
+        <div class="marquee-item"><span class="m-dot"></span>Nearby Mosques</div>
+        <div class="marquee-item"><span class="m-dot"></span>Quran Player</div>
+        <div class="marquee-item"><span class="m-dot"></span>Hajj & Umrah</div>
+        <div class="marquee-item"><span class="m-dot"></span>Asmaul Husna</div>
+        <div class="marquee-item"><span class="m-dot"></span>Kids Corner</div>
+    </div>
+</div>
 
-<!-- CORE FEATURES -->
+<!-- CORE FEATURES — BENTO -->
 <section id="features">
     <div class="section-inner">
         <span class="section-label fade-up">Core Features</span>
-        <h2 class="section-title fade-up">Everything You Need</h2>
+        <h2 class="section-title fade-up">Everything You <span class="green">Need</span></h2>
         <p class="section-desc fade-up">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
 
-        <div class="features-grid fade-up">
-            <div class="feature-card">
-                <div class="feature-icon">&#128336;</div>
-                <h3>Accurate Prayer Times</h3>
-                <p>JAKIM-based prayer times for all zones in Malaysia with real-time countdown and daily solat checklist.</p>
+        <div class="bento-grid">
+            <div class="bento-card bento-big fade-up">
+                <div class="bento-visual">&#128336;</div>
+                <div>
+                    <h3>Accurate Prayer Times</h3>
+                    <p>JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#128214;</div>
+            <div class="bento-card fade-up stagger-1">
+                <div class="bento-icon">&#128214;</div>
                 <h3>Al-Quran</h3>
-                <p>Full Quran with Uthmani script, Malay and English translations. Audio player with top reciters.</p>
+                <p>Full Quran with Uthmani script, Malay & English translations, and audio player.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#129517;</div>
+            <div class="bento-card fade-up stagger-2">
+                <div class="bento-icon">&#129517;</div>
                 <h3>Qiblah Compass</h3>
-                <p>Precise Qiblah direction finder using your device compass with 3D AR mode support.</p>
+                <p>Precise direction finder with 3D AR mode support. Never miss the right direction.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#128218;</div>
+            <div class="bento-card fade-up stagger-3">
+                <div class="bento-icon">&#128218;</div>
                 <h3>Daily Azkar & Dua</h3>
-                <p>Morning and evening azkar with counter, plus 30 curated duas from authentic hadith.</p>
+                <p>Morning & evening azkar with counter, plus 30 duas from authentic hadith.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#127971;</div>
-                <h3>Nearby Mosques</h3>
-                <p>Find mosques and surau near you with GPS search and navigation via Maps or Waze.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#128204;</div>
-                <h3>Hajj & Umrah Guide</h3>
-                <p>Step-by-step interactive guides for both Hajj and Umrah rituals with detailed explanations.</p>
+            <div class="bento-card bento-big fade-up stagger-4">
+                <div class="bento-visual">&#127971;</div>
+                <div>
+                    <h3>Nearby Mosques</h3>
+                    <p>Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -715,139 +568,107 @@
     <div class="section-inner">
         <div class="stats-grid">
             <div class="stat-item fade-up">
-                <div class="stat-number">114</div>
+                <div class="stat-number" data-count="114">0</div>
                 <div class="stat-label">Surah in Al-Quran</div>
             </div>
             <div class="stat-item fade-up stagger-1">
-                <div class="stat-number">99</div>
+                <div class="stat-number" data-count="99">0</div>
                 <div class="stat-label">Asmaul Husna</div>
             </div>
             <div class="stat-item fade-up stagger-2">
-                <div class="stat-number">14</div>
+                <div class="stat-number" data-count="14">0</div>
                 <div class="stat-label">App Themes</div>
             </div>
             <div class="stat-item fade-up stagger-3">
-                <div class="stat-number">16+</div>
+                <div class="stat-number" data-count="16">0</div>
                 <div class="stat-label">Islamic Features</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- APP PREVIEW -->
-<section class="preview-section" id="preview">
-    <div class="section-inner">
+<!-- APP PREVIEW — AUTO SLIDER -->
+<section class="slider-section" id="preview">
+    <div class="section-inner section-center">
         <span class="section-label fade-up">App Preview</span>
-        <h2 class="section-title fade-up">Designed to <span style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Inspire</span></h2>
+        <h2 class="section-title fade-up">Designed to <span class="green">Inspire</span></h2>
         <p class="section-desc fade-up">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
+    </div>
+    <div class="slider-track-wrapper">
+        <div class="slider-track">
+            <div class="slider-phone"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/features.jpeg" alt="Features"><div class="slider-phone-label">More Features</div></div>
+            <!-- duplicate for seamless loop -->
+            <div class="slider-phone"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"><div class="slider-phone-label">Dashboard</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"><div class="slider-phone-label">Prayer Times</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"><div class="slider-phone-label">Al-Quran</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"><div class="slider-phone-label">Qiblah</div></div>
+            <div class="slider-phone"><img src="assets/screenshots/features.jpeg" alt="Features"><div class="slider-phone-label">More Features</div></div>
+        </div>
+    </div>
+</section>
 
-        <div class="phone-carousel">
-            <div class="phone-frame fade-up stagger-1">
-                <img src="assets/screenshots/prayer.jpeg" alt="Prayer Times">
-                <div class="phone-label">Prayer Times</div>
+<!-- INFO BANNER -->
+<section class="info-banner">
+    <div class="section-inner">
+        <div class="info-grid">
+            <div class="info-item fade-up">
+                <span class="info-emoji">&#9889;</span>
+                <h4>Fast & Lightweight</h4>
+                <p>Optimised for smooth performance on all devices with minimal battery usage.</p>
             </div>
-            <div class="phone-frame fade-up stagger-2">
-                <img src="assets/screenshots/quran.jpeg" alt="Al-Quran">
-                <div class="phone-label">Al-Quran</div>
+            <div class="info-item fade-up stagger-1">
+                <span class="info-emoji">&#127912;</span>
+                <h4>14 Beautiful Themes</h4>
+                <p>Personalise your app with stunning themes including dark mode support.</p>
             </div>
-            <div class="phone-frame center fade-up stagger-3">
-                <img src="assets/screenshots/dashboard.jpeg" alt="Dashboard">
-                <div class="phone-label">Dashboard</div>
-            </div>
-            <div class="phone-frame fade-up stagger-4">
-                <img src="assets/screenshots/qiblah.jpeg" alt="Qiblah Compass">
-                <div class="phone-label">Qiblah</div>
-            </div>
-            <div class="phone-frame fade-up stagger-5">
-                <img src="assets/screenshots/features.jpeg" alt="More Features">
-                <div class="phone-label">Features</div>
+            <div class="info-item fade-up stagger-2">
+                <span class="info-emoji">&#127470;&#127465;</span>
+                <h4>Made for Malaysia</h4>
+                <p>Built specifically for Malaysian Muslims with JAKIM prayer times and local features.</p>
             </div>
         </div>
     </div>
 </section>
 
-<div class="glow-line"></div>
-
 <!-- ALL FEATURES -->
 <section id="all-features">
     <div class="section-inner">
         <span class="section-label fade-up">Complete List</span>
-        <h2 class="section-title fade-up">All Features</h2>
+        <h2 class="section-title fade-up">All <span class="green">Features</span></h2>
         <p class="section-desc fade-up">Everything packed into one beautiful app.</p>
 
         <div class="all-features-grid">
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128336;</div>
-                <div><h4>Prayer Times</h4><span>JAKIM zones with alerts</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128214;</div>
-                <div><h4>Al-Quran</h4><span>Arabic, Malay & English</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#127911;</div>
-                <div><h4>Quran Player</h4><span>Audio recitation</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#129517;</div>
-                <div><h4>Qiblah Compass</h4><span>GPS-based direction</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128218;</div>
-                <div><h4>Daily Azkar</h4><span>Morning & evening</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128588;</div>
-                <div><h4>Dua Collection</h4><span>30 daily duas</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128247;</div>
-                <div><h4>Tasbih Counter</h4><span>Digital counter</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128178;</div>
-                <div><h4>Zakat Calculator</h4><span>Calculate your zakat</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128197;</div>
-                <div><h4>Hijri Calendar</h4><span>Islamic events & dates</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#127971;</div>
-                <div><h4>Nearby Mosques</h4><span>Masjid & surau finder</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#10024;</div>
-                <div><h4>Zikir Collection</h4><span>Curated dhikr</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#127769;</div>
-                <div><h4>Solat Sunat</h4><span>20 sunnah prayer guides</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#11088;</div>
-                <div><h4>Asmaul Husna</h4><span>99 Names of Allah</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128483;</div>
-                <div><h4>Tajwid Rules</h4><span>Quran recitation guide</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128204;</div>
-                <div><h4>Hajj & Umrah</h4><span>Step-by-step guide</span></div>
-            </div>
-            <div class="mini-card fade-up">
-                <div class="mini-icon">&#128118;</div>
-                <div><h4>Kids Corner</h4><span>Hijaiyyah & Kisah Nabi</span></div>
-            </div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128336;</div><div><h4>Prayer Times</h4><span>JAKIM zones with alerts</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128214;</div><div><h4>Al-Quran</h4><span>Arabic, Malay & English</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#127911;</div><div><h4>Quran Player</h4><span>Audio recitation</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#129517;</div><div><h4>Qiblah Compass</h4><span>GPS-based direction</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128218;</div><div><h4>Daily Azkar</h4><span>Morning & evening</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128588;</div><div><h4>Dua Collection</h4><span>30 daily duas</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128247;</div><div><h4>Tasbih Counter</h4><span>Digital counter</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128178;</div><div><h4>Zakat Calculator</h4><span>Calculate your zakat</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128197;</div><div><h4>Hijri Calendar</h4><span>Islamic events & dates</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#127971;</div><div><h4>Nearby Mosques</h4><span>Masjid & surau finder</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#10024;</div><div><h4>Zikir Collection</h4><span>Curated dhikr</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#127769;</div><div><h4>Solat Sunat</h4><span>20 sunnah prayer guides</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#11088;</div><div><h4>Asmaul Husna</h4><span>99 Names of Allah</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128483;</div><div><h4>Tajwid Rules</h4><span>Quran recitation guide</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128204;</div><div><h4>Hajj & Umrah</h4><span>Step-by-step guide</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128118;</div><div><h4>Kids Corner</h4><span>Hijaiyyah & Kisah Nabi</span></div></div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="download">
+    <div class="hero-bg-circles">
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+    </div>
     <div class="cta-content">
-        <h2 class="fade-up">Start Your<br><span class="gold">Spiritual Journey</span></h2>
+        <h2 class="fade-up">Start Your<br>Spiritual Journey</h2>
         <p class="fade-up">Free on iOS and Android. Download HidayahMY today.</p>
         <div class="store-buttons fade-up">
             <a href="#" class="store-btn">
@@ -875,15 +696,41 @@
 </footer>
 
 <script>
+// Scroll animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el => observer.observe(el));
+
+// Counter animation for stats
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count);
+            let current = 0;
+            const step = Math.max(1, Math.floor(target / 40));
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) { current = target; clearInterval(timer); }
+                el.textContent = current + (target === 16 ? '+' : '');
+            }, 30);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// Pause slider on hover
+const sliderTrack = document.querySelector('.slider-track');
+if (sliderTrack) {
+    sliderTrack.addEventListener('mouseenter', () => sliderTrack.style.animationPlayState = 'paused');
+    sliderTrack.addEventListener('mouseleave', () => sliderTrack.style.animationPlayState = 'running');
+}
 </script>
 
 </body>
