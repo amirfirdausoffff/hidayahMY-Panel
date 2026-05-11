@@ -76,6 +76,22 @@
             text-decoration: none; transition: all 0.3s;
         }
         .nav-cta:hover { box-shadow: 0 4px 20px rgba(13,115,119,0.35); transform: translateY(-1px); }
+        .lang-toggle {
+            display: flex; align-items: center; gap: 0;
+            background: var(--surface-2); border-radius: 50px;
+            padding: 3px; border: 1px solid var(--border);
+            font-size: 0.78rem; font-weight: 600;
+        }
+        .lang-btn {
+            padding: 6px 14px; border-radius: 50px; border: none;
+            background: transparent; color: var(--text-muted);
+            cursor: pointer; font-size: 0.78rem; font-weight: 700;
+            font-family: inherit; transition: all 0.25s;
+        }
+        .lang-btn.active {
+            background: var(--primary); color: #fff;
+            box-shadow: 0 2px 8px rgba(13,115,119,0.3);
+        }
 
         /* ── HERO ─────────────────────────── */
         .hero {
@@ -535,11 +551,17 @@
             <span class="logo-text">HidayahMY</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#preview">Preview</a></li>
-            <li><a href="#all-features">Explore</a></li>
+            <li><a href="#features" data-en="Features" data-ms="Ciri-ciri">Features</a></li>
+            <li><a href="#preview" data-en="Preview" data-ms="Pratonton">Preview</a></li>
+            <li><a href="#all-features" data-en="Explore" data-ms="Terokai">Explore</a></li>
         </ul>
-        <a href="#download" class="nav-cta">Download App</a>
+        <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('ms')">BM</button>
+            </div>
+            <a href="#download" class="nav-cta" data-en="Download App" data-ms="Muat Turun">Download App</a>
+        </div>
     </div>
 </nav>
 
@@ -555,14 +577,14 @@
                 <span class="dot"></span>
                 Panduan Solat & Al-Quran
             </div>
-            <h1 class="fade-left stagger-1">Your Complete<br><em>Islamic Companion</em></h1>
-            <p class="fade-left stagger-2">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
+            <h1 class="fade-left stagger-1" data-en="Your Complete<br><em>Islamic Companion</em>" data-ms="Teman Islamik<br><em>Anda Yang Lengkap</em>">Your Complete<br><em>Islamic Companion</em></h1>
+            <p class="fade-left stagger-2" data-en="Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community." data-ms="Waktu solat, Al-Quran, arah Kiblat, dan 16+ alat Islamik yang direka khas untuk umat Islam di Malaysia.">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
             <div class="hero-buttons fade-left stagger-3">
-                <a href="#download" class="btn-hero-primary">
+                <a href="#download" class="btn-hero-primary" data-en="Download Free" data-ms="Muat Turun Percuma">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                    Download Free
+                    <span>Download Free</span>
                 </a>
-                <a href="#features" class="btn-hero-secondary">
+                <a href="#features" class="btn-hero-secondary" data-en="Learn More" data-ms="Ketahui Lebih">
                     Learn More
                 </a>
             </div>
@@ -626,38 +648,38 @@
         <div class="deco-shape shape-2"></div>
     </div>
     <div class="section-inner">
-        <span class="section-label fade-up">Core Features</span>
-        <h2 class="section-title fade-up">Everything You <span class="green">Need</span></h2>
-        <p class="section-desc fade-up">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
+        <span class="section-label fade-up" data-en="Core Features" data-ms="Ciri Utama">Core Features</span>
+        <h2 class="section-title fade-up" data-en="Everything You <span class='green'>Need</span>" data-ms="Semua Yang Anda <span class='green'>Perlukan</span>">Everything You <span class="green">Need</span></h2>
+        <p class="section-desc fade-up" data-en="Comprehensive Islamic tools designed for your daily spiritual journey." data-ms="Alat Islamik komprehensif yang direka untuk perjalanan rohani harian anda.">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
 
         <div class="bento-grid">
             <div class="bento-card bento-big fade-up">
                 <div class="bento-visual">&#128336;</div>
                 <div>
-                    <h3>Accurate Prayer Times</h3>
-                    <p>JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications.</p>
+                    <h3 data-en="Accurate Prayer Times" data-ms="Waktu Solat Tepat">Accurate Prayer Times</h3>
+                    <p data-en="JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications." data-ms="Waktu solat berasaskan JAKIM untuk semua zon di Malaysia dengan undur detik masa nyata, peringatan solat seterusnya, senarai semak solat harian, dan notifikasi azan.">JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications.</p>
                 </div>
             </div>
             <div class="bento-card fade-up stagger-1">
                 <div class="bento-icon">&#128214;</div>
-                <h3>Al-Quran</h3>
-                <p>Full Quran with Uthmani script, Malay & English translations, and audio player.</p>
+                <h3 data-en="Al-Quran" data-ms="Al-Quran">Al-Quran</h3>
+                <p data-en="Full Quran with Uthmani script, Malay & English translations, and audio player." data-ms="Al-Quran penuh dengan skrip Uthmani, terjemahan Melayu & Inggeris, dan pemain audio.">Full Quran with Uthmani script, Malay & English translations, and audio player.</p>
             </div>
             <div class="bento-card fade-up stagger-2">
                 <div class="bento-icon">&#129517;</div>
-                <h3>Qiblah Compass</h3>
-                <p>Precise direction finder with 3D AR mode support. Never miss the right direction.</p>
+                <h3 data-en="Qiblah Compass" data-ms="Kompas Kiblat">Qiblah Compass</h3>
+                <p data-en="Precise direction finder with 3D AR mode support. Never miss the right direction." data-ms="Penunjuk arah tepat dengan sokongan mod AR 3D. Tidak akan terlepas arah yang betul.">Precise direction finder with 3D AR mode support. Never miss the right direction.</p>
             </div>
             <div class="bento-card fade-up stagger-3">
                 <div class="bento-icon">&#128218;</div>
-                <h3>Daily Azkar & Dua</h3>
-                <p>Morning & evening azkar with counter, plus 30 duas from authentic hadith.</p>
+                <h3 data-en="Daily Azkar & Dua" data-ms="Azkar & Doa Harian">Daily Azkar & Dua</h3>
+                <p data-en="Morning & evening azkar with counter, plus 30 duas from authentic hadith." data-ms="Azkar pagi & petang dengan pengira, serta 30 doa dari hadis sahih.">Morning & evening azkar with counter, plus 30 duas from authentic hadith.</p>
             </div>
             <div class="bento-card bento-big fade-up stagger-4">
                 <div class="bento-visual">&#127971;</div>
                 <div>
-                    <h3>Nearby Mosques</h3>
-                    <p>Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia.</p>
+                    <h3 data-en="Nearby Mosques" data-ms="Masjid Berdekatan">Nearby Mosques</h3>
+                    <p data-en="Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia." data-ms="Cari masjid dan surau berdekatan anda dengan carian GPS, penunjuk jarak, dan navigasi terus melalui Google Maps, Apple Maps, atau Waze. Meliputi seluruh Malaysia.">Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia.</p>
                 </div>
             </div>
         </div>
@@ -670,19 +692,19 @@
         <div class="stats-grid">
             <div class="stat-item fade-up">
                 <div class="stat-number" data-count="114">0</div>
-                <div class="stat-label">Surah in Al-Quran</div>
+                <div class="stat-label" data-en="Surah in Al-Quran" data-ms="Surah dalam Al-Quran">Surah in Al-Quran</div>
             </div>
             <div class="stat-item fade-up stagger-1">
                 <div class="stat-number" data-count="99">0</div>
-                <div class="stat-label">Asmaul Husna</div>
+                <div class="stat-label" data-en="Asmaul Husna" data-ms="Asmaul Husna">Asmaul Husna</div>
             </div>
             <div class="stat-item fade-up stagger-2">
                 <div class="stat-number" data-count="14">0</div>
-                <div class="stat-label">App Themes</div>
+                <div class="stat-label" data-en="App Themes" data-ms="Tema Aplikasi">App Themes</div>
             </div>
             <div class="stat-item fade-up stagger-3">
                 <div class="stat-number" data-count="16">0</div>
-                <div class="stat-label">Islamic Features</div>
+                <div class="stat-label" data-en="Islamic Features" data-ms="Ciri Islamik">Islamic Features</div>
             </div>
         </div>
     </div>
@@ -691,9 +713,9 @@
 <!-- APP PREVIEW — AUTO SLIDER -->
 <section class="slider-section" id="preview">
     <div class="section-inner section-center">
-        <span class="section-label fade-up">App Preview</span>
-        <h2 class="section-title fade-up">Designed to <span class="green">Inspire</span></h2>
-        <p class="section-desc fade-up">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
+        <span class="section-label fade-up" data-en="App Preview" data-ms="Pratonton Aplikasi">App Preview</span>
+        <h2 class="section-title fade-up" data-en="Designed to <span class='green'>Inspire</span>" data-ms="Direka Untuk <span class='green'>Memberi Inspirasi</span>">Designed to <span class="green">Inspire</span></h2>
+        <p class="section-desc fade-up" data-en="Clean, beautiful interface with 14 customisable themes. Light and dark mode supported." data-ms="Antaramuka bersih dan cantik dengan 14 tema pilihan. Sokongan mod cerah dan gelap.">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
     </div>
     <div class="slider-track-wrapper">
         <div class="slider-track">
@@ -718,18 +740,18 @@
         <div class="info-grid">
             <div class="info-item fade-up">
                 <span class="info-emoji">&#9889;</span>
-                <h4>Fast & Lightweight</h4>
-                <p>Optimised for smooth performance on all devices with minimal battery usage.</p>
+                <h4 data-en="Fast & Lightweight" data-ms="Pantas & Ringan">Fast & Lightweight</h4>
+                <p data-en="Optimised for smooth performance on all devices with minimal battery usage." data-ms="Dioptimumkan untuk prestasi lancar pada semua peranti dengan penggunaan bateri minimum.">Optimised for smooth performance on all devices with minimal battery usage.</p>
             </div>
             <div class="info-item fade-up stagger-1">
                 <span class="info-emoji">&#127912;</span>
-                <h4>14 Beautiful Themes</h4>
-                <p>Personalise your app with stunning themes including dark mode support.</p>
+                <h4 data-en="14 Beautiful Themes" data-ms="14 Tema Cantik">14 Beautiful Themes</h4>
+                <p data-en="Personalise your app with stunning themes including dark mode support." data-ms="Peribadikan aplikasi anda dengan tema menarik termasuk sokongan mod gelap.">Personalise your app with stunning themes including dark mode support.</p>
             </div>
             <div class="info-item fade-up stagger-2">
                 <span class="info-emoji">&#127470;&#127465;</span>
-                <h4>Made for Malaysia</h4>
-                <p>Built specifically for Malaysian Muslims with JAKIM prayer times and local features.</p>
+                <h4 data-en="Made for Malaysia" data-ms="Dibuat untuk Malaysia">Made for Malaysia</h4>
+                <p data-en="Built specifically for Malaysian Muslims with JAKIM prayer times and local features." data-ms="Dibina khas untuk umat Islam Malaysia dengan waktu solat JAKIM dan ciri tempatan.">Built specifically for Malaysian Muslims with JAKIM prayer times and local features.</p>
             </div>
         </div>
     </div>
@@ -742,27 +764,27 @@
         <div class="deco-shape shape-2" style="background: rgba(20,145,155,0.05); top: 20%; left: 60%;"></div>
     </div>
     <div class="section-inner">
-        <span class="section-label fade-up">Complete List</span>
-        <h2 class="section-title fade-up">All <span class="green">Features</span></h2>
-        <p class="section-desc fade-up">Everything packed into one beautiful app.</p>
+        <span class="section-label fade-up" data-en="Complete List" data-ms="Senarai Lengkap">Complete List</span>
+        <h2 class="section-title fade-up" data-en="All <span class='green'>Features</span>" data-ms="Semua <span class='green'>Ciri</span>">All <span class="green">Features</span></h2>
+        <p class="section-desc fade-up" data-en="Everything packed into one beautiful app." data-ms="Semuanya dalam satu aplikasi yang cantik.">Everything packed into one beautiful app.</p>
 
         <div class="all-features-grid">
-            <div class="mini-card fade-up"><div class="mini-icon">&#128336;</div><div><h4>Prayer Times</h4><span>JAKIM zones with alerts</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128214;</div><div><h4>Al-Quran</h4><span>Arabic, Malay & English</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#127911;</div><div><h4>Quran Player</h4><span>Audio recitation</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#129517;</div><div><h4>Qiblah Compass</h4><span>GPS-based direction</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#128218;</div><div><h4>Daily Azkar</h4><span>Morning & evening</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128588;</div><div><h4>Dua Collection</h4><span>30 daily duas</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128247;</div><div><h4>Tasbih Counter</h4><span>Digital counter</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128178;</div><div><h4>Zakat Calculator</h4><span>Calculate your zakat</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#128197;</div><div><h4>Hijri Calendar</h4><span>Islamic events & dates</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#127971;</div><div><h4>Nearby Mosques</h4><span>Masjid & surau finder</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#10024;</div><div><h4>Zikir Collection</h4><span>Curated dhikr</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#127769;</div><div><h4>Solat Sunat</h4><span>20 sunnah prayer guides</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#11088;</div><div><h4>Asmaul Husna</h4><span>99 Names of Allah</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128483;</div><div><h4>Tajwid Rules</h4><span>Quran recitation guide</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128204;</div><div><h4>Hajj & Umrah</h4><span>Step-by-step guide</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128118;</div><div><h4>Kids Corner</h4><span>Hijaiyyah & Kisah Nabi</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128336;</div><div><h4 data-en="Prayer Times" data-ms="Waktu Solat">Prayer Times</h4><span data-en="JAKIM zones with alerts" data-ms="Zon JAKIM dengan peringatan">JAKIM zones with alerts</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128214;</div><div><h4>Al-Quran</h4><span data-en="Arabic, Malay & English" data-ms="Arab, Melayu & Inggeris">Arabic, Malay & English</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#127911;</div><div><h4 data-en="Quran Player" data-ms="Pemain Quran">Quran Player</h4><span data-en="Audio recitation" data-ms="Bacaan audio">Audio recitation</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#129517;</div><div><h4 data-en="Qiblah Compass" data-ms="Kompas Kiblat">Qiblah Compass</h4><span data-en="GPS-based direction" data-ms="Arah berasaskan GPS">GPS-based direction</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128218;</div><div><h4 data-en="Daily Azkar" data-ms="Azkar Harian">Daily Azkar</h4><span data-en="Morning & evening" data-ms="Pagi & petang">Morning & evening</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128588;</div><div><h4 data-en="Dua Collection" data-ms="Koleksi Doa">Dua Collection</h4><span data-en="30 daily duas" data-ms="30 doa harian">30 daily duas</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128247;</div><div><h4 data-en="Tasbih Counter" data-ms="Pengira Tasbih">Tasbih Counter</h4><span data-en="Digital counter" data-ms="Pengira digital">Digital counter</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128178;</div><div><h4 data-en="Zakat Calculator" data-ms="Kalkulator Zakat">Zakat Calculator</h4><span data-en="Calculate your zakat" data-ms="Kira zakat anda">Calculate your zakat</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#128197;</div><div><h4 data-en="Hijri Calendar" data-ms="Kalendar Hijri">Hijri Calendar</h4><span data-en="Islamic events & dates" data-ms="Acara & tarikh Islam">Islamic events & dates</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#127971;</div><div><h4 data-en="Nearby Mosques" data-ms="Masjid Berdekatan">Nearby Mosques</h4><span data-en="Masjid & surau finder" data-ms="Pencari masjid & surau">Masjid & surau finder</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#10024;</div><div><h4 data-en="Zikir Collection" data-ms="Koleksi Zikir">Zikir Collection</h4><span data-en="Curated dhikr" data-ms="Zikir terpilih">Curated dhikr</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#127769;</div><div><h4 data-en="Solat Sunat" data-ms="Solat Sunat">Solat Sunat</h4><span data-en="20 sunnah prayer guides" data-ms="20 panduan solat sunat">20 sunnah prayer guides</span></div></div>
+            <div class="mini-card fade-up"><div class="mini-icon">&#11088;</div><div><h4>Asmaul Husna</h4><span data-en="99 Names of Allah" data-ms="99 Nama Allah">99 Names of Allah</span></div></div>
+            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128483;</div><div><h4 data-en="Tajwid Rules" data-ms="Hukum Tajwid">Tajwid Rules</h4><span data-en="Quran recitation guide" data-ms="Panduan bacaan Quran">Quran recitation guide</span></div></div>
+            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128204;</div><div><h4 data-en="Hajj & Umrah" data-ms="Haji & Umrah">Hajj & Umrah</h4><span data-en="Step-by-step guide" data-ms="Panduan langkah demi langkah">Step-by-step guide</span></div></div>
+            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128118;</div><div><h4 data-en="Kids Corner" data-ms="Sudut Kanak-kanak">Kids Corner</h4><span data-en="Hijaiyyah & Kisah Nabi" data-ms="Hijaiyyah & Kisah Nabi">Hijaiyyah & Kisah Nabi</span></div></div>
         </div>
     </div>
 </section>
@@ -773,16 +795,16 @@
         <div class="circle"></div><div class="circle"></div><div class="circle"></div>
     </div>
     <div class="cta-content">
-        <h2 class="fade-up">Start Your<br>Spiritual Journey</h2>
-        <p class="fade-up">Free on iOS and Android. Download HidayahMY today.</p>
+        <h2 class="fade-up" data-en="Start Your<br>Spiritual Journey" data-ms="Mulakan Perjalanan<br>Rohani Anda">Start Your<br>Spiritual Journey</h2>
+        <p class="fade-up" data-en="Free on iOS and Android. Download HidayahMY today." data-ms="Percuma di iOS dan Android. Muat turun HidayahMY hari ini.">Free on iOS and Android. Download HidayahMY today.</p>
         <div class="store-buttons fade-up">
             <a href="#" class="store-btn">
                 <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                <div><small>Download on the</small><span class="store-name">App Store</span></div>
+                <div><small data-en="Download on the" data-ms="Muat turun di">Download on the</small><span class="store-name">App Store</span></div>
             </a>
             <a href="#" class="store-btn">
                 <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-                <div><small>Get it on</small><span class="store-name">Google Play</span></div>
+                <div><small data-en="Get it on" data-ms="Dapatkan di">Get it on</small><span class="store-name">Google Play</span></div>
             </a>
         </div>
     </div>
@@ -796,12 +818,12 @@
                 <img src="https://raw.githubusercontent.com/amirfirdausoffff/hidayahMY-Panel/master/assets/app_icon.png" alt="HidayahMY" onerror="this.style.display='none'">
                 HidayahMY
             </a>
-            <span>&copy; 2026 HidayahMY. Crafted for the Ummah.</span>
+            <span data-en="&copy; 2026 HidayahMY. Crafted for the Ummah." data-ms="&copy; 2026 HidayahMY. Dibina untuk Ummah.">&copy; 2026 HidayahMY. Crafted for the Ummah.</span>
         </div>
         <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact Support</a>
+            <a href="#" data-en="Privacy Policy" data-ms="Dasar Privasi">Privacy Policy</a>
+            <a href="#" data-en="Terms of Service" data-ms="Terma Perkhidmatan">Terms of Service</a>
+            <a href="#" data-en="Contact Support" data-ms="Hubungi Sokongan">Contact Support</a>
         </div>
     </div>
 </footer>
@@ -842,6 +864,43 @@ if (sliderTrack) {
     sliderTrack.addEventListener('mouseenter', () => sliderTrack.style.animationPlayState = 'paused');
     sliderTrack.addEventListener('mouseleave', () => sliderTrack.style.animationPlayState = 'running');
 }
+
+// Language switcher
+function setLang(lang) {
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = val;
+        } else if (el.querySelector('svg') || el.querySelector('span')) {
+            // For buttons with icons, only update text nodes or inner span
+            const span = el.querySelector('span');
+            if (span && !span.hasAttribute('data-' + lang)) {
+                span.textContent = val;
+            } else if (!el.querySelector('svg')) {
+                el.innerHTML = val;
+            } else {
+                // Has SVG — update only text after SVG
+                const svg = el.querySelector('svg');
+                const svgHtml = svg.outerHTML;
+                el.innerHTML = svgHtml + ' <span>' + val + '</span>';
+            }
+        } else {
+            el.innerHTML = val;
+        }
+    });
+    // Update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en'));
+    });
+    // Update html lang
+    document.documentElement.lang = lang === 'ms' ? 'ms' : 'en';
+    // Save preference
+    localStorage.setItem('hidayahmy-lang', lang);
+}
+
+// Load saved language
+const savedLang = localStorage.getItem('hidayahmy-lang');
+if (savedLang && savedLang === 'ms') setLang('ms');
 </script>
 
 </body>
