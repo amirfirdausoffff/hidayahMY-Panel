@@ -7,28 +7,36 @@
     <meta name="description" content="HidayahMY - Your complete Islamic companion app for prayer times, Al-Quran, Qiblah, Azkar, and more. Built for Malaysians.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0D7377;
-            --primary-variant: #14919B;
-            --accent: #E4B363;
-            --secondary: #A8C09A;
-            --bg: #FAF7F2;
-            --surface: #FFFFFF;
-            --text: #1A1A1A;
-            --text-secondary: #6B7280;
-            --success: #059669;
-            --error: #DC2626;
+            --bg: #050505;
+            --bg-elevated: #0c0c0c;
+            --surface: #141414;
+            --surface-2: #1a1a1a;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text: #f5f5f5;
+            --text-muted: #888;
+            --text-dim: #555;
+            --accent: #c9a44e;
+            --accent-glow: rgba(201,164,78,0.15);
+            --accent-soft: rgba(201,164,78,0.08);
+            --gradient-gold: linear-gradient(135deg, #c9a44e 0%, #e8d5a3 50%, #c9a44e 100%);
+            --radius: 20px;
+            --radius-sm: 12px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ── NAV ──────────────────────────── */
@@ -37,10 +45,11 @@
             top: 0;
             width: 100%;
             z-index: 100;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(13, 115, 119, 0.92);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            background: rgba(5,5,5,0.75);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
         }
         .nav-inner {
             max-width: 1200px;
@@ -49,107 +58,140 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
+            height: 72px;
         }
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
-            color: #fff;
+            color: var(--text);
         }
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
         }
         .logo-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: -0.3px;
         }
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         .nav-links a {
-            color: rgba(255,255,255,0.75);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s;
+            letter-spacing: 0.2px;
         }
-        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover { color: var(--text); }
         .nav-cta {
-            padding: 8px 20px;
+            padding: 10px 24px;
             background: var(--accent);
-            color: var(--text);
-            border-radius: 10px;
+            color: #000;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 0.85rem;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
         }
         .nav-cta:hover {
+            box-shadow: 0 0 30px rgba(201,164,78,0.35);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(228,179,99,0.4);
         }
 
         /* ── HERO ─────────────────────────── */
         .hero {
             position: relative;
-            padding: 10rem 2rem 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 6rem;
             text-align: center;
-            background: linear-gradient(160deg, #0D7377 0%, #14919B 40%, #0D7377 100%);
             overflow: hidden;
         }
         .hero::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-            opacity: 0.5;
+            top: -40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201,164,78,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
         }
         .hero-content {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            z-index: 2;
         }
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.15);
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(201,164,78,0.15);
             border-radius: 50px;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
         .hero-badge .dot {
             width: 6px;
             height: 6px;
             background: var(--accent);
             border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
             font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 1.25rem;
-            letter-spacing: -1px;
+            color: var(--text);
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
-        .hero h1 span { color: var(--accent); }
+        .hero h1 .gold {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .hero p {
             font-size: 1.15rem;
-            color: rgba(255,255,255,0.75);
-            max-width: 550px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.65;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 3rem;
+            line-height: 1.75;
+            font-weight: 300;
         }
         .hero-buttons {
             display: flex;
@@ -160,201 +202,193 @@
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            background: #fff;
-            color: var(--primary);
-            font-size: 1rem;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.95rem;
             font-weight: 700;
-            border-radius: 14px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 40px rgba(201,164,78,0.3);
         }
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 1rem;
+            gap: 10px;
+            padding: 16px 32px;
+            background: transparent;
+            border: 1px solid var(--border-hover);
+            color: var(--text);
+            font-size: 0.95rem;
             font-weight: 600;
-            border-radius: 14px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: all 0.3s;
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.2);
+        }
 
-        /* ── FEATURES SECTION ─────────────── */
-        section { padding: 5rem 2rem; }
+        /* ── SECTION COMMON ──────────────── */
+        section { padding: 7rem 2rem; }
         .section-inner {
             max-width: 1100px;
             margin: 0 auto;
         }
         .section-label {
             display: inline-block;
-            padding: 4px 12px;
-            background: rgba(13,115,119,0.08);
-            color: var(--primary);
-            font-size: 0.75rem;
+            padding: 6px 16px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.7rem;
             font-weight: 700;
-            border-radius: 6px;
+            border-radius: 50px;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.75rem;
+            line-height: 1.15;
         }
         .section-desc {
             font-size: 1.05rem;
-            color: var(--text-secondary);
-            max-width: 500px;
-            line-height: 1.6;
-            margin-bottom: 3rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 3.5rem;
+            font-weight: 300;
         }
 
-        /* Feature Cards */
+        /* ── FEATURES SECTION ─────────────── */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
         .feature-card {
             background: var(--surface);
-            border-radius: 18px;
-            padding: 1.5rem;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 2.5rem 2rem;
+            transition: background 0.3s;
+            position: relative;
         }
         .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            background: var(--surface-2);
         }
         .feature-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+            background: var(--accent-soft);
         }
         .feature-card h3 {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.2px;
         }
         .feature-card p {
             font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.55;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 300;
         }
 
-        /* ── SCREENSHOT SECTION ───────────── */
-        .screenshots {
-            background: linear-gradient(160deg, #0D7377 0%, #14919B 100%);
+        /* ── APP PREVIEW SECTION ──────────── */
+        .preview-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .preview-section .section-inner {
             text-align: center;
         }
-        .screenshots .section-label {
-            background: rgba(255,255,255,0.12);
-            color: rgba(255,255,255,0.85);
-        }
-        .screenshots .section-title { color: #fff; }
-        .screenshots .section-desc {
-            color: rgba(255,255,255,0.7);
+        .preview-section .section-desc {
             margin-left: auto;
             margin-right: auto;
         }
-        .phone-mockups {
+
+        .phone-carousel {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
+            align-items: flex-end;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            perspective: 1000px;
         }
         .phone-frame {
+            width: 240px;
+            border-radius: 32px;
+            padding: 10px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 33px;
+            padding: 1px;
+            background: linear-gradient(145deg, rgba(201,164,78,0.3), transparent 50%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .phone-frame:hover::before { opacity: 1; }
+        .phone-frame:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+        .phone-frame.center {
             width: 260px;
-            background: #0a5a5d;
-            border-radius: 28px;
-            padding: 12px;
-            border: 2px solid rgba(255,255,255,0.1);
+            transform: translateY(-10px);
         }
-        .phone-screen {
+        .phone-frame.center:hover {
+            transform: translateY(-22px);
+        }
+        .phone-frame img {
             width: 100%;
-            border-radius: 18px;
-            background: var(--surface);
-            overflow: hidden;
+            border-radius: 24px;
+            display: block;
         }
-        .screen-header {
-            background: var(--primary);
-            padding: 1.25rem;
-            color: #fff;
-        }
-        .screen-header small {
-            font-size: 0.65rem;
-            opacity: 0.6;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .screen-header h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-        .screen-header .countdown {
-            display: inline-block;
-            margin-top: 6px;
-            padding: 4px 10px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .screen-body { padding: 1rem; }
-        .screen-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .screen-row:last-child { border-bottom: none; }
-        .screen-dot {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .screen-row-text {
-            flex: 1;
+        .phone-label {
+            text-align: center;
+            margin-top: 1rem;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--text);
-        }
-        .screen-row-sub {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
         }
 
         /* ── STATS ────────────────────────── */
-        .stats {
-            background: var(--surface);
-            border-top: 1px solid rgba(0,0,0,0.04);
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+        .stats-section {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
         .stats-grid {
             display: grid;
@@ -362,35 +396,47 @@
             gap: 2rem;
             text-align: center;
         }
+        .stat-item {
+            padding: 2rem 0;
+        }
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -1px;
         }
         .stat-label {
             font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
+            color: var(--text-dim);
+            margin-top: 6px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         /* ── ALL FEATURES GRID ────────────── */
         .all-features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
         }
         .mini-card {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 1rem;
+            gap: 14px;
+            padding: 1.15rem 1.25rem;
             background: var(--surface);
-            border-radius: 14px;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.15s;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
-        .mini-card:hover { transform: translateY(-2px); }
+        .mini-card:hover {
+            border-color: rgba(201,164,78,0.2);
+            background: var(--surface-2);
+        }
         .mini-icon {
             width: 40px;
             height: 40px;
@@ -400,39 +446,61 @@
             justify-content: center;
             font-size: 1.15rem;
             flex-shrink: 0;
+            background: rgba(255,255,255,0.04);
         }
-        .mini-card h4 { font-size: 0.9rem; font-weight: 600; }
-        .mini-card span { font-size: 0.78rem; color: var(--text-secondary); }
+        .mini-card h4 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+        .mini-card span {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
 
         /* ── CTA ──────────────────────────── */
         .cta-section {
-            background: linear-gradient(160deg, #0D7377, #14919B);
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 8rem 2rem;
         }
         .cta-section::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201,164,78,0.06) 0%, transparent 70%);
+            pointer-events: none;
         }
         .cta-content {
             position: relative;
+            z-index: 2;
         }
         .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+        }
+        .cta-section h2 .gold {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .cta-section p {
-            color: rgba(255,255,255,0.75);
+            color: var(--text-muted);
             font-size: 1.1rem;
-            max-width: 500px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
+            max-width: 450px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
         .store-buttons {
             display: flex;
@@ -443,31 +511,37 @@
         .store-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 14px 24px;
-            background: #fff;
+            gap: 12px;
+            padding: 16px 28px;
+            background: var(--surface);
             color: var(--text);
-            border-radius: 14px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
         }
         .store-btn:hover {
+            border-color: rgba(201,164,78,0.3);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
-        .store-btn svg { width: 24px; height: 24px; }
+        .store-btn svg { width: 24px; height: 24px; fill: var(--text); }
         .store-btn small {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 400;
-            color: var(--text-secondary);
+            color: var(--text-dim);
             display: block;
+            text-align: left;
+        }
+        .store-btn .store-name {
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         /* ── FOOTER ───────────────────────── */
         footer {
-            background: #0a5a5d;
-            color: rgba(255,255,255,0.6);
+            border-top: 1px solid var(--border);
             padding: 3rem 2rem;
         }
         .footer-inner {
@@ -479,40 +553,74 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .footer-inner a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
+        .footer-inner span {
+            color: var(--text-dim);
             font-size: 0.85rem;
         }
-        .footer-inner a:hover { color: #fff; }
         .footer-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
         }
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-muted); }
 
         /* ── RESPONSIVE ───────────────────── */
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .all-features-grid { grid-template-columns: repeat(3, 1fr); }
+        }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 8rem 1.5rem 4rem; }
-            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 8rem 1.5rem 4rem; min-height: auto; }
+            .hero h1 { font-size: 2.8rem; letter-spacing: -1px; }
             .hero p { font-size: 1rem; }
-            section { padding: 3.5rem 1.5rem; }
-            .section-title { font-size: 1.7rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 5rem 1.5rem; }
+            .section-title { font-size: 2.2rem; }
             .features-grid { grid-template-columns: 1fr; }
-            .phone-frame { width: 220px; }
-            .cta-section h2 { font-size: 1.8rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .stat-number { font-size: 2.5rem; }
+            .all-features-grid { grid-template-columns: repeat(2, 1fr); }
+            .phone-frame { width: 180px; }
+            .phone-frame.center { width: 200px; }
+            .cta-section h2 { font-size: 2.2rem; }
+            .cta-section { padding: 5rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .all-features-grid { grid-template-columns: 1fr; }
+            .phone-carousel { gap: 1rem; }
+            .phone-frame { width: 150px; }
+            .phone-frame.center { width: 170px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* ── ANIMATIONS ───────────────────── */
         .fade-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        .stagger-1 { transition-delay: 0.05s; }
+        .stagger-2 { transition-delay: 0.1s; }
+        .stagger-3 { transition-delay: 0.15s; }
+        .stagger-4 { transition-delay: 0.2s; }
+        .stagger-5 { transition-delay: 0.25s; }
+
+        /* ── GLOW LINE ────────────────────── */
+        .glow-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.2;
         }
     </style>
 </head>
@@ -528,292 +636,206 @@
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#preview">Preview</a></li>
-            <li><a href="#all-features">All Features</a></li>
+            <li><a href="#all-features">Explore</a></li>
         </ul>
-        <a href="#download" class="nav-cta">Download App</a>
+        <a href="#download" class="nav-cta">Download</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-content fade-up">
-        <div class="hero-badge">
+    <div class="hero-content">
+        <div class="hero-badge fade-up">
             <span class="dot"></span>
             Panduan Solat & Al-Quran
         </div>
-        <h1>Your Complete<br><span>Islamic Companion</span></h1>
-        <p>Prayer times, Al-Quran, Qiblah direction, Azkar, Zakat calculator, and more. Built with love for Malaysians.</p>
-        <div class="hero-buttons">
+        <h1 class="fade-up stagger-1">Your Complete<br><span class="gold">Islamic Companion</span></h1>
+        <p class="fade-up stagger-2">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
+        <div class="hero-buttons fade-up stagger-3">
             <a href="#download" class="btn-primary">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                App Store
+                Download Now
             </a>
-            <a href="#download" class="btn-secondary">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-                Google Play
+            <a href="#features" class="btn-secondary">
+                Explore Features
             </a>
         </div>
     </div>
 </section>
 
+<div class="glow-line"></div>
+
 <!-- CORE FEATURES -->
 <section id="features">
     <div class="section-inner">
-        <span class="section-label">Core Features</span>
-        <h2 class="section-title">Everything You Need</h2>
-        <p class="section-desc">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
+        <span class="section-label fade-up">Core Features</span>
+        <h2 class="section-title fade-up">Everything You Need</h2>
+        <p class="section-desc fade-up">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
 
-        <div class="features-grid">
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(13,115,119,0.1); color: #0D7377;">&#128336;</div>
+        <div class="features-grid fade-up">
+            <div class="feature-card">
+                <div class="feature-icon">&#128336;</div>
                 <h3>Accurate Prayer Times</h3>
-                <p>JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, and daily solat checklist tracker.</p>
+                <p>JAKIM-based prayer times for all zones in Malaysia with real-time countdown and daily solat checklist.</p>
             </div>
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">&#128214;</div>
-                <h3>Al-Quran with Translation</h3>
-                <p>Full Quran with Uthmani script, Malay (Basmeih) and English (Sahih) translations. Includes audio player with renowned reciters.</p>
+            <div class="feature-card">
+                <div class="feature-icon">&#128214;</div>
+                <h3>Al-Quran</h3>
+                <p>Full Quran with Uthmani script, Malay and English translations. Audio player with top reciters.</p>
             </div>
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(228,179,99,0.1); color: #B45309;">&#129517;</div>
+            <div class="feature-card">
+                <div class="feature-icon">&#129517;</div>
                 <h3>Qiblah Compass</h3>
-                <p>Precise Qiblah direction finder using your device compass. Know exactly where to face for prayer, anywhere you are.</p>
+                <p>Precise Qiblah direction finder using your device compass with 3D AR mode support.</p>
             </div>
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(99,102,241,0.1); color: #6366F1;">&#128218;</div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128218;</div>
                 <h3>Daily Azkar & Dua</h3>
-                <p>Morning and evening azkar with counter, curated dua collections for every occasion, and daily dua reminders.</p>
+                <p>Morning and evening azkar with counter, plus 30 curated duas from authentic hadith.</p>
             </div>
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(76,175,80,0.1); color: #4CAF50;">&#127971;</div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127971;</div>
                 <h3>Nearby Mosques</h3>
-                <p>Find mosques and surau near you with GPS-based search, distance indicators, and navigation via Google Maps, Apple Maps, or Waze.</p>
+                <p>Find mosques and surau near you with GPS search and navigation via Maps or Waze.</p>
             </div>
-            <div class="feature-card fade-up">
-                <div class="feature-icon" style="background: rgba(217,119,6,0.1); color: #D97706;">&#128204;</div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128204;</div>
                 <h3>Hajj & Umrah Guide</h3>
-                <p>Step-by-step interactive guides for both Hajj and Umrah rituals with detailed explanations and visual aids.</p>
+                <p>Step-by-step interactive guides for both Hajj and Umrah rituals with detailed explanations.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- STATS -->
-<section class="stats">
+<section class="stats-section">
     <div class="section-inner">
         <div class="stats-grid">
-            <div class="fade-up">
+            <div class="stat-item fade-up">
                 <div class="stat-number">114</div>
                 <div class="stat-label">Surah in Al-Quran</div>
             </div>
-            <div class="fade-up">
+            <div class="stat-item fade-up stagger-1">
                 <div class="stat-number">99</div>
                 <div class="stat-label">Asmaul Husna</div>
             </div>
-            <div class="fade-up">
+            <div class="stat-item fade-up stagger-2">
                 <div class="stat-number">14</div>
                 <div class="stat-label">App Themes</div>
             </div>
-            <div class="fade-up">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Daily Prayers Tracked</div>
+            <div class="stat-item fade-up stagger-3">
+                <div class="stat-number">16+</div>
+                <div class="stat-label">Islamic Features</div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- APP PREVIEW -->
-<section class="screenshots" id="preview">
+<section class="preview-section" id="preview">
     <div class="section-inner">
-        <span class="section-label">App Preview</span>
-        <h2 class="section-title">Beautiful & Intuitive</h2>
-        <p class="section-desc">Clean design with customisable themes. Light and dark mode supported.</p>
+        <span class="section-label fade-up">App Preview</span>
+        <h2 class="section-title fade-up">Designed to <span style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Inspire</span></h2>
+        <p class="section-desc fade-up">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
 
-        <div class="phone-mockups">
-            <!-- Phone 1: Prayer Times -->
-            <div class="phone-frame fade-up">
-                <div class="phone-screen">
-                    <div class="screen-header">
-                        <small>Next Prayer</small>
-                        <h4>Asar &middot; &#1575;&#1604;&#1593;&#1589;&#1585;</h4>
-                        <span class="countdown">02h 15m 30s</span>
-                    </div>
-                    <div class="screen-body">
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #05966920; color: #059669;">&#10003;</div>
-                            <div>
-                                <div class="screen-row-text">Subuh</div>
-                                <div class="screen-row-sub">05:42 AM</div>
-                            </div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #05966920; color: #059669;">&#10003;</div>
-                            <div>
-                                <div class="screen-row-text">Zohor</div>
-                                <div class="screen-row-sub">01:15 PM</div>
-                            </div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #E4B36320; color: #B45309;">&#9679;</div>
-                            <div>
-                                <div class="screen-row-text">Asar</div>
-                                <div class="screen-row-sub">04:30 PM</div>
-                            </div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #6B728020; color: #6B7280;">&#9711;</div>
-                            <div>
-                                <div class="screen-row-text">Maghrib</div>
-                                <div class="screen-row-sub">07:22 PM</div>
-                            </div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #6B728020; color: #6B7280;">&#9711;</div>
-                            <div>
-                                <div class="screen-row-text">Isyak</div>
-                                <div class="screen-row-sub">08:35 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="phone-carousel">
+            <div class="phone-frame fade-up stagger-1">
+                <img src="assets/screenshots/prayer.jpeg" alt="Prayer Times">
+                <div class="phone-label">Prayer Times</div>
             </div>
-
-            <!-- Phone 2: Quran -->
-            <div class="phone-frame fade-up">
-                <div class="phone-screen">
-                    <div class="screen-header" style="background: #8B5CF6;">
-                        <small>Al-Quran</small>
-                        <h4>Surah Al-Fatihah</h4>
-                        <span class="countdown" style="background: rgba(255,255,255,0.12);">7 Ayat &middot; Makkiyyah</span>
-                    </div>
-                    <div class="screen-body" style="text-align: right; direction: rtl;">
-                        <p style="font-size: 1.15rem; line-height: 2.2; color: #1A1A1A; font-family: serif; margin-bottom: 10px;">
-                            &#1576;&#1616;&#1587;&#1618;&#1605;&#1616; &#1649;&#1604;&#1604;&#1617;&#1614;&#1607;&#1616; &#1649;&#1604;&#1585;&#1617;&#1614;&#1581;&#1618;&#1605;&#1614;&#1648;&#1606;&#1616; &#1649;&#1604;&#1585;&#1617;&#1614;&#1581;&#1616;&#1610;&#1605;&#1616;
-                        </p>
-                        <p style="font-size: 0.78rem; text-align: left; direction: ltr; color: #6B7280; line-height: 1.5; border-top: 1px solid #f0f0f0; padding-top: 10px;">
-                            Dengan nama Allah, Yang Maha Pemurah, lagi Maha Mengasihani.
-                        </p>
-                        <div style="height: 8px;"></div>
-                        <p style="font-size: 1.15rem; line-height: 2.2; color: #1A1A1A; font-family: serif; margin-bottom: 10px;">
-                            &#1649;&#1604;&#1618;&#1581;&#1614;&#1605;&#1618;&#1583;&#1615; &#1604;&#1616;&#1604;&#1617;&#1614;&#1607;&#1616; &#1585;&#1614;&#1576;&#1617;&#1616; &#1649;&#1604;&#1618;&#1593;&#1614;&#1648;&#1604;&#1614;&#1605;&#1616;&#1610;&#1606;&#1614;
-                        </p>
-                        <p style="font-size: 0.78rem; text-align: left; direction: ltr; color: #6B7280; line-height: 1.5; border-top: 1px solid #f0f0f0; padding-top: 10px;">
-                            Segala puji bagi Allah, Tuhan sekalian alam.
-                        </p>
-                    </div>
-                </div>
+            <div class="phone-frame fade-up stagger-2">
+                <img src="assets/screenshots/quran.jpeg" alt="Al-Quran">
+                <div class="phone-label">Al-Quran</div>
             </div>
-
-            <!-- Phone 3: Features -->
-            <div class="phone-frame fade-up">
-                <div class="phone-screen">
-                    <div class="screen-header" style="background: #059669;">
-                        <small>Dashboard</small>
-                        <h4>Shortcuts</h4>
-                    </div>
-                    <div class="screen-body">
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #6366F110; color: #6366F1;">&#128218;</div>
-                            <div class="screen-row-text">Daily Azkar</div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #E91E6310; color: #E91E63;">&#128247;</div>
-                            <div class="screen-row-text">Tasbih Counter</div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #0D737710; color: #0D7377;">&#128178;</div>
-                            <div class="screen-row-text">Zakat Calculator</div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #14919B10; color: #14919B;">&#128197;</div>
-                            <div class="screen-row-text">Hijri Calendar</div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #8B5CF610; color: #8B5CF6;">&#127911;</div>
-                            <div class="screen-row-text">Quran Player</div>
-                        </div>
-                        <div class="screen-row">
-                            <div class="screen-dot" style="background: #FF980010; color: #FF9800;">&#128118;</div>
-                            <div class="screen-row-text">Kids Corner</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="phone-frame center fade-up stagger-3">
+                <img src="assets/screenshots/dashboard.jpeg" alt="Dashboard">
+                <div class="phone-label">Dashboard</div>
+            </div>
+            <div class="phone-frame fade-up stagger-4">
+                <img src="assets/screenshots/qiblah.jpeg" alt="Qiblah Compass">
+                <div class="phone-label">Qiblah</div>
+            </div>
+            <div class="phone-frame fade-up stagger-5">
+                <img src="assets/screenshots/features.jpeg" alt="More Features">
+                <div class="phone-label">Features</div>
             </div>
         </div>
     </div>
 </section>
 
+<div class="glow-line"></div>
+
 <!-- ALL FEATURES -->
 <section id="all-features">
     <div class="section-inner">
-        <span class="section-label">Complete List</span>
-        <h2 class="section-title">All Features</h2>
-        <p class="section-desc">Everything packed into one beautiful app.</p>
+        <span class="section-label fade-up">Complete List</span>
+        <h2 class="section-title fade-up">All Features</h2>
+        <p class="section-desc fade-up">Everything packed into one beautiful app.</p>
 
         <div class="all-features-grid">
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(13,115,119,0.1); color: #0D7377;">&#128336;</div>
+                <div class="mini-icon">&#128336;</div>
                 <div><h4>Prayer Times</h4><span>JAKIM zones with alerts</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">&#128214;</div>
+                <div class="mini-icon">&#128214;</div>
                 <div><h4>Al-Quran</h4><span>Arabic, Malay & English</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">&#127911;</div>
+                <div class="mini-icon">&#127911;</div>
                 <div><h4>Quran Player</h4><span>Audio recitation</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(228,179,99,0.1); color: #B45309;">&#129517;</div>
+                <div class="mini-icon">&#129517;</div>
                 <div><h4>Qiblah Compass</h4><span>GPS-based direction</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(99,102,241,0.1); color: #6366F1;">&#128218;</div>
+                <div class="mini-icon">&#128218;</div>
                 <div><h4>Daily Azkar</h4><span>Morning & evening</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(76,175,80,0.1); color: #4CAF50;">&#128588;</div>
-                <div><h4>Dua Collection</h4><span>For every occasion</span></div>
+                <div class="mini-icon">&#128588;</div>
+                <div><h4>Dua Collection</h4><span>30 daily duas</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(233,30,99,0.1); color: #E91E63;">&#128247;</div>
+                <div class="mini-icon">&#128247;</div>
                 <div><h4>Tasbih Counter</h4><span>Digital counter</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(13,115,119,0.1); color: #0D7377;">&#128178;</div>
+                <div class="mini-icon">&#128178;</div>
                 <div><h4>Zakat Calculator</h4><span>Calculate your zakat</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(20,145,155,0.1); color: #14919B;">&#128197;</div>
+                <div class="mini-icon">&#128197;</div>
                 <div><h4>Hijri Calendar</h4><span>Islamic events & dates</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(76,175,80,0.1); color: #4CAF50;">&#127971;</div>
+                <div class="mini-icon">&#127971;</div>
                 <div><h4>Nearby Mosques</h4><span>Masjid & surau finder</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(13,115,119,0.1); color: #0D7377;">&#10024;</div>
+                <div class="mini-icon">&#10024;</div>
                 <div><h4>Zikir Collection</h4><span>Curated dhikr</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(233,30,99,0.1); color: #E91E63;">&#127769;</div>
-                <div><h4>Solat Sunat</h4><span>Sunnah prayer guides</span></div>
+                <div class="mini-icon">&#127769;</div>
+                <div><h4>Solat Sunat</h4><span>20 sunnah prayer guides</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">&#11088;</div>
+                <div class="mini-icon">&#11088;</div>
                 <div><h4>Asmaul Husna</h4><span>99 Names of Allah</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(99,102,241,0.1); color: #6366F1;">&#128483;</div>
+                <div class="mini-icon">&#128483;</div>
                 <div><h4>Tajwid Rules</h4><span>Quran recitation guide</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(217,119,6,0.1); color: #D97706;">&#128204;</div>
+                <div class="mini-icon">&#128204;</div>
                 <div><h4>Hajj & Umrah</h4><span>Step-by-step guide</span></div>
             </div>
             <div class="mini-card fade-up">
-                <div class="mini-icon" style="background: rgba(255,152,0,0.1); color: #FF9800;">&#128118;</div>
-                <div><h4>Kids Corner</h4><span>Hijaiyyah, Kisah Nabi & more</span></div>
+                <div class="mini-icon">&#128118;</div>
+                <div><h4>Kids Corner</h4><span>Hijaiyyah & Kisah Nabi</span></div>
             </div>
         </div>
     </div>
@@ -822,16 +844,16 @@
 <!-- CTA -->
 <section class="cta-section" id="download">
     <div class="cta-content">
-        <h2 class="fade-up">Download HidayahMY</h2>
-        <p class="fade-up">Free on iOS and Android. Start your spiritual journey today.</p>
+        <h2 class="fade-up">Start Your<br><span class="gold">Spiritual Journey</span></h2>
+        <p class="fade-up">Free on iOS and Android. Download HidayahMY today.</p>
         <div class="store-buttons fade-up">
             <a href="#" class="store-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                <div><small>Download on the</small>App Store</div>
+                <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                <div><small>Download on the</small><span class="store-name">App Store</span></div>
             </a>
             <a href="#" class="store-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-                <div><small>Get it on</small>Google Play</div>
+                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+                <div><small>Get it on</small><span class="store-name">Google Play</span></div>
             </a>
         </div>
     </div>
@@ -850,7 +872,6 @@
 </footer>
 
 <script>
-// Scroll animation
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
