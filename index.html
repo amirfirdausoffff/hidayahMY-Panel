@@ -579,7 +579,7 @@
                 <span class="dot"></span>
                 Panduan Solat & Al-Quran
             </div>
-            <h1 class="fade-left stagger-1" data-en="Your Complete<br><em>Islamic Companion</em>" data-ms="Teman Islamik<br><em>Anda Yang Lengkap</em>">Your Complete<br><em>Islamic Companion</em></h1>
+            <h1 class="fade-left stagger-1"><span data-en="Your Complete" data-ms="Teman Islamik">Your Complete</span><br><em data-en="Islamic Companion" data-ms="Anda Yang Lengkap">Islamic Companion</em></h1>
             <p class="fade-left stagger-2" data-en="Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community." data-ms="Waktu solat, Al-Quran, arah Kiblat, dan 16+ alat Islamik yang direka khas untuk umat Islam di Malaysia.">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
             <div class="hero-buttons fade-left stagger-3">
                 <a href="#download" class="btn-hero-primary" data-en="Download Free" data-ms="Muat Turun Percuma">
@@ -651,7 +651,7 @@
     </div>
     <div class="section-inner">
         <span class="section-label fade-up" data-en="Core Features" data-ms="Ciri Utama">Core Features</span>
-        <h2 class="section-title fade-up" data-en="Everything You <span class='green'>Need</span>" data-ms="Semua Yang Anda <span class='green'>Perlukan</span>">Everything You <span class="green">Need</span></h2>
+        <h2 class="section-title fade-up"><span data-en="Everything You " data-ms="Semua Yang Anda ">Everything You </span><span class="green" data-en="Need" data-ms="Perlukan">Need</span></h2>
         <p class="section-desc fade-up" data-en="Comprehensive Islamic tools designed for your daily spiritual journey." data-ms="Alat Islamik komprehensif yang direka untuk perjalanan rohani harian anda.">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
 
         <div class="bento-grid">
@@ -716,7 +716,7 @@
 <section class="slider-section" id="preview">
     <div class="section-inner section-center">
         <span class="section-label fade-up" data-en="App Preview" data-ms="Pratonton Aplikasi">App Preview</span>
-        <h2 class="section-title fade-up" data-en="Designed to <span class='green'>Inspire</span>" data-ms="Direka Untuk <span class='green'>Memberi Inspirasi</span>">Designed to <span class="green">Inspire</span></h2>
+        <h2 class="section-title fade-up"><span data-en="Designed to " data-ms="Direka Untuk ">Designed to </span><span class="green" data-en="Inspire" data-ms="Memberi Inspirasi">Inspire</span></h2>
         <p class="section-desc fade-up" data-en="Clean, beautiful interface with 14 customisable themes. Light and dark mode supported." data-ms="Antaramuka bersih dan cantik dengan 14 tema pilihan. Sokongan mod cerah dan gelap.">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
     </div>
     <div class="slider-track-wrapper">
@@ -767,7 +767,7 @@
     </div>
     <div class="section-inner">
         <span class="section-label fade-up" data-en="Complete List" data-ms="Senarai Lengkap">Complete List</span>
-        <h2 class="section-title fade-up" data-en="All <span class='green'>Features</span>" data-ms="Semua <span class='green'>Ciri</span>">All <span class="green">Features</span></h2>
+        <h2 class="section-title fade-up"><span data-en="All " data-ms="Semua ">All </span><span class="green" data-en="Features" data-ms="Ciri">Features</span></h2>
         <p class="section-desc fade-up" data-en="Everything packed into one beautiful app." data-ms="Semuanya dalam satu aplikasi yang cantik.">Everything packed into one beautiful app.</p>
 
         <div class="all-features-grid">
@@ -797,7 +797,7 @@
         <div class="circle"></div><div class="circle"></div><div class="circle"></div>
     </div>
     <div class="cta-content">
-        <h2 class="fade-up" data-en="Start Your<br>Spiritual Journey" data-ms="Mulakan Perjalanan<br>Rohani Anda">Start Your<br>Spiritual Journey</h2>
+        <h2 class="fade-up"><span data-en="Start Your" data-ms="Mulakan Perjalanan">Start Your</span><br><span data-en="Spiritual Journey" data-ms="Rohani Anda">Spiritual Journey</span></h2>
         <p class="fade-up" data-en="Free on iOS and Android. Download HidayahMY today." data-ms="Percuma di iOS dan Android. Muat turun HidayahMY hari ini.">Free on iOS and Android. Download HidayahMY today.</p>
         <div class="store-buttons fade-up">
             <a href="#" class="store-btn">
@@ -871,32 +871,29 @@ if (sliderTrack) {
 function setLang(lang) {
     document.querySelectorAll('[data-' + lang + ']').forEach(el => {
         const val = el.getAttribute('data-' + lang);
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = val;
-        } else if (el.querySelector('svg') || el.querySelector('span')) {
-            // For buttons with icons, only update text nodes or inner span
-            const span = el.querySelector('span');
-            if (span && !span.hasAttribute('data-' + lang)) {
-                span.textContent = val;
-            } else if (!el.querySelector('svg')) {
-                el.innerHTML = val;
-            } else {
-                // Has SVG — update only text after SVG
-                const svg = el.querySelector('svg');
-                const svgHtml = svg.outerHTML;
-                el.innerHTML = svgHtml + ' <span>' + val + '</span>';
+        // Skip elements that have child elements with their own data attributes
+        const hasTranslatableChildren = el.querySelector('[data-en]');
+        if (hasTranslatableChildren) return;
+        // For links/buttons with SVG inside, only update the text
+        const svg = el.querySelector('svg');
+        if (svg) {
+            // Preserve SVG, replace text after it
+            const nodes = el.childNodes;
+            for (let i = nodes.length - 1; i >= 0; i--) {
+                if (nodes[i].nodeType === 3 || (nodes[i].tagName === 'SPAN')) {
+                    nodes[i].textContent = val;
+                    break;
+                }
             }
         } else {
-            el.innerHTML = val;
+            el.textContent = val;
         }
     });
     // Update button states
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en'));
     });
-    // Update html lang
     document.documentElement.lang = lang === 'ms' ? 'ms' : 'en';
-    // Save preference
     localStorage.setItem('hidayahmy-lang', lang);
 }
 
