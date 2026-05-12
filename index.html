@@ -29,9 +29,9 @@
     <meta name="twitter:description" content="Your complete Islamic companion app with prayer times, Al-Quran, Qiblah, Azkar, and 16+ features for Malaysian Muslims.">
     <meta name="twitter:image" content="https://hidayahmy.com/assets/hidayahicon.png">
 
-    <!-- App Links -->
-    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
-    <meta name="google-play-app" content="app-id=YOUR_PACKAGE_NAME">
+    <!-- App Links - REPLACE WITH YOUR ACTUAL IDS -->
+    <meta name="apple-itunes-app" content="app-id=INSERT_IOS_ID_HERE">
+    <meta name="google-play-app" content="app-id=INSERT_ANDROID_PACKAGE_NAME_HERE">
     <meta property="al:ios:app_name" content="HidayahMY">
     <meta property="al:android:app_name" content="HidayahMY">
 
@@ -92,22 +92,33 @@
             background: rgba(255,255,255,0.85);
             border-bottom: 1px solid var(--border);
         }
+        .scroll-progress {
+            position: absolute; bottom: -1px; left: 0; width: 0%; height: 2px;
+            background: var(--gradient); transition: width 0.1s;
+        }
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; align-items: center; justify-content: space-between; height: 68px;
         }
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-        .logo-icon { width: 36px; height: 36px; border-radius: 10px; }
+        .logo-icon { width: 36px; height: 36px; border-radius: 10px; transition: transform 0.3s; }
+        .logo:hover .logo-icon { transform: rotate(-5deg) scale(1.1); }
         .logo-text { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--primary); transition: width 0.3s;
+        }
         .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover::after { width: 100%; }
         .nav-cta {
             padding: 10px 24px; background: var(--primary); color: #fff;
             border-radius: 50px; font-weight: 600; font-size: 0.85rem;
             text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(13,115,119,0.2);
         }
-        .nav-cta:hover { box-shadow: 0 4px 20px rgba(13,115,119,0.35); transform: translateY(-1px); }
+        .nav-cta:hover { box-shadow: 0 8px 24px rgba(13,115,119,0.35); transform: translateY(-1px); }
         .lang-toggle {
             display: flex; align-items: center; gap: 0;
             background: var(--surface-2); border-radius: 50px;
@@ -141,6 +152,7 @@
             position: absolute; border-radius: 50%;
             filter: blur(80px); opacity: 0.3;
             animation: move-glow 25s infinite alternate;
+            will-change: transform;
         }
         .glow-1 { width: 400px; height: 400px; background: var(--primary-light); top: -100px; left: -100px; }
         .glow-2 { width: 500px; height: 500px; background: var(--primary); bottom: -150px; right: -100px; animation-duration: 30s; }
@@ -237,6 +249,7 @@
         .hero-phone {
             position: absolute;
             transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+            will-change: transform;
         }
         .hero-phone-1 { top: 30px; left: 0; z-index: 3; transform: rotate(-3deg); }
         .hero-phone-1 .iphone-frame { width: 230px; }
@@ -254,6 +267,7 @@
         .marquee-track {
             display: flex; gap: 3rem; animation: marquee 30s linear infinite;
             width: max-content;
+            will-change: transform;
         }
         .marquee-item {
             display: flex; align-items: center; gap: 8px;
@@ -326,8 +340,8 @@
         }
         .bento-card:hover {
             transform: translateY(-8px) scale(1.01);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(13,115,119,0.2);
+            box-shadow: var(--shadow-lg), inset 0 0 20px var(--primary-glow);
+            border-color: rgba(13,115,119,0.25);
             background: #fff;
         }
         .bento-big { grid-column: span 2; display: flex; gap: 2.5rem; align-items: center; }
@@ -343,9 +357,9 @@
             font-size: 1.6rem; margin-bottom: 1.5rem;
             background: var(--primary-soft);
             color: var(--primary);
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .bento-card:hover .bento-icon { transform: rotate(10deg) scale(1.1); }
+        .bento-card:hover .bento-icon { transform: rotate(10deg) scale(1.1); background: var(--primary); color: #fff; }
         .bento-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.3px; }
         .bento-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
@@ -617,9 +631,10 @@
 <!-- NAV -->
 <header>
 <nav role="navigation" aria-label="Main navigation">
+    <div class="scroll-progress"></div>
     <div class="nav-inner">
-        <a href="#" class="logo">
-            <img src="assets/hidayahicon.png" alt="HidayahMY" class="logo-icon" onerror="this.style.display='none'">
+        <a href="#" class="logo" aria-label="HidayahMY Home">
+            <img src="assets/hidayahicon.png" alt="HidayahMY Logo" class="logo-icon" onerror="this.style.display='none'">
             <span class="logo-text">HidayahMY</span>
         </a>
         <ul class="nav-links">
@@ -628,9 +643,9 @@
             <li><a href="#all-features" data-en="Explore" data-ms="Terokai">Explore</a></li>
         </ul>
         <div style="display:flex;align-items:center;gap:1rem;">
-            <div class="lang-toggle">
-                <button class="lang-btn active" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" onclick="setLang('ms')">BM</button>
+            <div class="lang-toggle" role="group" aria-label="Language Selector">
+                <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+                <button class="lang-btn" onclick="setLang('ms')" aria-label="Tukar ke Bahasa Melayu" aria-pressed="false">BM</button>
             </div>
             <a href="#download" class="nav-cta" data-en="Download App" data-ms="Muat Turun">Download App</a>
         </div>
@@ -872,11 +887,11 @@
         <h2 class="fade-up"><span data-en="Start Your" data-ms="Mulakan Perjalanan">Start Your</span><br><span data-en="Spiritual Journey" data-ms="Rohani Anda">Spiritual Journey</span></h2>
         <p class="fade-up" data-en="Free on iOS and Android. Download HidayahMY today." data-ms="Percuma di iOS dan Android. Muat turun HidayahMY hari ini.">Free on iOS and Android. Download HidayahMY today.</p>
         <div class="store-buttons fade-up">
-            <a href="#" class="store-btn">
+            <a href="#" class="store-btn" target="_blank" rel="noopener" aria-label="Download HidayahMY on the Apple App Store">
                 <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
                 <div><small data-en="Download on the" data-ms="Muat turun di">Download on the</small><span class="store-name">App Store</span></div>
             </a>
-            <a href="#" class="store-btn">
+            <a href="#" class="store-btn" target="_blank" rel="noopener" aria-label="Get HidayahMY on Google Play">
                 <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
                 <div><small data-en="Get it on" data-ms="Dapatkan di">Get it on</small><span class="store-name">Google Play</span></div>
             </a>
@@ -905,12 +920,20 @@
 </footer>
 
 <script>
-// Scroll animations
+// Scroll animations & Progress bar
+const scrollProgress = document.querySelector('.scroll-progress');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1 });
+
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    if (scrollProgress) scrollProgress.style.width = scrolled + "%";
+});
 
 document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el => observer.observe(el));
 
@@ -963,9 +986,11 @@ function setLang(lang) {
             el.textContent = val;
         }
     });
-    // Update button states
+    // Update button states & accessibility
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en'));
+        const isActive = btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en');
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
     });
     document.documentElement.lang = lang === 'ms' ? 'ms' : 'en';
     localStorage.setItem('hidayahmy-lang', lang);
