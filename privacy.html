@@ -112,13 +112,13 @@
 
 <div class="header-banner">
     <h1>Privacy Policy</h1>
-    <p>Last updated: 11 May 2026</p>
+    <p>Last updated: 13 May 2026</p>
 </div>
 
 <div class="content">
 
     <div class="info-box">
-        HidayahMY does <strong>not</strong> require any account registration, login, or personal information such as your name, email, or phone number. Your privacy is our priority.
+        HidayahMY is committed to protecting your privacy. You can use most features of the App without creating an account. Account registration is optional and enables cloud sync and personalised features.
     </div>
 
     <h2>1. Introduction</h2>
@@ -126,19 +126,28 @@
 
     <h2>2. Data We Collect</h2>
 
-    <h3>2.1 Location Data</h3>
+    <h3>2.1 Account Information (Optional)</h3>
+    <p>You may choose to create an account using one of the following methods:</p>
+    <ul>
+        <li><strong>Email &amp; Password:</strong> We store your email address and a securely hashed password.</li>
+        <li><strong>Google Sign-In:</strong> We receive your name, email, and profile photo from Google.</li>
+        <li><strong>Apple Sign-In:</strong> We receive your name and email (or a private relay address) from Apple.</li>
+    </ul>
+    <p>Account creation is <strong>optional</strong>. You can use the App as a guest without providing any personal information. Creating an account enables cloud sync for bookmarks, notes, prayer check-in history, and profile photo.</p>
+
+    <h3>2.2 Location Data</h3>
     <p>The App uses your device's location (GPS) for the following purposes:</p>
     <ul>
-        <li><strong>Prayer Times:</strong> Your coordinates are sent to <strong>api.waktusolat.app</strong> to detect your JAKIM prayer zone automatically. Only the derived zone code is saved locally — your raw coordinates are not stored permanently.</li>
+        <li><strong>Prayer Times:</strong> Your coordinates are sent to <strong>api.waktusolat.app</strong> to detect your JAKIM prayer zone automatically. Only the derived zone code is saved locally &mdash; your raw coordinates are not stored permanently.</li>
         <li><strong>Qiblah Direction:</strong> Your current position is used to calculate the bearing towards the Kaabah in Makkah.</li>
         <li><strong>Weather:</strong> Your coordinates are sent to <strong>Open-Meteo</strong> (open-meteo.com) to display local weather on the dashboard. This is cached for 30 minutes.</li>
         <li><strong>Nearby Mosques:</strong> Your location is used to find masjid and surau near you.</li>
     </ul>
 
-    <h3>2.2 Camera Access</h3>
-    <p>The App accesses your device camera <strong>only</strong> for the Qiblah 3D/AR mode, which overlays compass directions on your camera preview. <strong>No photos or videos are captured, saved, or transmitted.</strong></p>
+    <h3>2.3 Camera Access</h3>
+    <p>The App accesses your device camera <strong>only</strong> for the Qiblah 3D/AR mode and profile photo capture. <strong>No photos or videos are captured or transmitted without your explicit action.</strong></p>
 
-    <h3>2.3 Analytics Data</h3>
+    <h3>2.4 Analytics Data</h3>
     <p>We use <strong>Firebase Analytics</strong> (by Google) to understand how the App is used. This includes anonymous data such as:</p>
     <ul>
         <li>Which screens and features are viewed</li>
@@ -149,22 +158,38 @@
     </ul>
     <p>This data is <strong>anonymous</strong> and cannot be used to identify you personally.</p>
 
-    <h3>2.4 Crash Reports</h3>
+    <h3>2.5 Crash Reports</h3>
     <p>We use <strong>Firebase Crashlytics</strong> (by Google) to automatically collect crash logs and error reports. This helps us fix bugs and improve the App. Crash reports may include device metadata (model, OS version) and stack traces, but no personal data.</p>
 
-    <h3>2.5 Advertising</h3>
+    <h3>2.6 Advertising</h3>
     <p>The App displays banner advertisements via <strong>Google AdMob</strong>. Google may use your device's advertising identifier and cookies to serve personalised or non-personalised ads. You can control ad personalisation through your device settings.</p>
 
-    <h2>3. Data Stored Locally</h2>
-    <p>The following data is stored <strong>on your device only</strong> and is never uploaded to any server:</p>
+    <h2>3. Cloud Data (Authenticated Users)</h2>
+    <p>If you create an account, the following data is synced to our secure servers hosted on <strong>Supabase</strong> (PostgreSQL):</p>
+
+    <table>
+        <tr><th>Data</th><th>Purpose</th></tr>
+        <tr><td>Email and profile name</td><td>Account identification and display</td></tr>
+        <tr><td>Profile photo</td><td>Display in the App (stored in Supabase Storage)</td></tr>
+        <tr><td>Quran bookmarks &amp; notes</td><td>Cloud sync across devices</td></tr>
+        <tr><td>Prayer check-in history</td><td>Track daily solat completion across devices</td></tr>
+        <tr><td>FCM device token</td><td>Deliver push notifications to your device</td></tr>
+    </table>
+
+    <div class="info-box">
+        All cloud data is isolated per user using Row Level Security (RLS) policies. No user can access another user's data. Your data is transmitted over HTTPS encryption.
+    </div>
+
+    <h2>4. Data Stored Locally</h2>
+    <p>The following data is stored <strong>on your device only</strong> and is never uploaded to any server (unless you create an account for cloud sync):</p>
 
     <table>
         <tr><th>Data</th><th>Purpose</th></tr>
         <tr><td>Prayer checklist history</td><td>Track your daily solat performance</td></tr>
-        <tr><td>Quran bookmarks & reading position</td><td>Resume where you left off</td></tr>
+        <tr><td>Quran bookmarks &amp; reading position</td><td>Resume where you left off</td></tr>
         <tr><td>Notification history</td><td>View past prayer and event alerts (auto-cleared after 30 days)</td></tr>
         <tr><td>App preferences</td><td>Language, theme, JAKIM zone, notification settings</td></tr>
-        <tr><td>Favourite features & shortcuts</td><td>Quick access to your preferred features</td></tr>
+        <tr><td>Favourite features &amp; shortcuts</td><td>Quick access to your preferred features</td></tr>
         <tr><td>Azkar counter state</td><td>Track your dhikr progress</td></tr>
         <tr><td>Cached weather data</td><td>Display weather without repeated network calls</td></tr>
     </table>
@@ -173,14 +198,16 @@
         Zakat calculations are performed in real-time and are <strong>not saved</strong> anywhere. Your financial information never leaves the calculator screen.
     </div>
 
-    <h2>4. Third-Party Services</h2>
+    <h2>5. Third-Party Services</h2>
     <p>HidayahMY integrates with the following third-party services:</p>
 
     <table>
         <tr><th>Service</th><th>Provider</th><th>Purpose</th></tr>
         <tr><td>Firebase Analytics</td><td>Google</td><td>Anonymous usage analytics</td></tr>
         <tr><td>Firebase Crashlytics</td><td>Google</td><td>Crash and error reporting</td></tr>
+        <tr><td>Firebase Cloud Messaging</td><td>Google</td><td>Push notifications delivery</td></tr>
         <tr><td>Google AdMob</td><td>Google</td><td>Advertisement display</td></tr>
+        <tr><td>Supabase</td><td>Supabase Inc.</td><td>Authentication &amp; cloud data storage</td></tr>
         <tr><td>Waktu Solat API</td><td>api.waktusolat.app</td><td>JAKIM prayer times</td></tr>
         <tr><td>Open-Meteo</td><td>open-meteo.com</td><td>Weather data</td></tr>
         <tr><td>QuranicAudio</td><td>quranicaudio.com</td><td>Quran audio streaming</td></tr>
@@ -191,37 +218,51 @@
     <ul>
         <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
         <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></li>
+        <li><a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a></li>
         <li><a href="https://open-meteo.com/en/terms" target="_blank">Open-Meteo Terms</a></li>
     </ul>
 
-    <h2>5. Notifications</h2>
-    <p>All notifications in HidayahMY are <strong>scheduled locally</strong> on your device. We do not use any push notification server. Notifications include:</p>
+    <h2>6. Push Notifications</h2>
+    <p>HidayahMY uses two types of notifications:</p>
     <ul>
-        <li>Prayer time reminders (Subuh, Zohor, Asar, Maghrib, Isyak)</li>
-        <li>Islamic calendar event reminders (up to 60 days ahead)</li>
-        <li>Daily Islamic quotes</li>
+        <li><strong>Local notifications:</strong> Scheduled on your device for prayer time reminders, Islamic calendar events, and daily Islamic quotes. These do not require an internet connection or account.</li>
+        <li><strong>Push notifications:</strong> Delivered via <strong>Firebase Cloud Messaging (FCM)</strong> for announcements and app updates from HidayahMY. Your device's FCM token is stored on our server to enable delivery. You can disable push notifications at any time from your device settings.</li>
     </ul>
-    <p>You can enable or disable notifications at any time from the App's settings.</p>
 
-    <h2>6. Children's Privacy</h2>
-    <p>HidayahMY includes a "Kids Corner" feature with educational content (Hijaiyyah letters, Kisah Nabi). The App does not knowingly collect any personal data from children. No account or personal information is required to use any feature of the App.</p>
+    <h2>7. Children's Privacy</h2>
+    <p>HidayahMY includes a "Kids Corner" feature with educational content (Hijaiyyah letters, Kisah Nabi). The App does not knowingly collect any personal data from children. Account creation is not required to use Kids Corner or any other feature.</p>
 
-    <h2>7. Data Security</h2>
-    <p>All data stored locally on your device is protected by your device's own security (lock screen, encryption). Network requests to third-party APIs use HTTPS encryption. We do not operate any backend server that stores your data.</p>
+    <h2>8. Data Security</h2>
+    <ul>
+        <li>All data stored locally on your device is protected by your device's own security (lock screen, encryption).</li>
+        <li>All network requests use <strong>HTTPS</strong> encryption.</li>
+        <li>Cloud data is hosted on <strong>Supabase</strong> with Row Level Security (RLS) ensuring user data isolation.</li>
+        <li>Passwords are securely hashed and never stored in plain text.</li>
+        <li>Authentication tokens are managed by Supabase Auth with automatic expiry and refresh.</li>
+    </ul>
 
-    <h2>8. Your Rights</h2>
+    <h2>9. Your Rights</h2>
     <ul>
         <li><strong>Delete local data:</strong> You can clear all App data through your device settings or by uninstalling the App.</li>
-        <li><strong>Disable location:</strong> You can revoke location permission at any time. The App will still work — you can manually select your JAKIM zone.</li>
+        <li><strong>Delete your account:</strong> Contact us at admin@hidayahmy.com to request full deletion of your account and all associated cloud data.</li>
+        <li><strong>Disable location:</strong> You can revoke location permission at any time. The App will still work &mdash; you can manually select your JAKIM zone.</li>
         <li><strong>Disable notifications:</strong> Toggle off notifications in App settings or device settings.</li>
         <li><strong>Ad personalisation:</strong> Control personalised ads through your device's advertising settings.</li>
         <li><strong>Analytics opt-out:</strong> You can limit analytics collection through your device's privacy settings.</li>
     </ul>
 
-    <h2>9. Changes to This Policy</h2>
+    <h2>10. Data Retention</h2>
+    <ul>
+        <li><strong>Local data:</strong> Retained until you clear App data or uninstall the App.</li>
+        <li><strong>Cloud data:</strong> Retained as long as your account is active. Deleted upon account deletion request.</li>
+        <li><strong>FCM tokens:</strong> Automatically cleaned up when tokens become invalid or upon logout.</li>
+        <li><strong>Analytics &amp; crash data:</strong> Retained according to Google Firebase's data retention policies.</li>
+    </ul>
+
+    <h2>11. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
 
-    <h2>10. Contact Us</h2>
+    <h2>12. Contact Us</h2>
     <p>If you have any questions or concerns about this Privacy Policy or HidayahMY's data practices, please contact us:</p>
     <p><strong>Email:</strong> admin@hidayahmy.com</p>
 
