@@ -35,6 +35,25 @@
     <meta property="al:ios:app_name" content="HidayahMY">
     <meta property="al:android:app_name" content="HidayahMY">
 
+    <!-- Firebase Analytics -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD4_NEj20mcJUNxLokBHFZg4HDZtsTAFpU",
+        authDomain: "hidayah-my.firebaseapp.com",
+        projectId: "hidayah-my",
+        storageBucket: "hidayah-my.firebasestorage.app",
+        messagingSenderId: "390488281686",
+        appId: "1:390488281686:web:29d8ecbeaa8b11ad7821f7",
+        measurementId: "G-ELGSB27ZTS"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+
     <link rel="icon" type="image/png" href="assets/hidayahicon.png">
     <link rel="apple-touch-icon" href="assets/hidayahicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
