@@ -13,7 +13,6 @@
     <link rel="alternate" hreflang="ms" href="https://hidayahmy.com/">
     <link rel="alternate" hreflang="x-default" href="https://hidayahmy.com/">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hidayahmy.com/">
     <meta property="og:title" content="HidayahMY - Panduan Solat & Al-Quran untuk Muslim Malaysia">
@@ -23,13 +22,11 @@
     <meta property="og:locale:alternate" content="ms_MY">
     <meta property="og:site_name" content="HidayahMY">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HidayahMY - Panduan Solat & Al-Quran">
     <meta name="twitter:description" content="Your complete Islamic companion app with prayer times, Al-Quran, Qiblah, Azkar, and 16+ features for Malaysian Muslims.">
     <meta name="twitter:image" content="https://hidayahmy.com/assets/hidayahicon.png">
 
-    <!-- App Links -->
     <meta name="apple-itunes-app" content="app-id=INSERT_IOS_ID_HERE">
     <meta name="google-play-app" content="app-id=com.hidayahmy.hidayah_my">
     <meta property="al:ios:app_name" content="HidayahMY">
@@ -39,7 +36,6 @@
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-analytics.js";
-
       const firebaseConfig = {
         apiKey: "AIzaSyD4_NEj20mcJUNxLokBHFZg4HDZtsTAFpU",
         authDomain: "hidayah-my.firebaseapp.com",
@@ -49,7 +45,6 @@
         appId: "1:390488281686:web:29d8ecbeaa8b11ad7821f7",
         measurementId: "G-ELGSB27ZTS"
       };
-
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
@@ -58,857 +53,569 @@
     <link rel="apple-touch-icon" href="assets/hidayahicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --gold: #C9A96E;
-            --gold-light: #E2C992;
-            --gold-dark: #A68B5B;
-            --gold-soft: rgba(201,169,110,0.08);
-            --gold-glow: rgba(201,169,110,0.15);
-            --teal: #0D7377;
-            --teal-light: #14919B;
-            --teal-dark: #095456;
-            --bg: #050A0A;
-            --bg-elevated: #0A1414;
-            --bg-card: #0D1B1B;
-            --bg-card-hover: #112222;
-            --surface: rgba(255,255,255,0.03);
-            --border: rgba(201,169,110,0.08);
-            --border-hover: rgba(201,169,110,0.2);
-            --text: #F0EDE6;
-            --text-secondary: rgba(240,237,230,0.6);
-            --text-dim: rgba(240,237,230,0.35);
-            --radius: 20px;
-            --radius-sm: 14px;
-            --radius-xs: 10px;
+            --c1: #0C1F1D;
+            --c2: #132E2B;
+            --c3: #1A3D39;
+            --gold: #D4A853;
+            --gold-l: #E8C97A;
+            --gold-d: #B8923F;
+            --cream: #FAF5EB;
+            --cream-d: #EDE4D3;
+            --white: #FFFFFF;
+            --txt: #0C1F1D;
+            --txt2: #4A6B66;
+            --txt3: #8BA5A0;
+            --r: 24px;
+            --rs: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cream);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* ═══ NAV ═══ */
+        nav{position:fixed;top:0;width:100%;z-index:100;transition:all .4s}
+        nav.scrolled{background:rgba(250,245,235,.92);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:0 1px 0 rgba(12,31,29,.06)}
+        .nav-w{max-width:1320px;margin:0 auto;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:80px}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt)}
+        .logo img{width:34px;height:34px;border-radius:9px}
+        .logo span{font-size:1.05rem;font-weight:800;letter-spacing:-.5px}
+        .nav-m{display:flex;gap:3rem;list-style:none}
+        .nav-m a{color:var(--txt2);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.3px;transition:color .2s}
+        .nav-m a:hover{color:var(--txt)}
+        .nav-r{display:flex;align-items:center;gap:.75rem}
+        .lang-t{display:flex;background:rgba(12,31,29,.04);border-radius:50px;padding:3px;gap:2px}
+        .lang-b{padding:6px 14px;border-radius:50px;border:none;background:transparent;color:var(--txt3);cursor:pointer;font-size:.72rem;font-weight:800;font-family:inherit;transition:all .25s;letter-spacing:.5px}
+        .lang-b.on{background:var(--c1);color:var(--cream)}
+        .nav-dl{padding:10px 26px;background:var(--c1);color:var(--cream);border-radius:50px;font-weight:700;font-size:.8rem;text-decoration:none;transition:all .3s;letter-spacing:.3px}
+        .nav-dl:hover{background:var(--c3);transform:translateY(-1px);box-shadow:0 8px 20px rgba(12,31,29,.15)}
+        .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+        .menu-btn span{display:block;width:22px;height:2px;background:var(--txt);margin:5px 0;border-radius:2px;transition:all .3s}
 
-        /* ── NAV ──────────────────────────── */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            background: rgba(5,10,10,0.8);
-            border-bottom: 1px solid var(--border);
-        }
-        .scroll-progress {
-            position: absolute; bottom: -1px; left: 0; width: 0%; height: 1px;
-            background: linear-gradient(90deg, var(--teal), var(--gold));
-            transition: width 0.1s;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-            display: flex; align-items: center; justify-content: space-between; height: 72px;
-        }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-        .logo-icon { width: 36px; height: 36px; border-radius: 10px; transition: transform 0.3s; }
-        .logo:hover .logo-icon { transform: rotate(-5deg) scale(1.1); }
-        .logo-text { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.3px; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
-            font-weight: 500; transition: color 0.3s; letter-spacing: 0.3px;
-        }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .lang-toggle {
-            display: flex; align-items: center;
-            background: rgba(255,255,255,0.04); border-radius: 50px;
-            padding: 3px; border: 1px solid var(--border);
-        }
-        .lang-btn {
-            padding: 6px 14px; border-radius: 50px; border: none;
-            background: transparent; color: var(--text-dim);
-            cursor: pointer; font-size: 0.75rem; font-weight: 700;
-            font-family: inherit; transition: all 0.25s; letter-spacing: 0.5px;
-        }
-        .lang-btn.active {
-            background: var(--gold); color: var(--bg);
-        }
-        .nav-cta {
-            padding: 10px 24px; background: transparent; color: var(--gold);
-            border-radius: 50px; font-weight: 600; font-size: 0.82rem;
-            text-decoration: none; transition: all 0.3s;
-            border: 1px solid rgba(201,169,110,0.3);
-            letter-spacing: 0.5px;
-        }
-        .nav-cta:hover { background: var(--gold); color: var(--bg); }
+        /* ═══ HERO ═══ */
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 4rem;position:relative;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;z-index:0}
+        .hero-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.35;will-change:transform}
+        .orb-1{width:600px;height:600px;background:var(--gold);top:-200px;right:-100px;animation:float-orb 20s ease-in-out infinite}
+        .orb-2{width:500px;height:500px;background:#14919B;bottom:-150px;left:-200px;animation:float-orb 25s ease-in-out infinite reverse}
+        .orb-3{width:300px;height:300px;background:var(--gold-l);top:40%;left:50%;animation:float-orb 18s ease-in-out infinite 5s}
+        @keyframes float-orb{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(40px,-30px) scale(1.05)}50%{transform:translate(-20px,40px) scale(.95)}75%{transform:translate(30px,20px) scale(1.02)}}
 
-        /* ── HERO ─────────────────────────── */
-        .hero {
-            position: relative; min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            padding: 10rem 2rem 6rem; overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute; inset: 0; z-index: 0;
-        }
-        .hero-bg::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(13,115,119,0.15) 0%, transparent 70%),
-                        radial-gradient(ellipse 60% 50% at 30% 60%, rgba(201,169,110,0.06) 0%, transparent 60%);
-        }
-        .hero-bg::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
-            background: linear-gradient(to top, var(--bg), transparent);
-        }
-        .hero-grid-pattern {
-            position: absolute; inset: 0; opacity: 0.03;
-            background-image:
-                linear-gradient(rgba(201,169,110,0.5) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201,169,110,0.5) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
-        }
-        .hero-layout {
-            position: relative; z-index: 2;
-            display: flex; align-items: center; gap: 6rem;
-            max-width: 1200px; width: 100%;
-        }
-        .hero-text { flex: 1.2; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 10px 22px; background: rgba(201,169,110,0.06);
-            border: 1px solid rgba(201,169,110,0.15); border-radius: 50px;
-            color: var(--gold); font-size: 0.7rem; font-weight: 700;
-            margin-bottom: 2.5rem; letter-spacing: 2px; text-transform: uppercase;
-        }
-        .hero-badge .dot {
-            width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
-            box-shadow: 0 0 12px var(--gold); animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hero-content{position:relative;z-index:2;max-width:800px}
+        .hero-arabic{font-family:'Amiri',serif;font-size:1.6rem;color:var(--gold);margin-bottom:2rem;letter-spacing:4px;opacity:.7}
+        .hero h1{font-size:5.5rem;font-weight:800;line-height:.95;letter-spacing:-4px;margin-bottom:2rem}
+        .hero h1 .line2{display:block;background:linear-gradient(135deg,var(--gold-d),var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-sub{font-size:1.15rem;color:var(--txt2);max-width:480px;margin:0 auto 3rem;line-height:1.8;font-weight:400}
+        .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:5rem}
+        .btn-g{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:linear-gradient(135deg,var(--gold-d),var(--gold));color:var(--c1);font-size:.92rem;font-weight:700;border-radius:50px;text-decoration:none;transition:all .4s;box-shadow:0 8px 30px rgba(212,168,83,.3);letter-spacing:.2px}
+        .btn-g:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,168,83,.4)}
+        .btn-g svg{width:18px;height:18px;fill:currentColor}
+        .btn-o{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:transparent;border:1.5px solid rgba(12,31,29,.12);color:var(--txt);font-size:.92rem;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s}
+        .btn-o:hover{border-color:var(--gold);color:var(--gold)}
 
-        .hero h1 {
-            font-size: 4.5rem; font-weight: 800; color: var(--text);
-            line-height: 1.05; margin-bottom: 1.8rem; letter-spacing: -2.5px;
-        }
-        .hero h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .hero .arabic-accent {
-            font-family: 'Noto Naskh Arabic', serif;
-            font-size: 1.3rem; color: var(--gold);
-            opacity: 0.5; display: block; margin-bottom: 1rem;
-            letter-spacing: 3px;
-        }
-        .hero p {
-            font-size: 1.1rem; color: var(--text-secondary); max-width: 480px;
-            line-height: 1.8; margin-bottom: 3rem; font-weight: 400;
-        }
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--bg); font-size: 0.92rem; font-weight: 700;
-            border-radius: 50px; text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 30px rgba(201,169,110,0.25);
-            letter-spacing: 0.3px;
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,169,110,0.35); }
-        .btn-secondary {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 36px; background: transparent;
-            border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);
-            font-size: 0.92rem; font-weight: 600; border-radius: 50px;
-            text-decoration: none; transition: all 0.3s;
-        }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+        /* 3 phones floating */
+        .hero-phones{position:relative;z-index:2;display:flex;gap:1.5rem;align-items:flex-end;justify-content:center;perspective:1200px}
+        .h-phone{transition:transform .6s cubic-bezier(.23,1,.32,1)}
+        .h-phone:nth-child(1){transform:rotate(-8deg) translateY(20px)}
+        .h-phone:nth-child(2){transform:translateY(-10px) scale(1.08);z-index:3}
+        .h-phone:nth-child(3){transform:rotate(8deg) translateY(20px)}
+        .h-phone:hover{transform:translateY(-20px) rotate(0deg) scale(1.05)!important;z-index:10}
+        .phone-shell{width:200px;background:#1a1a1a;border-radius:32px;padding:7px;box-shadow:0 30px 80px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05)}
+        .phone-s{border-radius:26px;overflow:hidden;aspect-ratio:9/19.5;background:#000}
+        .phone-s img{width:100%;height:100%;object-fit:cover;display:block}
+        .phone-notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:65px;height:20px;background:#000;border-radius:10px;z-index:5}
+        .phone-inner{position:relative}
 
-        /* Hero Phone */
-        .hero-phones {
-            flex-shrink: 0; position: relative;
-            width: 340px; height: 520px;
-        }
-        .hero-phone {
-            position: absolute;
-            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
-        }
-        .iphone-frame {
-            position: relative; background: #1a1a1a;
-            border-radius: 40px; padding: 8px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05),
-                        inset 0 0 1px 1px rgba(255,255,255,0.08);
-        }
-        .iphone-screen {
-            position: relative; background: #000;
-            border-radius: 33px; overflow: hidden; aspect-ratio: 9/19.5;
-        }
-        .iphone-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .dynamic-island {
-            position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
-            width: 75px; height: 22px; background: #000; border-radius: 12px; z-index: 10;
-        }
-        .hero-phone-1 { top: 20px; left: 0; z-index: 3; transform: rotate(-4deg); }
-        .hero-phone-1 .iphone-frame { width: 230px; }
-        .hero-phone-1::after {
-            content: ''; position: absolute; inset: -20px; border-radius: 60px;
-            background: radial-gradient(circle, rgba(201,169,110,0.08), transparent 70%);
-            z-index: -1;
-        }
-        .hero-phone-2 { top: 0; left: 160px; z-index: 2; transform: rotate(6deg); opacity: 0.85; }
-        .hero-phone-2 .iphone-frame { width: 210px; }
-        .hero-phone-1:hover { transform: rotate(0deg) scale(1.04); z-index: 5; }
-        .hero-phone-2:hover { transform: rotate(0deg) scale(1.04); z-index: 5; opacity: 1; }
+        /* ═══ SOCIAL PROOF STRIP ═══ */
+        .proof{padding:5rem 2rem;position:relative;overflow:hidden}
+        .proof-w{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:5rem;flex-wrap:wrap}
+        .proof-i{text-align:center}
+        .proof-i .num{font-size:3.2rem;font-weight:800;letter-spacing:-2px;background:linear-gradient(135deg,var(--c1),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .proof-i .lab{font-size:.78rem;color:var(--txt3);font-weight:600;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+        .proof-line{width:1px;height:50px;background:rgba(12,31,29,.08)}
 
-        /* ── TRUSTED BY BAR ──────────────── */
-        .trust-bar {
-            padding: 3rem 2rem; border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .trust-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: center; gap: 4rem;
-            flex-wrap: wrap;
-        }
-        .trust-item {
-            display: flex; align-items: center; gap: 10px;
-            color: var(--text-dim); font-size: 0.82rem; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-        .trust-item .t-icon { font-size: 1.2rem; opacity: 0.6; }
+        /* ═══ SHOWCASE: BIG LEFT-RIGHT SECTIONS ═══ */
+        .showcase{padding:0 2rem}
+        .show-row{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;padding:7rem 0;border-bottom:1px solid rgba(12,31,29,.06)}
+        .show-row:last-child{border-bottom:none}
+        .show-row.flip .show-text{order:2}
+        .show-row.flip .show-vis{order:1}
+        .show-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(212,168,83,.08);color:var(--gold-d);font-size:.68rem;font-weight:800;border-radius:50px;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem}
+        .show-tag .tag-dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+        .show-text h2{font-size:3.4rem;font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1.25rem}
+        .show-text h2 .hl{color:var(--gold-d)}
+        .show-text p{font-size:1.05rem;color:var(--txt2);line-height:1.8;margin-bottom:2rem;max-width:440px}
+        .show-chips{display:flex;flex-wrap:wrap;gap:.6rem}
+        .chip{padding:8px 18px;background:rgba(12,31,29,.04);border-radius:50px;font-size:.78rem;font-weight:600;color:var(--txt2);border:1px solid rgba(12,31,29,.06);transition:all .3s}
+        .chip:hover{border-color:var(--gold);color:var(--gold-d);background:rgba(212,168,83,.04)}
+        .show-vis{display:flex;align-items:center;justify-content:center}
+        .show-phone-wrap{position:relative}
+        .show-phone-wrap .phone-shell{width:260px;box-shadow:0 40px 100px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.03)}
+        .show-phone-glow{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(80px);opacity:.2;z-index:-1}
+        .glow-gold{background:var(--gold);top:-40px;right:-60px}
+        .glow-teal{background:#14919B;bottom:-40px;left:-60px}
 
-        /* ── SECTION COMMON ──────────────── */
-        section { padding: 8rem 2rem; position: relative; }
-        .section-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
-        .section-center { text-align: center; }
-        .section-center .section-desc { margin-left: auto; margin-right: auto; }
-        .section-label {
-            display: inline-block; padding: 8px 20px;
-            background: var(--gold-soft); color: var(--gold);
-            font-size: 0.7rem; font-weight: 800; border-radius: 50px;
-            text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 1.5rem;
-            border: 1px solid rgba(201,169,110,0.1);
-        }
-        .section-title {
-            font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px;
-            margin-bottom: 1rem; line-height: 1.1;
-        }
-        .section-title .gold {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .section-desc {
-            font-size: 1.05rem; color: var(--text-secondary); max-width: 500px;
-            line-height: 1.8; margin-bottom: 4rem; font-weight: 400;
-        }
+        /* ═══ FEATURES GRID (new layout: 2-col masonry feel) ═══ */
+        .feat-sec{padding:8rem 2rem;background:var(--c1);color:var(--cream);position:relative;overflow:hidden}
+        .feat-sec .bg-pat{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23D4A853' stroke-width='.5'/%3E%3C/svg%3E");background-size:80px 80px}
+        .feat-w{max-width:1320px;margin:0 auto;position:relative;z-index:2}
+        .feat-head{text-align:center;margin-bottom:5rem}
+        .feat-head .section-tag{display:inline-flex;padding:6px 16px;background:rgba(212,168,83,.1);color:var(--gold);font-size:.68rem;font-weight:800;border-radius:50px;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem}
+        .feat-head h2{font-size:3.5rem;font-weight:800;letter-spacing:-2px;color:var(--cream);margin-bottom:1rem}
+        .feat-head h2 .hl{color:var(--gold)}
+        .feat-head p{font-size:1.05rem;color:rgba(250,245,235,.5);max-width:480px;margin:0 auto;line-height:1.8}
 
-        /* ── FEATURES BENTO GRID ──────────── */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-        .bento-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem; border: 1px solid var(--border);
-            transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
-            position: relative; overflow: hidden;
-        }
-        .bento-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent);
-            opacity: 0; transition: opacity 0.5s;
-        }
-        .bento-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-        }
-        .bento-card:hover::before { opacity: 1; }
-        .bento-big { grid-column: span 2; display: flex; gap: 2.5rem; align-items: center; }
-        .bento-big .bento-visual {
-            flex-shrink: 0; width: 140px; height: 140px; border-radius: 24px;
-            background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(13,115,119,0.1));
-            border: 1px solid rgba(201,169,110,0.1);
-            display: flex; align-items: center; justify-content: center; font-size: 3.5rem;
-        }
-        .bento-icon {
-            width: 52px; height: 52px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 1.5rem;
-            background: rgba(201,169,110,0.06);
-            border: 1px solid rgba(201,169,110,0.08);
-            transition: all 0.4s;
-        }
-        .bento-card:hover .bento-icon {
-            background: rgba(201,169,110,0.12);
-            border-color: rgba(201,169,110,0.2);
-        }
-        .bento-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.3px; color: var(--text); }
-        .bento-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; }
+        .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:1rem}
+        .feat-card{background:rgba(250,245,235,.03);border:1px solid rgba(250,245,235,.06);border-radius:var(--r);padding:2rem 1.75rem;transition:all .5s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden}
+        .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,83,.3),transparent);opacity:0;transition:opacity .5s}
+        .feat-card:hover{background:rgba(250,245,235,.06);border-color:rgba(212,168,83,.15);transform:translateY(-4px)}
+        .feat-card:hover::after{opacity:1}
+        .feat-card.tall{grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
+        .feat-card.wide{grid-column:span 2}
+        .fc-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem;background:rgba(212,168,83,.08);border:1px solid rgba(212,168,83,.06)}
+        .feat-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--cream)}
+        .feat-card p{font-size:.88rem;color:rgba(250,245,235,.45);line-height:1.7}
+        .feat-card.highlight{background:linear-gradient(135deg,rgba(212,168,83,.08),rgba(212,168,83,.02));border-color:rgba(212,168,83,.15)}
+        .feat-card.highlight .fc-icon{background:var(--gold);border-color:var(--gold)}
+        .feat-card.highlight .fc-icon span{filter:grayscale(1) brightness(0)}
 
-        /* ── STATS ───────────────────────── */
-        .stats-section {
-            position: relative; overflow: hidden; padding: 6rem 2rem;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        /* ═══ APP PREVIEW: Horizontal Scroll ═══ */
+        .preview-sec{padding:8rem 0;overflow:hidden}
+        .preview-head{max-width:1320px;margin:0 auto;padding:0 2rem;text-align:center;margin-bottom:4rem}
+        .preview-head .section-tag{display:inline-flex;padding:6px 16px;background:rgba(212,168,83,.08);color:var(--gold-d);font-size:.68rem;font-weight:800;border-radius:50px;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem}
+        .preview-head h2{font-size:3.5rem;font-weight:800;letter-spacing:-2px;margin-bottom:1rem}
+        .preview-head h2 .hl{color:var(--gold-d)}
+        .preview-head p{font-size:1.05rem;color:var(--txt2);max-width:480px;margin:0 auto;line-height:1.8}
+
+        .scroll-strip{display:flex;gap:2rem;animation:hscroll 50s linear infinite;width:max-content}
+        .scroll-strip:hover{animation-play-state:paused}
+        .ss-item{flex-shrink:0;width:240px;transition:transform .5s}
+        .ss-item:hover{transform:translateY(-16px) scale(1.03)}
+        .ss-item .phone-shell{width:240px;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+        .ss-label{text-align:center;padding-top:1rem;font-size:.76rem;font-weight:700;color:var(--txt3);letter-spacing:1px;text-transform:uppercase}
+        @keyframes hscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .scroll-mask{mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent)}
+
+        /* ═══ WHY SECTION (3 big cards) ═══ */
+        .why-sec{padding:8rem 2rem}
+        .why-w{max-width:1320px;margin:0 auto}
+        .why-head{text-align:center;margin-bottom:5rem}
+        .why-head .section-tag{display:inline-flex;padding:6px 16px;background:rgba(212,168,83,.08);color:var(--gold-d);font-size:.68rem;font-weight:800;border-radius:50px;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem}
+        .why-head h2{font-size:3.5rem;font-weight:800;letter-spacing:-2px;margin-bottom:1rem}
+        .why-head h2 .hl{color:var(--gold-d)}
+        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .why-card{background:var(--white);border-radius:var(--r);padding:3rem 2.5rem;border:1px solid rgba(12,31,29,.05);transition:all .5s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden}
+        .why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,83,.03),transparent);opacity:0;transition:opacity .5s}
+        .why-card:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(12,31,29,.06);border-color:rgba(212,168,83,.15)}
+        .why-card:hover::before{opacity:1}
+        .why-card .w-emoji{font-size:3rem;margin-bottom:1.5rem;display:block}
+        .why-card h3{font-size:1.35rem;font-weight:800;margin-bottom:.75rem;letter-spacing:-.5px}
+        .why-card p{font-size:.95rem;color:var(--txt2);line-height:1.8}
+
+        /* ═══ CTA ═══ */
+        .cta-sec{padding:0 2rem;margin-bottom:8rem}
+        .cta-box{max-width:1320px;margin:0 auto;background:var(--c1);border-radius:40px;padding:6rem 4rem;text-align:center;position:relative;overflow:hidden}
+        .cta-box .bg-pat{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23D4A853' stroke-width='.5'/%3E%3C/svg%3E");background-size:80px 80px}
+        .cta-orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.15;pointer-events:none}
+        .cta-orb-1{width:400px;height:400px;background:var(--gold);top:-100px;right:-100px}
+        .cta-orb-2{width:350px;height:350px;background:#14919B;bottom:-100px;left:-100px}
+        .cta-content{position:relative;z-index:2}
+        .cta-arabic{font-family:'Amiri',serif;font-size:2rem;color:var(--gold);margin-bottom:2rem;opacity:.4;letter-spacing:4px}
+        .cta-box h2{font-size:4rem;font-weight:800;color:var(--cream);letter-spacing:-2.5px;line-height:1.05;margin-bottom:1.5rem}
+        .cta-box h2 em{font-style:normal;color:var(--gold)}
+        .cta-box>p,.cta-content>p{color:rgba(250,245,235,.55);font-size:1.1rem;max-width:420px;margin:0 auto 3rem;line-height:1.8}
+        .store-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+        .s-btn{display:inline-flex;align-items:center;gap:14px;padding:16px 28px;background:rgba(250,245,235,.06);border:1px solid rgba(250,245,235,.1);color:var(--cream);border-radius:var(--rs);text-decoration:none;font-weight:700;transition:all .4s cubic-bezier(.175,.885,.32,1.275)}
+        .s-btn:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 15px 40px rgba(212,168,83,.15)}
+        .s-btn svg{width:24px;height:24px;fill:var(--gold)}
+        .s-btn small{font-size:.65rem;font-weight:500;color:rgba(250,245,235,.4);display:block;text-align:left}
+        .s-btn .sn{font-size:1rem;font-weight:800;letter-spacing:-.3px;text-align:left}
+
+        /* ═══ FOOTER ═══ */
+        footer{padding:4rem 2rem;border-top:1px solid rgba(12,31,29,.06)}
+        .foot-w{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+        .foot-l{display:flex;flex-direction:column;gap:.75rem}
+        .foot-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:800;font-size:1.1rem}
+        .foot-logo img{width:32px;height:32px;border-radius:9px}
+        .foot-copy{color:var(--txt3);font-size:.82rem}
+        .foot-links{display:flex;gap:2.5rem}
+        .foot-links a{color:var(--txt3);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+        .foot-links a:hover{color:var(--gold-d)}
+
+        /* ═══ MOBILE NAV ═══ */
+        .mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(250,245,235,.98);backdrop-filter:blur(20px);padding:2rem;z-index:99;border-bottom:1px solid rgba(12,31,29,.06)}
+        .mobile-menu.open{display:block}
+        .mobile-menu a{display:block;padding:.75rem 0;color:var(--txt);text-decoration:none;font-weight:600;font-size:1rem;border-bottom:1px solid rgba(12,31,29,.04)}
+        .mobile-menu a:last-child{border-bottom:none}
+
+        /* ═══ RESPONSIVE ═══ */
+        @media(max-width:1024px){
+            .show-row{grid-template-columns:1fr;gap:3rem;padding:5rem 0}
+            .show-row.flip .show-text{order:1}
+            .show-row.flip .show-vis{order:2}
+            .feat-grid{grid-template-columns:repeat(2,1fr)}
+            .feat-card.wide{grid-column:span 2}
+            .why-grid{grid-template-columns:repeat(3,1fr)}
+            .hero h1{font-size:4.5rem}
+            .show-text h2{font-size:2.8rem}
         }
-        .stats-grid {
-            position: relative; z-index: 2;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 2rem; text-align: center;
+        @media(max-width:768px){
+            .nav-m{display:none}
+            .menu-btn{display:block}
+            .nav-w{padding:0 1.5rem;height:70px}
+            .hero{padding:8rem 1.5rem 3rem;min-height:auto}
+            .hero h1{font-size:3rem;letter-spacing:-2px}
+            .hero-sub{font-size:1rem}
+            .hero-phones{gap:.75rem}
+            .phone-shell{width:150px!important;border-radius:24px;padding:5px}
+            .phone-s{border-radius:20px}
+            .phone-notch{width:50px;height:16px;top:7px;border-radius:8px}
+            .h-phone:nth-child(1){transform:rotate(-6deg) translateY(15px)}
+            .h-phone:nth-child(2){transform:translateY(-5px) scale(1.05)}
+            .h-phone:nth-child(3){transform:rotate(6deg) translateY(15px)}
+            section,.feat-sec,.preview-sec,.why-sec{padding:5rem 1.5rem}
+            .section-tag,.show-tag,.feat-head .section-tag,.preview-head .section-tag,.why-head .section-tag{font-size:.65rem}
+            .show-text h2,.feat-head h2,.preview-head h2,.why-head h2{font-size:2.4rem}
+            .show-phone-wrap .phone-shell{width:200px}
+            .feat-grid{grid-template-columns:1fr}
+            .feat-card.wide{grid-column:span 1}
+            .feat-card.tall{grid-row:span 1}
+            .why-grid{grid-template-columns:1fr}
+            .proof-w{gap:2.5rem}
+            .proof-line{display:none}
+            .proof-i .num{font-size:2.5rem}
+            .cta-box{padding:4rem 2rem;border-radius:28px}
+            .cta-box h2{font-size:2.8rem}
+            .ss-item .phone-shell{width:190px}
+            .ss-item{width:190px}
         }
-        .stat-item { padding: 2rem 0; }
-        .stat-number {
-            font-size: 3.5rem; font-weight: 800; letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .stat-label {
-            font-size: 0.78rem; color: var(--text-dim); margin-top: 10px;
-            font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
-        }
-        .stat-divider {
-            width: 1px; background: var(--border); margin: 1rem 0;
+        @media(max-width:480px){
+            .hero h1{font-size:2.4rem;letter-spacing:-1.5px}
+            .hero-phones{gap:.5rem}
+            .phone-shell{width:120px!important;border-radius:20px;padding:4px}
+            .phone-s{border-radius:17px}
+            .phone-notch{width:40px;height:13px;top:6px;border-radius:7px}
+            .show-text h2,.feat-head h2,.preview-head h2,.why-head h2{font-size:2rem}
+            .cta-box h2{font-size:2.2rem}
+            .s-btn{width:100%;justify-content:center}
+            .hero-actions{flex-direction:column;align-items:center}
+            .btn-g,.btn-o{width:100%;justify-content:center}
         }
 
-        /* ── SCREENSHOT SLIDER ────────────── */
-        .slider-section {
-            overflow: hidden; position: relative;
-            background: var(--bg-elevated);
-            border-top: 1px solid var(--border);
-        }
-        .slider-track-wrapper {
-            position: relative; margin-top: 4rem;
-            mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-        }
-        .slider-track {
-            display: flex; gap: 2rem;
-            animation: slide-phones 45s linear infinite;
-            width: max-content;
-        }
-        .slider-phone { flex-shrink: 0; width: 230px; transition: transform 0.5s; }
-        .slider-phone:hover { transform: translateY(-16px) scale(1.03); z-index: 10; }
-        .slider-phone .iphone-frame {
-            border-radius: 40px; padding: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            background: #1a1a1a;
-        }
-        .slider-phone-label {
-            text-align: center; padding: 1.25rem 0 0.5rem;
-            font-size: 0.78rem; font-weight: 700; color: var(--text-dim);
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-        @keyframes slide-phones {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* ── ALL FEATURES GRID ────────────── */
-        .all-features-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-        }
-        .mini-card {
-            display: flex; align-items: center; gap: 14px;
-            padding: 1.25rem 1.15rem; background: var(--bg-card);
-            border-radius: var(--radius-sm); border: 1px solid var(--border);
-            transition: all 0.35s cubic-bezier(0.23,1,0.32,1); cursor: default;
-        }
-        .mini-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            background: var(--bg-card-hover);
-        }
-        .mini-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; flex-shrink: 0;
-            background: rgba(201,169,110,0.06);
-            border: 1px solid rgba(201,169,110,0.06);
-            transition: all 0.3s;
-        }
-        .mini-card:hover .mini-icon {
-            background: rgba(201,169,110,0.12);
-            border-color: rgba(201,169,110,0.15);
-        }
-        .mini-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-        .mini-card span { font-size: 0.75rem; color: var(--text-dim); }
-
-        /* ── INFO BANNER ──────────────────── */
-        .info-banner {
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            padding: 6rem 2rem;
-        }
-        .info-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
-        }
-        .info-item {
-            text-align: center; padding: 2.5rem 1.5rem;
-            border-radius: var(--radius);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            transition: all 0.4s;
-        }
-        .info-item:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-        }
-        .info-item .info-emoji {
-            font-size: 2.5rem; margin-bottom: 1.5rem; display: inline-block;
-            transition: transform 0.3s;
-        }
-        .info-item:hover .info-emoji { transform: scale(1.15); }
-        .info-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); }
-        .info-item p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8; }
-
-        /* ── CTA ──────────────────────────── */
-        .cta-section {
-            text-align: center; position: relative; overflow: hidden; padding: 10rem 2rem;
-        }
-        .cta-section::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%),
-                        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(13,115,119,0.08) 0%, transparent 60%);
-        }
-        .cta-glow {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 600px; height: 600px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(201,169,110,0.04), transparent 70%);
-            pointer-events: none;
-        }
-        .cta-content { position: relative; z-index: 2; }
-        .cta-section .arabic-ornament {
-            font-family: 'Noto Naskh Arabic', serif;
-            font-size: 1.5rem; color: var(--gold); opacity: 0.25;
-            margin-bottom: 2rem; letter-spacing: 8px;
-        }
-        .cta-section h2 {
-            font-size: 4rem; font-weight: 800; color: var(--text);
-            margin-bottom: 1.5rem; letter-spacing: -2px; line-height: 1.05;
-        }
-        .cta-section h2 em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .cta-section p { color: var(--text-secondary); font-size: 1.1rem; max-width: 460px; margin: 0 auto 3.5rem; line-height: 1.8; }
-        .store-buttons { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
-        .store-btn {
-            display: inline-flex; align-items: center; gap: 14px;
-            padding: 16px 28px; background: var(--bg-card);
-            border: 1px solid var(--border); color: var(--text);
-            border-radius: var(--radius-sm); text-decoration: none; font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .store-btn:hover {
-            transform: translateY(-6px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(201,169,110,0.1);
-        }
-        .store-btn svg { width: 24px; height: 24px; fill: var(--gold); }
-        .store-btn small { font-size: 0.68rem; font-weight: 500; color: var(--text-dim); display: block; margin-bottom: 1px; }
-        .store-btn .store-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.3px; }
-
-        /* ── FOOTER ───────────────────────── */
-        footer {
-            padding: 4rem 2rem;
-            border-top: 1px solid var(--border);
-        }
-        .footer-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 2rem;
-        }
-        .footer-logo { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.3px; }
-        .footer-logo img { width: 36px; height: 36px; border-radius: 10px; }
-        .footer-inner span { color: var(--text-dim); font-size: 0.85rem; }
-        .footer-links { display: flex; gap: 2.5rem; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--gold); }
-
-        /* ── MARQUEE ──────────────────────── */
-        .marquee-section {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .marquee-track {
-            display: flex; gap: 3rem; animation: marquee 35s linear infinite;
-            width: max-content;
-        }
-        .marquee-item {
-            display: flex; align-items: center; gap: 10px;
-            font-size: 0.8rem; font-weight: 600; color: var(--text-dim);
-            white-space: nowrap; flex-shrink: 0; letter-spacing: 0.5px;
-        }
-        .marquee-item .m-dot {
-            width: 4px; height: 4px; border-radius: 50%;
-            background: var(--gold); opacity: 0.4;
-        }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* ── RESPONSIVE ───────────────────── */
-        @media (max-width: 1024px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .bento-big { grid-column: span 2; }
-            .all-features-grid { grid-template-columns: repeat(3, 1fr); }
-            .hero h1 { font-size: 3.8rem; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 8rem 1.5rem 4rem; min-height: auto; }
-            .hero-layout { flex-direction: column; text-align: center; gap: 4rem; }
-            .hero h1 { font-size: 3rem; }
-            .hero p { font-size: 1rem; margin-left: auto; margin-right: auto; }
-            .hero-buttons { justify-content: center; }
-            .hero-phones { width: 300px; height: 460px; }
-            .hero-phone-1 .iphone-frame { width: 210px; }
-            .hero-phone-1 { left: 0; }
-            .hero-phone-2 .iphone-frame { width: 190px; }
-            .hero-phone-2 { left: 110px; }
-            section { padding: 5rem 1.5rem; }
-            .section-title { font-size: 2.5rem; }
-            .bento-grid { grid-template-columns: 1fr; }
-            .bento-big { grid-column: span 1; flex-direction: column; text-align: center; }
-            .bento-big .bento-visual { width: 100px; height: 100px; font-size: 2.5rem; margin: 0 auto; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .stat-number { font-size: 2.5rem; }
-            .stat-divider { display: none; }
-            .all-features-grid { grid-template-columns: repeat(2, 1fr); }
-            .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .cta-section h2 { font-size: 2.8rem; }
-            .slider-phone { width: 200px; }
-            .trust-inner { gap: 2rem; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.4rem; letter-spacing: -1.5px; }
-            .section-title { font-size: 2rem; }
-            .all-features-grid { grid-template-columns: 1fr; }
-            .hero-phones { width: 240px; height: 380px; }
-            .hero-phone-1 .iphone-frame { width: 170px; }
-            .hero-phone-2 .iphone-frame { width: 155px; }
-            .hero-phone-2 { left: 85px; }
-            .store-btn { width: 100%; justify-content: center; }
-        }
-
-        /* ── ANIMATIONS ───────────────────── */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
-        }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .fade-left {
-            opacity: 0; transform: translateX(-30px);
-            transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
-        }
-        .fade-left.visible { opacity: 1; transform: translateX(0); }
-        .fade-right {
-            opacity: 0; transform: translateX(30px);
-            transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
-        }
-        .fade-right.visible { opacity: 1; transform: translateX(0); }
-        .scale-in {
-            opacity: 0; transform: scale(0.95);
-            transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
-        }
-        .scale-in.visible { opacity: 1; transform: scale(1); }
-        .stagger-1 { transition-delay: 0.05s; }
-        .stagger-2 { transition-delay: 0.1s; }
-        .stagger-3 { transition-delay: 0.15s; }
-        .stagger-4 { transition-delay: 0.2s; }
-        .stagger-5 { transition-delay: 0.25s; }
-        .stagger-6 { transition-delay: 0.3s; }
+        /* ═══ ANIMATIONS ═══ */
+        .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1)}
+        .reveal.vis{opacity:1;transform:translateY(0)}
+        .reveal-l{opacity:0;transform:translateX(-40px);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1)}
+        .reveal-l.vis{opacity:1;transform:translateX(0)}
+        .reveal-r{opacity:0;transform:translateX(40px);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1)}
+        .reveal-r.vis{opacity:1;transform:translateX(0)}
+        .d1{transition-delay:.05s}.d2{transition-delay:.1s}.d3{transition-delay:.15s}.d4{transition-delay:.2s}.d5{transition-delay:.25s}.d6{transition-delay:.3s}.d7{transition-delay:.35s}.d8{transition-delay:.4s}
     </style>
 
-    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "HidayahMY",
-        "operatingSystem": "iOS, Android",
-        "applicationCategory": "LifestyleApplication",
-        "description": "Complete Islamic companion app for Malaysian Muslims with prayer times (JAKIM), Al-Quran, Qiblah compass, daily Azkar, Zakat calculator, and 16+ features.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "MYR"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "100"
-        },
-        "featureList": "Prayer Times, Al-Quran, Qiblah Compass, Daily Azkar, Dua Collection, Tasbih Counter, Zakat Calculator, Hijri Calendar, Nearby Mosques, Quran Player, Hajj & Umrah Guide, Asmaul Husna, Tajwid Rules, Kids Corner",
-        "inLanguage": ["en", "ms"],
-        "author": {
-            "@type": "Organization",
-            "name": "HidayahMY",
-            "url": "https://hidayahmy.com"
-        }
-    }
+    {"@context":"https://schema.org","@type":"MobileApplication","name":"HidayahMY","operatingSystem":"iOS, Android","applicationCategory":"LifestyleApplication","description":"Complete Islamic companion app for Malaysian Muslims with prayer times (JAKIM), Al-Quran, Qiblah compass, daily Azkar, Zakat calculator, and 16+ features.","offers":{"@type":"Offer","price":"0","priceCurrency":"MYR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"100"},"featureList":"Prayer Times, Al-Quran, Qiblah Compass, Daily Azkar, Dua Collection, Tasbih Counter, Zakat Calculator, Hijri Calendar, Nearby Mosques, Quran Player, Hajj & Umrah Guide, Asmaul Husna, Tajwid Rules, Kids Corner","inLanguage":["en","ms"],"author":{"@type":"Organization","name":"HidayahMY","url":"https://hidayahmy.com"}}
     </script>
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "HidayahMY",
-        "url": "https://hidayahmy.com",
-        "description": "HidayahMY - Panduan Solat & Al-Quran untuk Muslim Malaysia",
-        "inLanguage": ["en", "ms"]
-    }
+    {"@context":"https://schema.org","@type":"WebSite","name":"HidayahMY","url":"https://hidayahmy.com","description":"HidayahMY - Panduan Solat & Al-Quran untuk Muslim Malaysia","inLanguage":["en","ms"]}
     </script>
 </head>
 <body>
 
 <!-- NAV -->
 <header>
-<nav role="navigation" aria-label="Main navigation">
-    <div class="scroll-progress"></div>
-    <div class="nav-inner">
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-w">
         <a href="#" class="logo" aria-label="HidayahMY Home">
-            <img src="assets/hidayahicon.png" alt="HidayahMY Logo" class="logo-icon" onerror="this.style.display='none'">
-            <span class="logo-text">HidayahMY</span>
+            <img src="assets/hidayahicon.png" alt="HidayahMY" onerror="this.style.display='none'">
+            <span>HidayahMY</span>
         </a>
-        <ul class="nav-links">
+        <ul class="nav-m">
             <li><a href="#features" data-en="Features" data-ms="Ciri-ciri">Features</a></li>
             <li><a href="#preview" data-en="Preview" data-ms="Pratonton">Preview</a></li>
-            <li><a href="#all-features" data-en="Explore" data-ms="Terokai">Explore</a></li>
+            <li><a href="#why" data-en="Why HidayahMY" data-ms="Kenapa HidayahMY">Why HidayahMY</a></li>
         </ul>
-        <div class="nav-right">
-            <div class="lang-toggle" role="group" aria-label="Language Selector">
-                <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
-                <button class="lang-btn" onclick="setLang('ms')" aria-label="Tukar ke Bahasa Melayu" aria-pressed="false">BM</button>
+        <div class="nav-r">
+            <div class="lang-t" role="group" aria-label="Language Selector">
+                <button class="lang-b on" onclick="setLang('en')" aria-label="English" aria-pressed="true">EN</button>
+                <button class="lang-b" onclick="setLang('ms')" aria-label="Bahasa Melayu" aria-pressed="false">BM</button>
             </div>
-            <a href="#download" class="nav-cta" data-en="Download" data-ms="Muat Turun">Download</a>
+            <a href="#download" class="nav-dl" data-en="Download" data-ms="Muat Turun">Download</a>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="closeMenu()" data-en="Features" data-ms="Ciri-ciri">Features</a>
+    <a href="#preview" onclick="closeMenu()" data-en="Preview" data-ms="Pratonton">Preview</a>
+    <a href="#why" onclick="closeMenu()" data-en="Why HidayahMY" data-ms="Kenapa HidayahMY">Why HidayahMY</a>
+    <a href="#download" onclick="closeMenu()" data-en="Download" data-ms="Muat Turun">Download</a>
+</div>
 </header>
 
 <main>
+
 <!-- HERO -->
 <section class="hero">
     <div class="hero-bg">
-        <div class="hero-grid-pattern"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
-    <div class="hero-layout">
-        <div class="hero-text">
-            <div class="hero-badge fade-left">
-                <span class="dot"></span>
-                Panduan Solat & Al-Quran
-            </div>
-            <div class="arabic-accent fade-left">&#1576;&#1587;&#1605; &#1575;&#1604;&#1604;&#1607; &#1575;&#1604;&#1585;&#1581;&#1605;&#1606; &#1575;&#1604;&#1585;&#1581;&#1610;&#1605;</div>
-            <h1 class="fade-left stagger-1"><span data-en="Your Complete" data-ms="Teman Islamik">Your Complete</span><br><em data-en="Islamic Companion" data-ms="Anda Yang Lengkap">Islamic Companion</em></h1>
-            <p class="fade-left stagger-2" data-en="Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community." data-ms="Waktu solat, Al-Quran, arah Kiblat, dan 16+ alat Islamik yang direka khas untuk umat Islam di Malaysia.">Prayer times, Al-Quran, Qiblah direction, and 16+ Islamic tools crafted for the Malaysian Muslim community.</p>
-            <div class="hero-buttons fade-left stagger-3">
-                <a href="#download" class="btn-primary" data-en="Download Free" data-ms="Muat Turun Percuma">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                    <span>Download Free</span>
-                </a>
-                <a href="#features" class="btn-secondary" data-en="Explore Features" data-ms="Terokai Ciri">
-                    Explore Features
-                </a>
-            </div>
+    <div class="hero-content">
+        <div class="hero-arabic reveal">&#1576;&#1587;&#1605; &#1575;&#1604;&#1604;&#1607; &#1575;&#1604;&#1585;&#1581;&#1605;&#1606; &#1575;&#1604;&#1585;&#1581;&#1610;&#1605;</div>
+        <h1 class="reveal d1">
+            <span data-en="Your Islamic" data-ms="Teman Islamik">Your Islamic</span><br>
+            <span class="line2" data-en="Companion App" data-ms="Anda Yang Lengkap">Companion App</span>
+        </h1>
+        <p class="hero-sub reveal d2" data-en="Prayer times, Al-Quran, Qiblah, and 16+ features built for Muslims in Malaysia. Beautiful. Accurate. Free." data-ms="Waktu solat, Al-Quran, Kiblat, dan 16+ ciri dibina untuk umat Islam di Malaysia. Cantik. Tepat. Percuma.">Prayer times, Al-Quran, Qiblah, and 16+ features built for Muslims in Malaysia. Beautiful. Accurate. Free.</p>
+        <div class="hero-actions reveal d3">
+            <a href="#download" class="btn-g" data-en="Download Free" data-ms="Muat Turun Percuma">
+                <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                <span>Download Free</span>
+            </a>
+            <a href="#features" class="btn-o" data-en="Explore Features" data-ms="Terokai Ciri">Explore Features</a>
         </div>
-        <div class="hero-phones fade-right stagger-2">
-            <div class="hero-phone hero-phone-1">
-                <div class="iphone-frame">
-                    <div class="iphone-screen">
-                        <div class="dynamic-island"></div>
-                        <img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard showing prayer times and Islamic features">
-                    </div>
+    </div>
+    <div class="hero-phones reveal d4">
+        <div class="h-phone">
+            <div class="phone-shell">
+                <div class="phone-inner">
+                    <div class="phone-notch"></div>
+                    <div class="phone-s"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran reader"></div>
                 </div>
             </div>
-            <div class="hero-phone hero-phone-2">
-                <div class="iphone-frame">
-                    <div class="iphone-screen">
-                        <div class="dynamic-island"></div>
-                        <img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times screen with JAKIM-based schedule">
-                    </div>
+        </div>
+        <div class="h-phone">
+            <div class="phone-shell">
+                <div class="phone-inner">
+                    <div class="phone-notch"></div>
+                    <div class="phone-s"><img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY Dashboard"></div>
+                </div>
+            </div>
+        </div>
+        <div class="h-phone">
+            <div class="phone-shell">
+                <div class="phone-inner">
+                    <div class="phone-notch"></div>
+                    <div class="phone-s"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-    <div class="trust-inner">
-        <div class="trust-item"><span class="t-icon">&#9733;</span> JAKIM Verified Times</div>
-        <div class="trust-item"><span class="t-icon">&#9733;</span> 16+ Islamic Features</div>
-        <div class="trust-item"><span class="t-icon">&#9733;</span> iOS & Android</div>
-        <div class="trust-item"><span class="t-icon">&#9733;</span> 100% Free</div>
-        <div class="trust-item"><span class="t-icon">&#9733;</span> Made for Malaysia</div>
+<!-- SOCIAL PROOF -->
+<section class="proof">
+    <div class="proof-w">
+        <div class="proof-i reveal">
+            <div class="num" data-count="16">0</div>
+            <div class="lab" data-en="Islamic Features" data-ms="Ciri Islamik">Islamic Features</div>
+        </div>
+        <div class="proof-line"></div>
+        <div class="proof-i reveal d1">
+            <div class="num" data-count="114">0</div>
+            <div class="lab" data-en="Surah" data-ms="Surah">Surah</div>
+        </div>
+        <div class="proof-line"></div>
+        <div class="proof-i reveal d2">
+            <div class="num" data-count="99">0</div>
+            <div class="lab" data-en="Asmaul Husna" data-ms="Asmaul Husna">Asmaul Husna</div>
+        </div>
+        <div class="proof-line"></div>
+        <div class="proof-i reveal d3">
+            <div class="num" data-count="14">0</div>
+            <div class="lab" data-en="App Themes" data-ms="Tema Aplikasi">App Themes</div>
+        </div>
+    </div>
+</section>
+
+<!-- SHOWCASE: Feature Deep Dives -->
+<div class="showcase">
+    <!-- Prayer Times -->
+    <div class="show-row" id="features">
+        <div class="show-text reveal-l">
+            <div class="show-tag"><span class="tag-dot"></span> <span data-en="Core Feature" data-ms="Ciri Utama">Core Feature</span></div>
+            <h2 data-en="Accurate Prayer Times" data-ms="Waktu Solat Tepat"><span data-en="Accurate" data-ms="Waktu Solat">Accurate</span> <span class="hl" data-en="Prayer Times" data-ms="Yang Tepat">Prayer Times</span></h2>
+            <p data-en="JAKIM-based prayer times for every zone in Malaysia. Real-time countdown, azan notifications, daily solat checklist, and next prayer alerts to keep you on track." data-ms="Waktu solat berasaskan JAKIM untuk setiap zon di Malaysia. Undur detik masa nyata, notifikasi azan, senarai semak solat harian, dan peringatan solat seterusnya.">JAKIM-based prayer times for every zone in Malaysia. Real-time countdown, azan notifications, daily solat checklist, and next prayer alerts to keep you on track.</p>
+            <div class="show-chips">
+                <span class="chip" data-en="JAKIM Verified" data-ms="Disahkan JAKIM">JAKIM Verified</span>
+                <span class="chip" data-en="All Zones" data-ms="Semua Zon">All Zones</span>
+                <span class="chip" data-en="Azan Alerts" data-ms="Peringatan Azan">Azan Alerts</span>
+                <span class="chip" data-en="Solat Checklist" data-ms="Senarai Semak Solat">Solat Checklist</span>
+            </div>
+        </div>
+        <div class="show-vis reveal-r">
+            <div class="show-phone-wrap">
+                <div class="show-phone-glow glow-teal"></div>
+                <div class="phone-shell">
+                    <div class="phone-inner">
+                        <div class="phone-notch"></div>
+                        <div class="phone-s"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quran -->
+    <div class="show-row flip">
+        <div class="show-text reveal-r">
+            <div class="show-tag"><span class="tag-dot"></span> <span data-en="Read & Listen" data-ms="Baca & Dengar">Read & Listen</span></div>
+            <h2><span data-en="The Holy" data-ms="Al-Quran">The Holy</span> <span class="hl" data-en="Al-Quran" data-ms="Yang Mulia">Al-Quran</span></h2>
+            <p data-en="Full Quran with beautiful Uthmani script, Malay & English translations, and audio recitation from world-renowned Qaris. Bookmark, search, and read at your pace." data-ms="Al-Quran penuh dengan skrip Uthmani yang cantik, terjemahan Melayu & Inggeris, dan bacaan audio dari Qari terkenal dunia. Penanda buku, carian, dan baca mengikut kadar anda.">Full Quran with beautiful Uthmani script, Malay & English translations, and audio recitation from world-renowned Qaris. Bookmark, search, and read at your pace.</p>
+            <div class="show-chips">
+                <span class="chip" data-en="Uthmani Script" data-ms="Skrip Uthmani">Uthmani Script</span>
+                <span class="chip" data-en="Audio Player" data-ms="Pemain Audio">Audio Player</span>
+                <span class="chip" data-en="3 Languages" data-ms="3 Bahasa">3 Languages</span>
+                <span class="chip" data-en="Bookmarks" data-ms="Penanda Buku">Bookmarks</span>
+            </div>
+        </div>
+        <div class="show-vis reveal-l">
+            <div class="show-phone-wrap">
+                <div class="show-phone-glow glow-gold"></div>
+                <div class="phone-shell">
+                    <div class="phone-inner">
+                        <div class="phone-notch"></div>
+                        <div class="phone-s"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Qiblah -->
+    <div class="show-row">
+        <div class="show-text reveal-l">
+            <div class="show-tag"><span class="tag-dot"></span> <span data-en="Direction" data-ms="Arah">Direction</span></div>
+            <h2><span data-en="Qiblah" data-ms="Kompas">Qiblah</span> <span class="hl" data-en="Compass" data-ms="Kiblat">Compass</span></h2>
+            <p data-en="Find the precise direction of the Kaaba from anywhere. GPS-powered with beautiful compass UI. Never pray in the wrong direction again." data-ms="Cari arah tepat Kaabah dari mana-mana sahaja. Dikuasakan GPS dengan UI kompas yang cantik. Tidak akan solat ke arah yang salah lagi.">Find the precise direction of the Kaaba from anywhere. GPS-powered with beautiful compass UI. Never pray in the wrong direction again.</p>
+            <div class="show-chips">
+                <span class="chip" data-en="GPS Powered" data-ms="Dikuasakan GPS">GPS Powered</span>
+                <span class="chip" data-en="Precise" data-ms="Tepat">Precise</span>
+                <span class="chip" data-en="Beautiful UI" data-ms="UI Cantik">Beautiful UI</span>
+            </div>
+        </div>
+        <div class="show-vis reveal-r">
+            <div class="show-phone-wrap">
+                <div class="show-phone-glow glow-teal"></div>
+                <div class="phone-shell">
+                    <div class="phone-inner">
+                        <div class="phone-notch"></div>
+                        <div class="phone-s"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah Compass"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- CORE FEATURES -->
-<section id="features">
-    <div class="section-inner">
-        <span class="section-label fade-up" data-en="Core Features" data-ms="Ciri Utama">Core Features</span>
-        <h2 class="section-title fade-up"><span data-en="Everything You " data-ms="Semua Yang Anda ">Everything You </span><span class="gold" data-en="Need" data-ms="Perlukan">Need</span></h2>
-        <p class="section-desc fade-up" data-en="Comprehensive Islamic tools designed for your daily spiritual journey." data-ms="Alat Islamik komprehensif yang direka untuk perjalanan rohani harian anda.">Comprehensive Islamic tools designed for your daily spiritual journey.</p>
-
-        <div class="bento-grid">
-            <div class="bento-card bento-big fade-up">
-                <div class="bento-visual">&#128336;</div>
-                <div>
-                    <h3 data-en="Accurate Prayer Times" data-ms="Waktu Solat Tepat">Accurate Prayer Times</h3>
-                    <p data-en="JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications." data-ms="Waktu solat berasaskan JAKIM untuk semua zon di Malaysia dengan undur detik masa nyata, peringatan solat seterusnya, senarai semak solat harian, dan notifikasi azan.">JAKIM-based prayer times for all zones in Malaysia with real-time countdown, next prayer alerts, daily solat checklist, and beautiful azan notifications.</p>
-                </div>
-            </div>
-            <div class="bento-card fade-up stagger-1">
-                <div class="bento-icon">&#128214;</div>
-                <h3 data-en="Al-Quran" data-ms="Al-Quran">Al-Quran</h3>
-                <p data-en="Full Quran with Uthmani script, Malay & English translations, and audio player." data-ms="Al-Quran penuh dengan skrip Uthmani, terjemahan Melayu & Inggeris, dan pemain audio.">Full Quran with Uthmani script, Malay & English translations, and audio player.</p>
-            </div>
-            <div class="bento-card fade-up stagger-2">
-                <div class="bento-icon">&#129517;</div>
-                <h3 data-en="Qiblah Compass" data-ms="Kompas Kiblat">Qiblah Compass</h3>
-                <p data-en="Precise direction finder with 3D AR mode support. Never miss the right direction." data-ms="Penunjuk arah tepat dengan sokongan mod AR 3D. Tidak akan terlepas arah yang betul.">Precise direction finder with 3D AR mode support. Never miss the right direction.</p>
-            </div>
-            <div class="bento-card fade-up stagger-3">
-                <div class="bento-icon">&#128218;</div>
-                <h3 data-en="Daily Azkar & Dua" data-ms="Azkar & Doa Harian">Daily Azkar & Dua</h3>
-                <p data-en="Morning & evening azkar with counter, plus 30 duas from authentic hadith." data-ms="Azkar pagi & petang dengan pengira, serta 30 doa dari hadis sahih.">Morning & evening azkar with counter, plus 30 duas from authentic hadith.</p>
-            </div>
-            <div class="bento-card bento-big fade-up stagger-4">
-                <div class="bento-visual">&#127971;</div>
-                <div>
-                    <h3 data-en="Nearby Mosques" data-ms="Masjid Berdekatan">Nearby Mosques</h3>
-                    <p data-en="Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia." data-ms="Cari masjid dan surau berdekatan anda dengan carian GPS, penunjuk jarak, dan navigasi terus melalui Google Maps, Apple Maps, atau Waze. Meliputi seluruh Malaysia.">Find mosques and surau near you with GPS-based search, distance indicators, and direct navigation via Google Maps, Apple Maps, or Waze. Covers all of Malaysia.</p>
-                </div>
-            </div>
+<!-- ALL FEATURES (dark section) -->
+<section class="feat-sec" id="all-features">
+    <div class="bg-pat"></div>
+    <div class="feat-w">
+        <div class="feat-head">
+            <div class="section-tag reveal" data-en="Complete List" data-ms="Senarai Lengkap">Complete List</div>
+            <h2 class="reveal d1"><span data-en="All " data-ms="Semua ">All </span><span class="hl" data-en="16+ Features" data-ms="16+ Ciri">16+ Features</span></h2>
+            <p class="reveal d2" data-en="Everything you need for your daily ibadah, packed into one beautiful app." data-ms="Semua yang anda perlukan untuk ibadah harian, dalam satu aplikasi yang cantik.">Everything you need for your daily ibadah, packed into one beautiful app.</p>
+        </div>
+        <div class="feat-grid">
+            <div class="feat-card highlight tall reveal"><div class="fc-icon"><span>&#128336;</span></div><h3 data-en="Prayer Times" data-ms="Waktu Solat">Prayer Times</h3><p data-en="JAKIM-based times for all zones with countdown, azan alerts, and solat checklist." data-ms="Waktu berasaskan JAKIM untuk semua zon dengan undur detik, peringatan azan, dan senarai semak solat.">JAKIM-based times for all zones with countdown, azan alerts, and solat checklist.</p></div>
+            <div class="feat-card reveal d1"><div class="fc-icon"><span>&#128214;</span></div><h3>Al-Quran</h3><p data-en="Uthmani script with translations" data-ms="Skrip Uthmani dengan terjemahan">Uthmani script with translations</p></div>
+            <div class="feat-card reveal d2"><div class="fc-icon"><span>&#127911;</span></div><h3 data-en="Quran Player" data-ms="Pemain Quran">Quran Player</h3><p data-en="Audio recitation by famous Qaris" data-ms="Bacaan audio oleh Qari terkenal">Audio recitation by famous Qaris</p></div>
+            <div class="feat-card reveal d3"><div class="fc-icon"><span>&#129517;</span></div><h3 data-en="Qiblah Compass" data-ms="Kompas Kiblat">Qiblah Compass</h3><p data-en="GPS-powered direction finder" data-ms="Penunjuk arah dikuasakan GPS">GPS-powered direction finder</p></div>
+            <div class="feat-card wide reveal d4"><div class="fc-icon"><span>&#128218;</span></div><h3 data-en="Daily Azkar & Dua" data-ms="Azkar & Doa Harian">Daily Azkar & Dua</h3><p data-en="Morning & evening azkar with counter, plus 30 authentic duas from hadith for every occasion." data-ms="Azkar pagi & petang dengan pengira, serta 30 doa sahih dari hadis untuk setiap kesempatan.">Morning & evening azkar with counter, plus 30 authentic duas from hadith for every occasion.</p></div>
+            <div class="feat-card reveal d1"><div class="fc-icon"><span>&#128588;</span></div><h3 data-en="Dua Collection" data-ms="Koleksi Doa">Dua Collection</h3><p data-en="30 daily duas" data-ms="30 doa harian">30 daily duas</p></div>
+            <div class="feat-card reveal d2"><div class="fc-icon"><span>&#128247;</span></div><h3 data-en="Tasbih Counter" data-ms="Pengira Tasbih">Tasbih Counter</h3><p data-en="Digital dhikr counter" data-ms="Pengira zikir digital">Digital dhikr counter</p></div>
+            <div class="feat-card reveal d3"><div class="fc-icon"><span>&#128178;</span></div><h3 data-en="Zakat Calculator" data-ms="Kalkulator Zakat">Zakat Calculator</h3><p data-en="Calculate your zakat easily" data-ms="Kira zakat anda dengan mudah">Calculate your zakat easily</p></div>
+            <div class="feat-card highlight tall reveal d4"><div class="fc-icon"><span>&#127971;</span></div><h3 data-en="Nearby Mosques" data-ms="Masjid Berdekatan">Nearby Mosques</h3><p data-en="Find masjid & surau near you with GPS, distance info, and navigation via Google Maps, Apple Maps, or Waze." data-ms="Cari masjid & surau berdekatan dengan GPS, info jarak, dan navigasi melalui Google Maps, Apple Maps, atau Waze.">Find masjid & surau near you with GPS, distance info, and navigation via Google Maps, Apple Maps, or Waze.</p></div>
+            <div class="feat-card reveal"><div class="fc-icon"><span>&#128197;</span></div><h3 data-en="Hijri Calendar" data-ms="Kalendar Hijri">Hijri Calendar</h3><p data-en="Islamic events & dates" data-ms="Acara & tarikh Islam">Islamic events & dates</p></div>
+            <div class="feat-card reveal d1"><div class="fc-icon"><span>&#10024;</span></div><h3 data-en="Zikir Collection" data-ms="Koleksi Zikir">Zikir Collection</h3><p data-en="Curated dhikr" data-ms="Zikir terpilih">Curated dhikr</p></div>
+            <div class="feat-card reveal d2"><div class="fc-icon"><span>&#127769;</span></div><h3 data-en="Solat Sunat" data-ms="Solat Sunat">Solat Sunat</h3><p data-en="20 sunnah prayer guides" data-ms="20 panduan solat sunat">20 sunnah prayer guides</p></div>
+            <div class="feat-card reveal d3"><div class="fc-icon"><span>&#11088;</span></div><h3>Asmaul Husna</h3><p data-en="99 Names of Allah" data-ms="99 Nama Allah">99 Names of Allah</p></div>
+            <div class="feat-card reveal d4"><div class="fc-icon"><span>&#128483;</span></div><h3 data-en="Tajwid Rules" data-ms="Hukum Tajwid">Tajwid Rules</h3><p data-en="Quran recitation guide" data-ms="Panduan bacaan Quran">Quran recitation guide</p></div>
+            <div class="feat-card reveal d5"><div class="fc-icon"><span>&#128204;</span></div><h3 data-en="Hajj & Umrah" data-ms="Haji & Umrah">Hajj & Umrah</h3><p data-en="Step-by-step guide" data-ms="Panduan langkah demi langkah">Step-by-step guide</p></div>
+            <div class="feat-card reveal d6"><div class="fc-icon"><span>&#128118;</span></div><h3 data-en="Kids Corner" data-ms="Sudut Kanak-kanak">Kids Corner</h3><p data-en="Hijaiyyah & Kisah Nabi" data-ms="Hijaiyyah & Kisah Nabi">Hijaiyyah & Kisah Nabi</p></div>
         </div>
     </div>
 </section>
 
-<!-- STATS -->
-<section class="stats-section">
-    <div class="section-inner">
-        <div class="stats-grid">
-            <div class="stat-item fade-up">
-                <div class="stat-number" data-count="114">0</div>
-                <div class="stat-label" data-en="Surah in Al-Quran" data-ms="Surah dalam Al-Quran">Surah in Al-Quran</div>
-            </div>
-            <div class="stat-item fade-up stagger-1">
-                <div class="stat-number" data-count="99">0</div>
-                <div class="stat-label" data-en="Asmaul Husna" data-ms="Asmaul Husna">Asmaul Husna</div>
-            </div>
-            <div class="stat-item fade-up stagger-2">
-                <div class="stat-number" data-count="14">0</div>
-                <div class="stat-label" data-en="App Themes" data-ms="Tema Aplikasi">App Themes</div>
-            </div>
-            <div class="stat-item fade-up stagger-3">
-                <div class="stat-number" data-count="16">0</div>
-                <div class="stat-label" data-en="Islamic Features" data-ms="Ciri Islamik">Islamic Features</div>
-            </div>
+<!-- APP PREVIEW: Horizontal Scroll -->
+<section class="preview-sec" id="preview">
+    <div class="preview-head">
+        <div class="section-tag reveal" data-en="App Preview" data-ms="Pratonton Aplikasi">App Preview</div>
+        <h2 class="reveal d1"><span data-en="Beautiful " data-ms="Reka Bentuk ">Beautiful </span><span class="hl" data-en="By Design" data-ms="Yang Cantik">By Design</span></h2>
+        <p class="reveal d2" data-en="14 customisable themes with light and dark mode. Every screen designed with care." data-ms="14 tema pilihan dengan mod cerah dan gelap. Setiap skrin direka dengan teliti.">14 customisable themes with light and dark mode. Every screen designed with care.</p>
+    </div>
+    <div class="scroll-mask">
+        <div class="scroll-strip">
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div></div><div class="ss-label">Dashboard</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div></div><div class="ss-label" data-en="Prayer Times" data-ms="Waktu Solat">Prayer Times</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div></div><div class="ss-label">Al-Quran</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div></div><div class="ss-label" data-en="Qiblah" data-ms="Kiblat">Qiblah</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div></div><div class="ss-label" data-en="Features" data-ms="Ciri-ciri">Features</div></div>
+            <!-- duplicate -->
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/dashboard.jpeg" alt="Dashboard"></div></div></div><div class="ss-label">Dashboard</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/prayer.jpeg" alt="Prayer Times"></div></div></div><div class="ss-label" data-en="Prayer Times" data-ms="Waktu Solat">Prayer Times</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/quran.jpeg" alt="Al-Quran"></div></div></div><div class="ss-label">Al-Quran</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/qiblah.jpeg" alt="Qiblah"></div></div></div><div class="ss-label" data-en="Qiblah" data-ms="Kiblat">Qiblah</div></div>
+            <div class="ss-item"><div class="phone-shell"><div class="phone-inner"><div class="phone-notch"></div><div class="phone-s"><img src="assets/screenshots/features.jpeg" alt="Features"></div></div></div><div class="ss-label" data-en="Features" data-ms="Ciri-ciri">Features</div></div>
         </div>
     </div>
 </section>
 
-<!-- APP PREVIEW -->
-<section class="slider-section" id="preview">
-    <div class="section-inner section-center">
-        <span class="section-label fade-up" data-en="App Preview" data-ms="Pratonton Aplikasi">App Preview</span>
-        <h2 class="section-title fade-up"><span data-en="Designed to " data-ms="Direka Untuk ">Designed to </span><span class="gold" data-en="Inspire" data-ms="Memberi Inspirasi">Inspire</span></h2>
-        <p class="section-desc fade-up" data-en="Clean, beautiful interface with 14 customisable themes. Light and dark mode supported." data-ms="Antaramuka bersih dan cantik dengan 14 tema pilihan. Sokongan mod cerah dan gelap.">Clean, beautiful interface with 14 customisable themes. Light and dark mode supported.</p>
-    </div>
-    <div class="slider-track-wrapper">
-        <div class="slider-track">
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard showing prayer times and Islamic features"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times with countdown and azan alerts"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="HidayahMY Al-Quran reader with Uthmani script and translation"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="HidayahMY Qiblah compass for accurate prayer direction"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="HidayahMY complete Islamic features overview"></div></div><div class="slider-phone-label">More Features</div></div>
-            <!-- duplicate for seamless loop -->
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/dashboard.jpeg" alt="HidayahMY app dashboard"></div></div><div class="slider-phone-label">Dashboard</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/prayer.jpeg" alt="HidayahMY prayer times"></div></div><div class="slider-phone-label">Prayer Times</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/quran.jpeg" alt="HidayahMY Al-Quran reader"></div></div><div class="slider-phone-label">Al-Quran</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/qiblah.jpeg" alt="HidayahMY Qiblah compass"></div></div><div class="slider-phone-label">Qiblah</div></div>
-            <div class="slider-phone"><div class="iphone-frame"><div class="iphone-screen"><div class="dynamic-island"></div><img src="assets/screenshots/features.jpeg" alt="HidayahMY features overview"></div></div><div class="slider-phone-label">More Features</div></div>
+<!-- WHY -->
+<section class="why-sec" id="why">
+    <div class="why-w">
+        <div class="why-head">
+            <div class="section-tag reveal" data-en="Why HidayahMY" data-ms="Kenapa HidayahMY">Why HidayahMY</div>
+            <h2 class="reveal d1"><span data-en="Built With " data-ms="Dibina Dengan ">Built With </span><span class="hl" data-en="Purpose" data-ms="Tujuan">Purpose</span></h2>
         </div>
-    </div>
-</section>
-
-<!-- INFO BANNER -->
-<section class="info-banner">
-    <div class="section-inner">
-        <div class="info-grid">
-            <div class="info-item fade-up">
-                <span class="info-emoji">&#9889;</span>
-                <h4 data-en="Fast & Lightweight" data-ms="Pantas & Ringan">Fast & Lightweight</h4>
-                <p data-en="Optimised for smooth performance on all devices with minimal battery usage." data-ms="Dioptimumkan untuk prestasi lancar pada semua peranti dengan penggunaan bateri minimum.">Optimised for smooth performance on all devices with minimal battery usage.</p>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <span class="w-emoji">&#9889;</span>
+                <h3 data-en="Fast & Lightweight" data-ms="Pantas & Ringan">Fast & Lightweight</h3>
+                <p data-en="Optimised for smooth performance on all devices. Minimal battery usage, maximum reliability." data-ms="Dioptimumkan untuk prestasi lancar pada semua peranti. Penggunaan bateri minimum, kebolehpercayaan maksimum.">Optimised for smooth performance on all devices. Minimal battery usage, maximum reliability.</p>
             </div>
-            <div class="info-item fade-up stagger-1">
-                <span class="info-emoji">&#127912;</span>
-                <h4 data-en="14 Beautiful Themes" data-ms="14 Tema Cantik">14 Beautiful Themes</h4>
-                <p data-en="Personalise your app with stunning themes including dark mode support." data-ms="Peribadikan aplikasi anda dengan tema menarik termasuk sokongan mod gelap.">Personalise your app with stunning themes including dark mode support.</p>
+            <div class="why-card reveal d1">
+                <span class="w-emoji">&#127912;</span>
+                <h3 data-en="14 Beautiful Themes" data-ms="14 Tema Cantik">14 Beautiful Themes</h3>
+                <p data-en="Personalise your experience with stunning themes. Full dark mode support for comfortable night reading." data-ms="Peribadikan pengalaman anda dengan tema menarik. Sokongan penuh mod gelap untuk bacaan malam yang selesa.">Personalise your experience with stunning themes. Full dark mode support for comfortable night reading.</p>
             </div>
-            <div class="info-item fade-up stagger-2">
-                <span class="info-emoji">&#127474;&#127486;</span>
-                <h4 data-en="Made for Malaysia" data-ms="Dibuat untuk Malaysia">Made for Malaysia</h4>
-                <p data-en="Built specifically for Malaysian Muslims with JAKIM prayer times and local features." data-ms="Dibina khas untuk umat Islam Malaysia dengan waktu solat JAKIM dan ciri tempatan.">Built specifically for Malaysian Muslims with JAKIM prayer times and local features.</p>
+            <div class="why-card reveal d2">
+                <span class="w-emoji">&#127474;&#127486;</span>
+                <h3 data-en="Made for Malaysia" data-ms="Dibuat untuk Malaysia">Made for Malaysia</h3>
+                <p data-en="Built specifically for Malaysian Muslims with JAKIM prayer times, local mosque finder, and bilingual support." data-ms="Dibina khas untuk umat Islam Malaysia dengan waktu solat JAKIM, pencari masjid tempatan, dan sokongan dwibahasa.">Built specifically for Malaysian Muslims with JAKIM prayer times, local mosque finder, and bilingual support.</p>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ALL FEATURES -->
-<section id="all-features">
-    <div class="section-inner">
-        <span class="section-label fade-up" data-en="Complete List" data-ms="Senarai Lengkap">Complete List</span>
-        <h2 class="section-title fade-up"><span data-en="All " data-ms="Semua ">All </span><span class="gold" data-en="Features" data-ms="Ciri">Features</span></h2>
-        <p class="section-desc fade-up" data-en="Everything packed into one beautiful app." data-ms="Semuanya dalam satu aplikasi yang cantik.">Everything packed into one beautiful app.</p>
-
-        <div class="all-features-grid">
-            <div class="mini-card fade-up"><div class="mini-icon">&#128336;</div><div><h4 data-en="Prayer Times" data-ms="Waktu Solat">Prayer Times</h4><span data-en="JAKIM zones with alerts" data-ms="Zon JAKIM dengan peringatan">JAKIM zones with alerts</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128214;</div><div><h4>Al-Quran</h4><span data-en="Arabic, Malay & English" data-ms="Arab, Melayu & Inggeris">Arabic, Malay & English</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#127911;</div><div><h4 data-en="Quran Player" data-ms="Pemain Quran">Quran Player</h4><span data-en="Audio recitation" data-ms="Bacaan audio">Audio recitation</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#129517;</div><div><h4 data-en="Qiblah Compass" data-ms="Kompas Kiblat">Qiblah Compass</h4><span data-en="GPS-based direction" data-ms="Arah berasaskan GPS">GPS-based direction</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#128218;</div><div><h4 data-en="Daily Azkar" data-ms="Azkar Harian">Daily Azkar</h4><span data-en="Morning & evening" data-ms="Pagi & petang">Morning & evening</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128588;</div><div><h4 data-en="Dua Collection" data-ms="Koleksi Doa">Dua Collection</h4><span data-en="30 daily duas" data-ms="30 doa harian">30 daily duas</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128247;</div><div><h4 data-en="Tasbih Counter" data-ms="Pengira Tasbih">Tasbih Counter</h4><span data-en="Digital counter" data-ms="Pengira digital">Digital counter</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128178;</div><div><h4 data-en="Zakat Calculator" data-ms="Kalkulator Zakat">Zakat Calculator</h4><span data-en="Calculate your zakat" data-ms="Kira zakat anda">Calculate your zakat</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#128197;</div><div><h4 data-en="Hijri Calendar" data-ms="Kalendar Hijri">Hijri Calendar</h4><span data-en="Islamic events & dates" data-ms="Acara & tarikh Islam">Islamic events & dates</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#127971;</div><div><h4 data-en="Nearby Mosques" data-ms="Masjid Berdekatan">Nearby Mosques</h4><span data-en="Masjid & surau finder" data-ms="Pencari masjid & surau">Masjid & surau finder</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#10024;</div><div><h4 data-en="Zikir Collection" data-ms="Koleksi Zikir">Zikir Collection</h4><span data-en="Curated dhikr" data-ms="Zikir terpilih">Curated dhikr</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#127769;</div><div><h4 data-en="Solat Sunat" data-ms="Solat Sunat">Solat Sunat</h4><span data-en="20 sunnah prayer guides" data-ms="20 panduan solat sunat">20 sunnah prayer guides</span></div></div>
-            <div class="mini-card fade-up"><div class="mini-icon">&#11088;</div><div><h4>Asmaul Husna</h4><span data-en="99 Names of Allah" data-ms="99 Nama Allah">99 Names of Allah</span></div></div>
-            <div class="mini-card fade-up stagger-1"><div class="mini-icon">&#128483;</div><div><h4 data-en="Tajwid Rules" data-ms="Hukum Tajwid">Tajwid Rules</h4><span data-en="Quran recitation guide" data-ms="Panduan bacaan Quran">Quran recitation guide</span></div></div>
-            <div class="mini-card fade-up stagger-2"><div class="mini-icon">&#128204;</div><div><h4 data-en="Hajj & Umrah" data-ms="Haji & Umrah">Hajj & Umrah</h4><span data-en="Step-by-step guide" data-ms="Panduan langkah demi langkah">Step-by-step guide</span></div></div>
-            <div class="mini-card fade-up stagger-3"><div class="mini-icon">&#128118;</div><div><h4 data-en="Kids Corner" data-ms="Sudut Kanak-kanak">Kids Corner</h4><span data-en="Hijaiyyah & Kisah Nabi" data-ms="Hijaiyyah & Kisah Nabi">Hijaiyyah & Kisah Nabi</span></div></div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="download">
-    <div class="cta-glow"></div>
-    <div class="cta-content">
-        <div class="arabic-ornament fade-up">&#1757; &#1758; &#1757;</div>
-        <h2 class="fade-up"><span data-en="Start Your" data-ms="Mulakan Perjalanan">Start Your</span><br><em data-en="Spiritual Journey" data-ms="Rohani Anda">Spiritual Journey</em></h2>
-        <p class="fade-up" data-en="Free on iOS and Android. Download HidayahMY today." data-ms="Percuma di iOS dan Android. Muat turun HidayahMY hari ini.">Free on iOS and Android. Download HidayahMY today.</p>
-        <div class="store-buttons fade-up">
-            <a href="#" class="store-btn" target="_blank" rel="noopener" aria-label="Download HidayahMY on the Apple App Store">
-                <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                <div><small data-en="Download on the" data-ms="Muat turun di">Download on the</small><span class="store-name">App Store</span></div>
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.hidayahmy.hidayah_my" class="store-btn" target="_blank" rel="noopener" aria-label="Get HidayahMY on Google Play">
-                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-                <div><small data-en="Get it on" data-ms="Dapatkan di">Get it on</small><span class="store-name">Google Play</span></div>
-            </a>
+<section class="cta-sec" id="download">
+    <div class="cta-box">
+        <div class="bg-pat"></div>
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+        <div class="cta-content">
+            <div class="cta-arabic reveal">&#1757; &#1758; &#1757;</div>
+            <h2 class="reveal d1"><span data-en="Start Your" data-ms="Mulakan">Start Your</span><br><em data-en="Spiritual Journey" data-ms="Perjalanan Rohani">Spiritual Journey</em></h2>
+            <p class="reveal d2" data-en="Free on iOS and Android. Download HidayahMY today and elevate your daily ibadah." data-ms="Percuma di iOS dan Android. Muat turun HidayahMY hari ini dan tingkatkan ibadah harian anda.">Free on iOS and Android. Download HidayahMY today and elevate your daily ibadah.</p>
+            <div class="store-row reveal d3">
+                <a href="#" class="s-btn" target="_blank" rel="noopener" aria-label="App Store">
+                    <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    <div><small data-en="Download on the" data-ms="Muat turun di">Download on the</small><span class="sn">App Store</span></div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.hidayahmy.hidayah_my" class="s-btn" target="_blank" rel="noopener" aria-label="Google Play">
+                    <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.302-2.302 2.302-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+                    <div><small data-en="Get it on" data-ms="Dapatkan di">Get it on</small><span class="sn">Google Play</span></div>
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -917,78 +624,72 @@
 
 <!-- FOOTER -->
 <footer>
-    <div class="footer-inner">
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <a href="#" class="footer-logo">
+    <div class="foot-w">
+        <div class="foot-l">
+            <a href="#" class="foot-logo">
                 <img src="assets/hidayahicon.png" alt="HidayahMY" onerror="this.style.display='none'">
                 HidayahMY
             </a>
-            <span data-en="&copy; 2026 HidayahMY. Crafted for the Ummah." data-ms="&copy; 2026 HidayahMY. Dibina untuk Ummah.">&copy; 2026 HidayahMY. Crafted for the Ummah.</span>
+            <span class="foot-copy" data-en="&copy; 2026 HidayahMY. Crafted for the Ummah." data-ms="&copy; 2026 HidayahMY. Dibina untuk Ummah.">&copy; 2026 HidayahMY. Crafted for the Ummah.</span>
         </div>
-        <div class="footer-links">
-            <a href="privacy.html" data-en="Privacy Policy" data-ms="Dasar Privasi">Privacy Policy</a>
+        <div class="foot-links">
+            <a href="privacy.html" data-en="Privacy" data-ms="Privasi">Privacy</a>
             <a href="delete-account.html" data-en="Delete Account" data-ms="Padam Akaun">Delete Account</a>
-            <a href="#" data-en="Contact Support" data-ms="Hubungi Sokongan">Contact Support</a>
+            <a href="#" data-en="Support" data-ms="Sokongan">Support</a>
         </div>
     </div>
 </footer>
 
 <script>
-// Scroll animations & Progress bar
-const scrollProgress = document.querySelector('.scroll-progress');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.1 });
-
+// Nav scroll
+const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    if (scrollProgress) scrollProgress.style.width = scrolled + "%";
+    nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el => observer.observe(el));
+// Mobile menu
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+}
 
-// Counter animation for stats
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.dataset.count);
-            let current = 0;
-            const step = Math.max(1, Math.floor(target / 40));
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => obs.observe(el));
+
+// Counter animation
+const cObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const el = e.target;
+            const t = parseInt(el.dataset.count);
+            let c = 0;
+            const s = Math.max(1, Math.floor(t / 40));
             const timer = setInterval(() => {
-                current += step;
-                if (current >= target) { current = target; clearInterval(timer); }
-                el.textContent = current + (target === 16 ? '+' : '');
+                c += s;
+                if (c >= t) { c = t; clearInterval(timer); }
+                el.textContent = c + (t === 16 ? '+' : '');
             }, 30);
-            counterObserver.unobserve(el);
+            cObs.unobserve(el);
         }
     });
 }, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => cObs.observe(el));
 
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-
-// Pause slider on hover
-const sliderTrack = document.querySelector('.slider-track');
-if (sliderTrack) {
-    sliderTrack.addEventListener('mouseenter', () => sliderTrack.style.animationPlayState = 'paused');
-    sliderTrack.addEventListener('mouseleave', () => sliderTrack.style.animationPlayState = 'running');
-}
-
-// Language switcher
+// Language
 function setLang(lang) {
     document.querySelectorAll('[data-' + lang + ']').forEach(el => {
         const val = el.getAttribute('data-' + lang);
-        const hasTranslatableChildren = el.querySelector('[data-en]');
-        if (hasTranslatableChildren) return;
+        if (el.querySelector('[data-en]')) return;
         const svg = el.querySelector('svg');
         if (svg) {
             const nodes = el.childNodes;
             for (let i = nodes.length - 1; i >= 0; i--) {
-                if (nodes[i].nodeType === 3 || (nodes[i].tagName === 'SPAN')) {
+                if (nodes[i].nodeType === 3 || nodes[i].tagName === 'SPAN') {
                     nodes[i].textContent = val;
                     break;
                 }
@@ -997,17 +698,16 @@ function setLang(lang) {
             el.textContent = val;
         }
     });
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        const isActive = btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en');
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-pressed', isActive);
+    document.querySelectorAll('.lang-b').forEach(btn => {
+        const isOn = btn.textContent.trim().toLowerCase() === (lang === 'ms' ? 'bm' : 'en');
+        btn.classList.toggle('on', isOn);
+        btn.setAttribute('aria-pressed', isOn);
     });
     document.documentElement.lang = lang === 'ms' ? 'ms' : 'en';
     localStorage.setItem('hidayahmy-lang', lang);
 }
-
 const savedLang = localStorage.getItem('hidayahmy-lang');
-if (savedLang && savedLang === 'ms') setLang('ms');
+if (savedLang === 'ms') setLang('ms');
 </script>
 
 <script defer src="/_vercel/insights/script.js"></script>
